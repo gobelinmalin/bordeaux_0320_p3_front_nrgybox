@@ -44,9 +44,4 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": ["./node_modules/.bin/eslint --max-warnings=0", "pretty-quick --staged"]
-  },
-  "engines": {
-    "node": "^12.10.0",
-    "npm": ">= 6.14.5"
   }
-}
