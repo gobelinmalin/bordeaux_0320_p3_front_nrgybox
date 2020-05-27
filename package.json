@@ -56,5 +56,9 @@
       "./node_modules/.bin/eslint --max-warnings=0",
       "pretty-quick --staged"
     ]
+  },
+  "engines": {
+    "node": "^8.10.0",
+    "npm": ">=3.5.2"
   }
 }
