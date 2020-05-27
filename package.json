@@ -15,22 +15,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "cd src && npm i && npm run build "
+    "heroku-postbuild": "cd src && npm i && npm run build && cd .. && rm -rf ./public && mv ./build ./public"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "devDependencies": {
     "eslint": "^6.8.0",
@@ -52,10 +44,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "./node_modules/.bin/eslint --max-warnings=0",
-      "pretty-quick --staged"
-    ]
+    "src/**/*.{js,jsx}": ["./node_modules/.bin/eslint --max-warnings=0", "pretty-quick --staged"]
   },
   "engines": {
     "node": "^8.10.0",
