@@ -12,8 +12,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Getting started
 
 ```bash
-$ npx degit Karnak19/react-prettier-eslint-action my-app
-$ cd my-app && git init && npm install
+$ cd my-app 
+$ npm install
 $ npm start
 ```
 
