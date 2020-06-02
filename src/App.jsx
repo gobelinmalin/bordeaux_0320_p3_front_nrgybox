@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Hello React World</header>
+      <header className="App-header">Hello React World Front Nrgybox</header>
     </div>
   );
 }
