@@ -1,0 +1,55 @@
+@media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
+    body {
+        background-color: #2A2754;
+    }
+    .container {
+        display: block;
+        justify-content: center;
+        height: 100vh;
+    }
+    .container h1 {
+        display: flex;
+        justify-content: center;
+        font-family: 'aqua';
+        font-size: 56px;
+    }
+    .google_map {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 60px;
+    }
+    .logo_start {
+        color: #538ABC
+    }
+    .logo_end {
+        color: #E9E98A
+    }
+    .lamp_logo {
+        display: flex;
+        justify-content: center;
+    }
+    .text_intro {
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+    }
+    .text_start_intro {
+        color: #538ABC;
+        margin-right: 18px;
+    }
+    .text_end_intro {
+        color: #E9E98A;
+    }
+    .wrap_text_modo {
+        margin-top: 12px;
+        margin-left: 15%;
+        margin-right: 15%;
+        color: #E9E98A;
+        font-size: 15px;     
+    }
+    .text_modo {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+}

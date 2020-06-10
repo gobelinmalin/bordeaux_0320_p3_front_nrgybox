@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Component }from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './components/Home/Home'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">Hello React World Front Nrgybox</header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route path="/" component={Home} exact />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
