@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-
 import logo_nrgybox from './style/logo_nrgybox.png'
 import './style/home.css'
 
