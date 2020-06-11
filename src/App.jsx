@@ -1,11 +1,16 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ForecastContainer from './components/Forecast/ForecastContainer';
+// import { Button } from "reactstrap";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">bande de tocards</header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={ForecastContainer} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

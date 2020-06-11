@@ -1,0 +1,107 @@
+.ForecastDetailsContainer{
+    background-color: #C5DAED;
+    border-radius: 10px;
+    width:100%;
+}
+
+.dateFavouritContainer{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+.FavouritIcon {
+    width: 13%;
+    margin-right: 5%;
+    margin-top: 3%;
+}
+
+.dateForcast{
+    margin-left: 85px;
+    color:black;
+    font-weight: bold;
+    margin-top: 5%;
+    font-size: 16px;
+}
+
+.weatherContainer{
+    display:flex;
+    justify-content:center;
+    color:black;
+    margin-top:-3%;
+}
+
+
+.hr1{
+    border-top: 1px solid #92CEEF;
+    width: 75%;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: -3%;
+}
+
+.sunriseSunsetContainer, .moonriseMoonsetContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left:-50px;
+    margin-top:-20px;
+}
+
+.sunriseSunsetContainer line, circle{
+    stroke:#F3BB33!important;
+    fill:#F3BB33!important;  
+}
+
+.sunriseLabel, .sunsetLabel, .moonriseLabel, .moonsetLabel, .dayforecastLightningLabel, .nightforecastLightningLabel{
+    color: #547397;
+    font-size:0.8rem;
+    margin-top: 10px;
+}
+
+.sunriseValue, .sunsetValue, .moonriseValue, .moonsetValue {
+    color: black;
+    margin-top:-20px;
+    font-size:0.9rem;
+}
+
+.sunriseContainer, .moonriseContainer {
+    margin-left:-30px;
+}
+
+.sunsetContainer, .moonsetContainer {
+    margin-left:-30px;
+}
+
+.sunIcon {
+    margin-top:7px;
+    margin-left:35px;
+}
+
+.moonIcon {
+    margin-top:10px;
+    margin-left:45px;
+}
+
+.forecastLightningContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.forecastLightningContainer {
+    margin-top: -15px;
+}
+
+.dayforecastLightningContainer, .nightforecastLightningContainer  {
+    border: 1px solid #92CEEF;
+    width: 130px;
+    text-align: center;
+}
+
+.percent-text {
+    display:none;
+}
+
+#path {
+    display:none;
+}
