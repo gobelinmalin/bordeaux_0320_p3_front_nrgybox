@@ -24,9 +24,25 @@
     .logo_end {
         color: #E9E98A
     }
+    .search_bar {
+        display: flex;
+        justify-content: center;
+        margin-right: 15%;
+        margin-left: 15%;
+        margin-bottom: 5px;
+    }
+    .search_bar_result {
+        display: block;
+        position: absolute;
+        justify-content: center;
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 5px;
+    }
     .lamp_logo {
         display: flex;
         justify-content: center;
+        margin-top: 50px;
     }
     .text_intro {
         display: flex;

@@ -1,50 +1,85 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable func-names */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
 import React, { Component } from 'react';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 import logo_nrgybox from './style/logo_nrgybox.png';
 import './style/home.css';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+export default function Home() {
+  const [address, setAddress] = React.useState('');
+  const [coordinates, setCoordinates] = React.useState({
+    lat: null,
+    lng: null,
+  });
 
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(
-      function (position) {
-        console.log(position);
-      },
-      function (error) {
-        console.error(`Error Code = ${error.code} - ${error.message}`);
-      }
-    );
-  }
+  const handleSelect = async (value) => {
+    const results = await geocodeByAddress(value);
+    const latLng = await getLatLng(results[0]);
+    setAddress(value);
+    setCoordinates(latLng);
+  };
 
-  render() {
-    return (
-      <div className="container">
-        <h1>
-          <p className="logo_start">NRGY</p>
-          <p className="logo_end">Box</p>
-        </h1>
-        <div className="lamp_logo">
-          <img src={logo_nrgybox} alt="NRGYBox Logo" />
-        </div>
-        <div className="text_intro">
-          <a className="text_start_intro">Energy just</a>{' '}
-          <a className="text_end_intro">in time</a>
-        </div>
-        <div className="wrap_text_modo">
-          <a className="text_modo">
-            L'éclairage intelligent pour une ville durable et responsable
-          </a>
-        </div>
+  return (
+    <div className="container">
+      <h1>
+        <p className="logo_start">NRGY</p>
+        <p className="logo_end">Box</p>
+      </h1>
+      <div className="search_bar">
+        <PlacesAutocomplete
+          value={address}
+          onChange={setAddress}
+          onSelect={handleSelect}
+        >
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading,
+          }) => (
+            <div>
+              <input
+                {...getInputProps({ placeholder: 'Entrez localisation' })}
+              />
+
+              <div className="search_bar_result">
+                {loading ? <div style={{color: "#E9E98A"}}>...loading</div> : null}
+
+                {suggestions.map((suggestion) => {
+                  const style = {
+                    backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
+                  };
+
+                  return (
+                    <div {...getSuggestionItemProps(suggestion, { style })}>
+                      {suggestion.description}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutocomplete>
       </div>
-    );
-  }
+      <div className="lamp_logo">
+        <img src={logo_nrgybox} alt="NRGYBox Logo" />
+      </div>
+      <div className="text_intro">
+        <a className="text_start_intro">Energy just</a>{' '}
+        <a className="text_end_intro">in time</a>
+      </div>
+      <div className="wrap_text_modo">
+        <a className="text_modo">
+          L'éclairage intelligent pour une ville durable et responsable
+        </a>
+      </div>
+    </div>
+  );
 }
-export default Home;
