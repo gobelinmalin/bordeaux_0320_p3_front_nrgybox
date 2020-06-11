@@ -10,13 +10,14 @@ import { ReactComponent as Moon } from '../../../../icons/moonOutline.svg';
 // CSS
 import './ForecastDetails.css';
 
-const ForecastDetails = () => {
+const ForecastDetails = ({ forecast }) => {
   return (
     <div className="ForecastDetailsContainer">
       <div className="dateWeatherContainer">
         <div className="dateFavouritContainer">
           <div className="dateForcast">
             <p> Mercredi 10 Juin 2020 </p>
+            <p>{forecast.lat}</p>
           </div>
           <div className="FavouritIcon">
             {/* <img src="https://zupimages.net/up/20/18/yiyd.png" alt="" /> */}

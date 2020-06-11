@@ -6,7 +6,7 @@ import './ForecastSlider.css';
 // components
 import ForecastDetails from './ForecastDetails/ForecastDetails';
 
-const ForecastSlider = () => {
+const ForecastSlider = ({ forecast }) => {
   const settings = {
     dots: true,
     // appendDots: dots => (
@@ -36,7 +36,7 @@ const ForecastSlider = () => {
         <Slider {...settings}>
           <div className="cardSlider">
             <div className="card1">
-              <ForecastDetails />
+              <ForecastDetails forecast={forecast} />
             </div>
           </div>
           <div className="cardSlider">

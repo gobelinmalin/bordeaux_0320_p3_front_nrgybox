@@ -11,7 +11,7 @@ import './ForecastContainer.css';
 
 const ForecastContainer = () => {
   const [select, setSelect] = useState();
-  const [forecast, setForecast] = useState([]);
+  const [forecast, setForecast] = useState({});
 
   // useEffect(() => {
   //   Axios({
@@ -23,17 +23,18 @@ const ForecastContainer = () => {
   // }, [])
 
   useEffect(() => {
-    Axios.get('http://localhost:3000/api/forecast')
+    Axios.get(
+      'https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&appid=5147f5120187c4e872738ebff5f6b86b'
+    )
       .then((response) => response.data)
-      .then((data) => setForecast(data.forecast));
+      .then((data) => setForecast(data))
+      .catch((error) => console.log(error));
+    // appid (api key):5147f5120187c4e872738ebff5f6b86b
   }, []);
-
-  const { date } = forecast;
 
   return (
     <div className="ForecastContainer">
       <h1>Les prévisions lumineuses</h1>
-      {date}
       <div className="ForecastContainerHeader">
         <div className="ForecastContainerHeaderElem">
           <div className="GeolocUser">
@@ -60,7 +61,7 @@ const ForecastContainer = () => {
         </div>
       </div>
       <div className="cardContainer">
-        <ForecastSlider />
+        <ForecastSlider forecast={forecast} />
       </div>
     </div>
   );
