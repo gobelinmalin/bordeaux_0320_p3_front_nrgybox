@@ -24,7 +24,7 @@ const Ul = styled.ul`
     transition: transform 0.7s ease-in-out;
     li {
       color: #235a8c;
-      padding: 70px;
+      padding: 40px;
       font-size: 30px;
     }
     li: hover {
@@ -38,7 +38,7 @@ const RightNav = ({ open }) => {
     <Ul open={open}>
       <li className="burger-Nav">Se connecter/Se déconnecter</li>
       <li className="burger-Nav">Mes favoris</li>
-      <li className="burger-Nav">NrgyBox</li>
+      <li className="burger-Nav">NRGYBox</li>
       <li className="burger-Nav">Nous contacter</li>
     </Ul>
   );

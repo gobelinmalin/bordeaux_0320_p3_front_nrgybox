@@ -1,13 +1,12 @@
 @font-face {
-  font-family: 'Aqua';
-  src: url('./fonts/aqua.ttf');
+  src: url('./../src/font/aqua.ttf');
+  font-family: 'aqua';
 }
-
 body {
   background-color: #182c61;
 
   margin: 0;
-  font-family: 'Aqua', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+  font-family: -apple-system, BlinkMacSystemFont, 'aqua', 'Segoe UI', 'Roboto',
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

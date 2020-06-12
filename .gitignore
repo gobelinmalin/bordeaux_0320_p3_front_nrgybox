@@ -22,6 +22,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
 #vscode set up
 
+=======
+# peacock
+>>>>>>> feat/homeconnect
 .vscode
