@@ -16,20 +16,19 @@ const ForecastContainer = () => {
   // useEffect(() => {
   //   Axios({
   //     method: "GET",
-  //     url: `http://localhost:3000/api/programs/:idProgram/forecasts/:idForecast`,
+  //     url: `http://localhost:3000/api/programs/1/forecasts/1`,
   //     data: forecast
   //   })
   //   .then((response) => setForecast(response))
-  // }, [])
+  // }, []);
 
   useEffect(() => {
     Axios.get(
-      'https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&appid=5147f5120187c4e872738ebff5f6b86b'
+      `https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&appid=${process.env.REACT_APP_API_KEY}`
     )
       .then((response) => response.data)
       .then((data) => setForecast(data))
       .catch((error) => console.log(error));
-    // appid (api key):5147f5120187c4e872738ebff5f6b86b
   }, []);
 
   return (

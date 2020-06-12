@@ -1,35 +1,87 @@
 // Modules
 import React from 'react';
-import GaugeChart from 'react-gauge-chart';
+import SemiCircleProgressBar from 'react-progressbar-semicircle';
 
 // Components
-import { ReactComponent as Heart } from '../../../../icons/heartSolid.svg';
-import { ReactComponent as Sun } from '../../../../icons/sunnyOutline.svg';
-import { ReactComponent as Moon } from '../../../../icons/moonOutline.svg';
+// import { ReactComponent as Heart } from '../../../../icons/heartSolid.svg';
+// import { ReactComponent as Sun } from '../../../../icons/sunnyOutline.svg';
+// import { ReactComponent as Moon } from '../../../../icons/moonOutline.svg';
+import TimePicker2 from '../../../Assets/TimePicker2';
 
 // CSS
 import './ForecastDetails.css';
 
 const ForecastDetails = ({ forecast }) => {
+  // date construction
+  const jours = [
+    'Lundi',
+    'Mardi',
+    'Mercredi',
+    'Jeudi',
+    'Vendredi',
+    'Samedi',
+    'Dimanche',
+  ];
+
+  const mois = [
+    'Janvier',
+    'Fevrier',
+    'Mars',
+    'Avril',
+    'Mai',
+    'Juin',
+    'Juillet',
+    'Aout',
+    'Septembre',
+    'Octobre',
+    'Novembre',
+    'Decembre',
+  ];
+
+  // get the current date
+  const date = new Date();
+  // get the current date related to arrays and construction of the entire date
+  const currentDate = `${jours[date.getDay() - 1]} ${date.getDate()} ${mois[date.getMonth()]
+  } ${date.getFullYear()}`;
+
+  // get the weather icon in the Weather API
+  const iconWeather = forecast && forecast.current && forecast.current.weather[0].icon;
+
+  // get the sunrise and the sunset timestamps
+  const timeStampSunrise = forecast && forecast.current && forecast.daily[0].sunrise;
+  const timeStampSunset = forecast && forecast.current && forecast.daily[0].sunset;
+  const transformSunrise = timeStampSunrise * 1000;
+  const transformSunset = timeStampSunset * 1000;
+
+  // transform the timestamps to a basic date format
+  const sunrise = new Date(transformSunrise);
+  const sunset = new Date(transformSunset);
+
+  // get only the time
+  const timeSunrise = `${sunrise.getHours()}:${sunrise.getMinutes()}`;
+  const timeSunset = `${sunset.getHours()}:${sunset.getMinutes()}`;
+
+  // const today = forecast && forecast.current && forecast.current.dt;
+  // const dateTest = dateformat(today, "dddd, mmmm dS");
+  // console.log(dateTest);
+
   return (
     <div className="ForecastDetailsContainer">
       <div className="dateWeatherContainer">
         <div className="dateFavouritContainer">
           <div className="dateForcast">
-            <p> Mercredi 10 Juin 2020 </p>
-            <p>{forecast.lat}</p>
-          </div>
-          <div className="FavouritIcon">
-            {/* <img src="https://zupimages.net/up/20/18/yiyd.png" alt="" /> */}
-            <Heart />
+            <p>{currentDate}</p>
           </div>
         </div>
         <div className="weatherContainer">
           <div className="weatherIcon">
-            <p>Icon</p>
+            <img
+              src={`http://openweathermap.org/img/wn/${iconWeather}.png`}
+              alt="Weather icon"
+            />
           </div>
           <div className="weatherTemperature">
-            <p>23°</p>
+            {forecast.current && <p>{Math.round(forecast.current.temp)}°C</p>}
           </div>
         </div>
         <div className="hrContainer">
@@ -38,14 +90,18 @@ const ForecastDetails = ({ forecast }) => {
       </div>
       <div className="sunriseSunsetContainer">
         <div className="sunIcon">
-          <Sun />
+          <img
+            className="sunIcon2"
+            src="https://zupimages.net/up/20/24/ra58.png"
+            alt="Pictogramme du soleil"
+          />
         </div>
         <div className="sunriseContainer">
           <div className="sunriseLabel">
             <p>Levé</p>
           </div>
           <div className="sunriseValue">
-            <p>07:00</p>
+            <p>{timeSunrise}</p>
           </div>
         </div>
         <div className="sunsetContainer">
@@ -53,7 +109,7 @@ const ForecastDetails = ({ forecast }) => {
             <p>Couché</p>
           </div>
           <div className="sunsetValue">
-            <p>21:00</p>
+            <p>{timeSunset}</p>
           </div>
         </div>
       </div>
@@ -62,7 +118,11 @@ const ForecastDetails = ({ forecast }) => {
       </div>
       <div className="moonriseMoonsetContainer">
         <div className="moonIcon">
-          <Moon />
+          <img
+            className="moonIcon2"
+            src="https://zupimages.net/up/20/24/zqh7.png"
+            alt=""
+          />
         </div>
         <div className="moonriseContainer">
           <div className="moonriseLabel">
@@ -87,35 +147,31 @@ const ForecastDetails = ({ forecast }) => {
       <div className="forecastLightningContainer">
         <div className="dayforecastLightningContainer">
           <div className="dayforecastLightningLabel">
-            <p>Journée</p>
+            <p>Consignes éclairage</p>
           </div>
           <div className="dayforecastLightningJauge">
-            <GaugeChart
-              id="gauge-chart5"
-              colors={['#F7FA5C', '#FFFFFF']}
-              arcsLength={[0.3, 0.7]}
+            <SemiCircleProgressBar
+              percentage={20}
+              stroke="#f2ef30"
+              strokeWidth={10}
+              diameter={130}
+              background="#FFFF"
             />
           </div>
-          <div className="dayforecastLightningEditCTA">
-            <button type="button"> Edit </button>
+          <div className="dayforecastLightningHourInfo">
+            <p className="hourValue">07:40</p>
+            <p className="hourValue">20:40</p>
           </div>
         </div>
-        <div className="nightforecastLightningContainer">
-          <div className="nightforecastLightningLabel">
-            <p>Nuit</p>
-          </div>
-          <div className="nightforecastLightningJauge">
-            <p>Jauge</p>
-          </div>
-          <div className="nightforecastLightningEditCTA">
-            <button type="button"> Edit </button>
-          </div>
-        </div>
+      </div>
+      <div className="hrContainer">
+        <hr className="hr1" />
       </div>
       <div className="mapHourforecastLightningContainer">
         <div className="hourForcastContainer">
           <div className="hourForcastLabel">
-            <p>Voir les consignes d&aposéclairage</p>
+            <p>Voir l'éclairage à</p>
+            <TimePicker2 />
           </div>
           <div className="hourForcastDropDown">
             <select>hours</select>

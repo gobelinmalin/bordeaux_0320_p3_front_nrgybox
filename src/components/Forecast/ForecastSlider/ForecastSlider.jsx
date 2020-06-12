@@ -7,6 +7,12 @@ import './ForecastSlider.css';
 import ForecastDetails from './ForecastDetails/ForecastDetails';
 
 const ForecastSlider = ({ forecast }) => {
+  // const [forecastUpdate, setForecastUpdate] = useState({});
+
+  // const forecastFromDetails = (dataFromChild) => {
+  //   setForecastUpdate(dataFromChild)
+  // }
+
   const settings = {
     dots: true,
     // appendDots: dots => (
@@ -40,7 +46,9 @@ const ForecastSlider = ({ forecast }) => {
             </div>
           </div>
           <div className="cardSlider">
-            <h3>2</h3>
+            <div className="card1">
+              <ForecastDetails forecast={forecast} />
+            </div>
           </div>
           <div className="cardSlider">
             <h3>3</h3>

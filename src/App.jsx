@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={ForecastContainer} />
+        <Route path="/" exact component={ForecastContainer} />
       </Switch>
     </BrowserRouter>
   );
