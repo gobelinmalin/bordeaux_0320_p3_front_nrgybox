@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import Navbar from './Components/BurgerMenu/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">bande de tocards</header>
+      <Navbar />
     </div>
   );
 }
