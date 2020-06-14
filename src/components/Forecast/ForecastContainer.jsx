@@ -11,24 +11,36 @@ import './ForecastContainer.css';
 
 const ForecastContainer = () => {
   const [select, setSelect] = useState();
-  const [forecast, setForecast] = useState({});
+  const [forecastWeather, setForecastWeather] = useState({});
+  const [forecastMoon, setForecastMoon] = useState({});
+  const [dataForecast, setDataForecast] = useState({});
 
-  // useEffect(() => {
-  //   Axios({
-  //     method: "GET",
-  //     url: `http://localhost:3000/api/programs/1/forecasts/1`,
-  //     data: forecast
-  //   })
-  //   .then((response) => setForecast(response))
-  // }, []);
-
+  // get data from the weather API
   useEffect(() => {
     Axios.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&appid=${process.env.REACT_APP_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     )
       .then((response) => response.data)
-      .then((data) => setForecast(data))
+      .then((data) => setForecastWeather(data))
       .catch((error) => console.log(error));
+  }, []);
+
+  // get data from lunopia API (moon ephemeris)
+  useEffect(() => {
+    Axios.get(
+      `http://www.lunopia.com/call?what=rs&where=Bordeaux&when=current&key=${process.env.REACT_APP_MOON_API_KEY}`
+    )
+      .then((response) => response.data)
+      .then((data) => setForecastMoon(JSON.parse(data, true)))
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    Axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}api/programs`,
+      data: dataForecast,
+    }).then((response) => setDataForecast(response));
   }, []);
 
   return (
@@ -60,7 +72,10 @@ const ForecastContainer = () => {
         </div>
       </div>
       <div className="cardContainer">
-        <ForecastSlider forecast={forecast} />
+        <ForecastSlider
+          forecastWeather={forecastWeather}
+          dataForecast={dataForecast}
+        />
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import './ForecastSlider.css';
 // components
 import ForecastDetails from './ForecastDetails/ForecastDetails';
 
-const ForecastSlider = ({ forecast }) => {
+const ForecastSlider = ({ forecastWeather, dataForecast }) => {
   // const [forecastUpdate, setForecastUpdate] = useState({});
 
   // const forecastFromDetails = (dataFromChild) => {
@@ -42,12 +42,18 @@ const ForecastSlider = ({ forecast }) => {
         <Slider {...settings}>
           <div className="cardSlider">
             <div className="card1">
-              <ForecastDetails forecast={forecast} />
+              <ForecastDetails
+                forecastWeather={forecastWeather}
+                dataForecast={dataForecast}
+              />
             </div>
           </div>
           <div className="cardSlider">
             <div className="card1">
-              <ForecastDetails forecast={forecast} />
+              <ForecastDetails
+                forecastWeather={forecastWeather}
+                dataForecast={dataForecast}
+              />
             </div>
           </div>
           <div className="cardSlider">
