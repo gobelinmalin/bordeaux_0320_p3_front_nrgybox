@@ -135,7 +135,7 @@ const ForecastDetails = ({ forecastWeather, dataForecast }) => {
             <p>Levé</p>
           </div>
           <div className="moonriseValue">
-            <p>{dataForecast.data && dataForecast.data[0].date_start}</p>
+            <p>(00:15)</p>
           </div>
         </div>
         <div className="moonsetContainer">
@@ -143,7 +143,7 @@ const ForecastDetails = ({ forecastWeather, dataForecast }) => {
             <p>Couché</p>
           </div>
           <div className="moonsetValue">
-            <p>{dataForecast.data && dataForecast.data[0].date_end}</p>
+            <p>(13:00)</p>
           </div>
         </div>
       </div>
@@ -165,8 +165,8 @@ const ForecastDetails = ({ forecastWeather, dataForecast }) => {
             />
           </div>
           <div className="dayforecastLightningHourInfo">
-            <p className="hourValue">07:40</p>
-            <p className="hourValue">20:40</p>
+            <p className="hourValue">{dataForecast.data && dataForecast.data[0].date_start}</p>
+            <p className="hourValue">{dataForecast.data && dataForecast.data[0].date_end}</p>
           </div>
         </div>
       </div>
