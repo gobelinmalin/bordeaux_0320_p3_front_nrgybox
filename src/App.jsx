@@ -1,16 +1,19 @@
 import React from 'react';
-import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ForecastContainer from './components/Forecast/ForecastContainer';
+import StateContainer from './container/StateContainer';
+
+import './App.css';
 // import { Button } from "reactstrap";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={ForecastContainer} />
-      </Switch>
-    </BrowserRouter>
+    <Router>
+    <Switch>
+      <StateContainer />
+      <Route path="/" component={ForecastContainer} />
+    </Switch>
+  </Router>
   );
 }
 

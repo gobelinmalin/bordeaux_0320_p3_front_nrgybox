@@ -35,6 +35,7 @@ const ForecastContainer = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  // get data from de database (program table)
   useEffect(() => {
     Axios({
       method: 'GET',
