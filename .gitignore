@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# development
+.env
+
 # production
 /build
 
@@ -23,9 +26,14 @@ yarn-debug.log*
 yarn-error.log*
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #vscode set up
 
 =======
 # peacock
 >>>>>>> feat/homeconnect
 .vscode
+=======
+# vscode set up
+.vscode
+>>>>>>> feat/home-forecast

@@ -1,0 +1,35 @@
+@media (max-width: 376px){
+
+    .ForecastContainer {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .ForecastSlider{
+        width: 93%;
+        height: 500px;
+        margin-left: auto;
+        margin-right:auto;
+    }
+
+    /* .ForecastSlider{
+        width: 80%;
+        margin-top: 20px;
+        margin: 0 auto;
+        height: 380px;
+    } */
+    
+    .cardSlider {
+        width: 370px;
+        height:550px;
+        border-color: blue;
+        justify-content: left;
+    }
+
+    .card1 {
+        border-color:red;
+        height: 550px;
+
+    }
+
+}
