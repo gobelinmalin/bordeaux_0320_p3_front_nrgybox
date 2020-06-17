@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
-import './App.css';
 import ForecastContainer from './components/Forecast/ForecastContainer';
+
+import './App.css';
 // import { Button } from "reactstrap";
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route path="/" component={Home} exact />
-            <Route path="/weather" exact component={ForecastContainer} />
+            <Route path="/weather" component={ForecastContainer} />
           </Switch>
         </div>
       </BrowserRouter>

@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
+    <div className="container_01">
       <Burger />
       <h1>
         <p className="logo_start">NRGY</p>
@@ -77,8 +77,8 @@ export default function Home() {
         <img src={logo_nrgybox} alt="NRGYBox Logo" />
       </div>
       <div className="text_intro">
-        <a className="text_start_intro">Energy just</a>{' '}
-        <a className="text_end_intro">in time</a>
+        <a className="text_start_intro" style={{color: "#538abc"}}>Energy just</a>{' '}
+        <a className="text_end_intro" style={{color: "#e9e98a"}}>in time</a>
       </div>
       <div className="wrap_text_modo">
         <a className="text_modo">
