@@ -11,16 +11,16 @@ import TimePicker2 from '../../../Assets/TimePicker2';
 // CSS
 import './ForecastDetails.css';
 
-const ForecastDetails = ({ forecast }) => {
+const ForecastDetails = ({ forecastWeather, dataForecast }) => {
   // date construction
   const jours = [
+    'Dimanche',
     'Lundi',
     'Mardi',
     'Mercredi',
     'Jeudi',
     'Vendredi',
     'Samedi',
-    'Dimanche',
   ];
 
   const mois = [
@@ -40,16 +40,24 @@ const ForecastDetails = ({ forecast }) => {
 
   // get the current date
   const date = new Date();
+
   // get the current date related to arrays and construction of the entire date
-  const currentDate = `${jours[date.getDay() - 1]} ${date.getDate()} ${mois[date.getMonth()]
+  const currentDate = `${jours[date.getDay()]} ${date.getDate()} ${mois[date.getMonth()]
   } ${date.getFullYear()}`;
 
   // get the weather icon in the Weather API
-  const iconWeather = forecast && forecast.current && forecast.current.weather[0].icon;
+  const iconWeather =
+    forecastWeather &&
+    forecastWeather.current &&
+    forecastWeather.current.weather[0].icon;
 
   // get the sunrise and the sunset timestamps
-  const timeStampSunrise = forecast && forecast.current && forecast.daily[0].sunrise;
-  const timeStampSunset = forecast && forecast.current && forecast.daily[0].sunset;
+  const timeStampSunrise = forecastWeather &&
+    forecastWeather.current &&
+    forecastWeather.daily[0].sunrise;
+  const timeStampSunset = forecastWeather &&
+    forecastWeather.current &&
+    forecastWeather.daily[0].sunset;
   const transformSunrise = timeStampSunrise * 1000;
   const transformSunset = timeStampSunset * 1000;
 
@@ -60,10 +68,6 @@ const ForecastDetails = ({ forecast }) => {
   // get only the time
   const timeSunrise = `${sunrise.getHours()}:${sunrise.getMinutes()}`;
   const timeSunset = `${sunset.getHours()}:${sunset.getMinutes()}`;
-
-  // const today = forecast && forecast.current && forecast.current.dt;
-  // const dateTest = dateformat(today, "dddd, mmmm dS");
-  // console.log(dateTest);
 
   return (
     <div className="ForecastDetailsContainer">
@@ -81,7 +85,9 @@ const ForecastDetails = ({ forecast }) => {
             />
           </div>
           <div className="weatherTemperature">
-            {forecast.current && <p>{Math.round(forecast.current.temp)}°C</p>}
+            {forecastWeather.current && (
+              <p>{Math.round(forecastWeather.current.temp)}°C</p>
+            )}
           </div>
         </div>
         <div className="hrContainer">
@@ -129,7 +135,7 @@ const ForecastDetails = ({ forecast }) => {
             <p>Levé</p>
           </div>
           <div className="moonriseValue">
-            <p>22:45</p>
+            <p>(00:15)</p>
           </div>
         </div>
         <div className="moonsetContainer">
@@ -137,7 +143,7 @@ const ForecastDetails = ({ forecast }) => {
             <p>Couché</p>
           </div>
           <div className="moonsetValue">
-            <p>06:50</p>
+            <p>(13:00)</p>
           </div>
         </div>
       </div>
@@ -159,8 +165,8 @@ const ForecastDetails = ({ forecast }) => {
             />
           </div>
           <div className="dayforecastLightningHourInfo">
-            <p className="hourValue">07:40</p>
-            <p className="hourValue">20:40</p>
+            <p className="hourValue">{dataForecast.data && dataForecast.data[0].date_start}</p>
+            <p className="hourValue">{dataForecast.data && dataForecast.data[0].date_end}</p>
           </div>
         </div>
       </div>
