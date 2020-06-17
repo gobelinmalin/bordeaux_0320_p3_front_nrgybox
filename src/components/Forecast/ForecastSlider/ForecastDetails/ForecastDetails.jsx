@@ -11,83 +11,27 @@ import TimePicker2 from '../../../Assets/TimePicker2';
 // CSS
 import './ForecastDetails.css';
 
-const ForecastDetails = ({ forecastWeather, dataForecast }) => {
-  // date construction
-  const jours = [
-    'Dimanche',
-    'Lundi',
-    'Mardi',
-    'Mercredi',
-    'Jeudi',
-    'Vendredi',
-    'Samedi',
-  ];
-
-  const mois = [
-    'Janvier',
-    'Fevrier',
-    'Mars',
-    'Avril',
-    'Mai',
-    'Juin',
-    'Juillet',
-    'Aout',
-    'Septembre',
-    'Octobre',
-    'Novembre',
-    'Decembre',
-  ];
-
-  // get the current date
-  const date = new Date();
-
-  // get the current date related to arrays and construction of the entire date
-  const currentDate = `${jours[date.getDay()]} ${date.getDate()} ${mois[date.getMonth()]
-  } ${date.getFullYear()}`;
-
-  // get the weather icon in the Weather API
-  const iconWeather =
-    forecastWeather &&
-    forecastWeather.current &&
-    forecastWeather.current.weather[0].icon;
-
-  // get the sunrise and the sunset timestamps
-  const timeStampSunrise = forecastWeather &&
-    forecastWeather.current &&
-    forecastWeather.daily[0].sunrise;
-  const timeStampSunset = forecastWeather &&
-    forecastWeather.current &&
-    forecastWeather.daily[0].sunset;
-  const transformSunrise = timeStampSunrise * 1000;
-  const transformSunset = timeStampSunset * 1000;
-
-  // transform the timestamps to a basic date format
-  const sunrise = new Date(transformSunrise);
-  const sunset = new Date(transformSunset);
-
-  // get only the time
-  const timeSunrise = `${sunrise.getHours()}:${sunrise.getMinutes()}`;
-  const timeSunset = `${sunset.getHours()}:${sunset.getMinutes()}`;
-
+const ForecastDetails = (props) => {
   return (
     <div className="ForecastDetailsContainer">
       <div className="dateWeatherContainer">
         <div className="dateFavouritContainer">
           <div className="dateForcast">
-            <p>{currentDate}</p>
+            <p>{props.currentDate}</p>
           </div>
         </div>
         <div className="weatherContainer">
           <div className="weatherIcon">
             <img
-              src={`http://openweathermap.org/img/wn/${iconWeather}.png`}
+              // src={`http://openweathermap.org/img/wn/${iconWeather}.png`}
+              src={props.iconWeather}
               alt="Weather icon"
             />
           </div>
           <div className="weatherTemperature">
-            {forecastWeather.current && (
-              <p>{Math.round(forecastWeather.current.temp)}°C</p>
-            )}
+            {/* {forecastWeather && (
+              <p>{Math.round(props.forecastWeatherTemp)}°C</p>
+            )} */}
           </div>
         </div>
         <div className="hrContainer">
@@ -107,7 +51,7 @@ const ForecastDetails = ({ forecastWeather, dataForecast }) => {
             <p>Levé</p>
           </div>
           <div className="sunriseValue">
-            <p>{timeSunrise}</p>
+            {/* <p>{timeSunrise}</p> */}
           </div>
         </div>
         <div className="sunsetContainer">
@@ -115,7 +59,7 @@ const ForecastDetails = ({ forecastWeather, dataForecast }) => {
             <p>Couché</p>
           </div>
           <div className="sunsetValue">
-            <p>{timeSunset}</p>
+            {/* <p>{timeSunset}</p> */}
           </div>
         </div>
       </div>
@@ -135,7 +79,7 @@ const ForecastDetails = ({ forecastWeather, dataForecast }) => {
             <p>Levé</p>
           </div>
           <div className="moonriseValue">
-            <p>(00:15)</p>
+            <p>{props.forecastMoon}</p>
           </div>
         </div>
         <div className="moonsetContainer">
@@ -143,7 +87,7 @@ const ForecastDetails = ({ forecastWeather, dataForecast }) => {
             <p>Couché</p>
           </div>
           <div className="moonsetValue">
-            <p>(13:00)</p>
+            <p>{props.forecastMoon}</p>
           </div>
         </div>
       </div>
@@ -165,8 +109,8 @@ const ForecastDetails = ({ forecastWeather, dataForecast }) => {
             />
           </div>
           <div className="dayforecastLightningHourInfo">
-            <p className="hourValue">{dataForecast.data && dataForecast.data[0].date_start}</p>
-            <p className="hourValue">{dataForecast.data && dataForecast.data[0].date_end}</p>
+            {/* <p className="hourValue">{props.dataForecast.data && dataForecast.data[0].date_start}</p>
+            <p className="hourValue">{props.dataForecast.data && dataForecast.data[0].date_end}</p> */}
           </div>
         </div>
       </div>
