@@ -19,7 +19,11 @@ class Home extends Component {
   componentDidMount() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position);
+        const { latitude, longitude } = position.coords;
+        localStorage.setItem(
+          'position',
+          JSON.stringify({ latitude, longitude })
+        );
       });
     }
   }

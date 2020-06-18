@@ -14,16 +14,21 @@ const ForecastContainer = () => {
   const [forecastWeather, setForecastWeather] = useState({});
   const [forecastMoon, setForecastMoon] = useState({});
   const [dataForecast, setDataForecast] = useState({});
+  const [position, setPosition] = useState(
+    JSON.parse(localStorage.getItem('position'))
+  );
 
   // get data from the weather API
   useEffect(() => {
-    Axios.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-    )
-      .then((response) => response.data)
-      .then((data) => setForecastWeather(data))
-      .catch((error) => console.log(error));
-  }, []);
+    if (position) {
+      Axios.get(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${position.latitude}&lon=${position.longitude}&exclude=hourly&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+      )
+        .then((response) => response.data)
+        .then((data) => setForecastWeather(data))
+        .catch((error) => console.log(error));
+    }
+  }, [position]);
 
   // get data from lunopia API (moon ephemeris)
   useEffect(() => {
@@ -43,7 +48,6 @@ const ForecastContainer = () => {
       data: dataForecast,
     }).then((response) => setDataForecast(response));
   }, []);
-
   return (
     <div className="ForecastContainer">
       <h1>Les prévisions lumineuses</h1>
@@ -78,6 +82,7 @@ const ForecastContainer = () => {
           dataForecast={dataForecast}
         />
       </div>
+      Position : {position.latitude}
     </div>
   );
 };
