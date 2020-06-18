@@ -82,7 +82,6 @@ const ForecastContainer = () => {
           dataForecast={dataForecast}
         />
       </div>
-      Position : {position.latitude}
     </div>
   );
 };

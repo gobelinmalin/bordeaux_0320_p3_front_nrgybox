@@ -6,8 +6,11 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
 import React, { Component } from 'react';
+import { Map, TileLayer } from 'react-leaflet';
+import { render } from 'react-dom';
 import Burger from '../BurgerMenu/Burger';
 import logo_nrgybox from './style/logo_nrgybox.png';
+import SearchBar from '../SearchBar/SearchBar';
 import './style/home.css';
 
 class Home extends Component {
@@ -36,6 +39,13 @@ class Home extends Component {
           <p className="logo_start">NRGY</p>
           <p className="logo_end">Box</p>
         </h1>
+        <Map center={{ lat: 51.5287718, lng: -0.2416804 }} zoom={6}>
+          <TileLayer
+            attribution="&copy; <a href='https://osm.org/copyright'>OpenStreetMap</a> contributors"
+            url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}
+          ></TileLayer>
+          <SearchBar />
+        </Map>
         <div className="lamp_logo">
           <img src={logo_nrgybox} alt="NRGYBox Logo" />
         </div>
