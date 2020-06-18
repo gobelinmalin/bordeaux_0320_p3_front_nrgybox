@@ -3,11 +3,8 @@
     background-color: #2a2754;
   } */
   .leaflet-container {
-    width: 100%;
-    height: 640px;
-  }
-  .map {
-    display: none
+    width: 10px;
+    height: 10px;
   }
   .container_01 {
     display: block;

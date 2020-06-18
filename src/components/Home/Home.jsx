@@ -39,7 +39,7 @@ class Home extends Component {
           <p className="logo_start">NRGY</p>
           <p className="logo_end">Box</p>
         </h1>
-        <Map center={{ lat: 51.5287718, lng: -0.2416804 }} zoom={6}>
+        <Map center={{ lat: 51.5287718, lng: -0.2416804 }} zoom={1}>
           <TileLayer
             attribution="&copy; <a href='https://osm.org/copyright'>OpenStreetMap</a> contributors"
             url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}

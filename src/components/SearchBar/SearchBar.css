@@ -1,7 +1,22 @@
 .leaflet-pane, .leaflet-map-pane {
-    display: none
+    display: none;
 }
 
-.leaflet-container, .leaflet-touch, .leaflet-retina, .leaflet-safari, .leaflet-fade-anim, .leaflet-grab, .leaflet-touch-drag, .leaflet-touch-zoom {
-    background-color:rgb(255, 0, 0);
+.leaflet-container, .leaflet-touch.leaflet-retina, .leaflet-safari.leaflet-fade-anim, .leaflet-grab.leaflet-touch-drag, .leaflet-touch-zoom {
+    background: rgba(255, 0, 0, 0);
+}
+
+#leaflet-control-zoom-in {
+    display: none;
+}
+
+.leaflet-control-zoom {
+    display:none;
+}
+
+
+
+.geocoder-control-input {
+    width: 100px,
+    
 }
