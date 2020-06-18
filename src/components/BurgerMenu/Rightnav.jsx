@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import './Rightnav.css';
 
 const Ul = styled.ul`
@@ -35,12 +36,31 @@ const Ul = styled.ul`
 
 const RightNav = ({ open }) => {
   return (
-    <Ul open={open}>
-      <li className="burger-Nav">Se connecter/Se déconnecter</li>
-      <li className="burger-Nav">Mes favoris</li>
-      <li className="burger-Nav">NRGYBox</li>
-      <li className="burger-Nav">Nous contacter</li>
-    </Ul>
+    <nav>
+      <Ul open={open}>
+        <li>
+          <NavLink activeClassName="burger-Nav" id="title" to="/Connexion">
+            Se connecter/Se déconnecter
+          </NavLink>
+        </li>
+        <li className="separation" />
+        <li>
+          <NavLink activeClassName="burger-Nav">Mes favoris</NavLink>
+        </li>
+        <li className="separation" />
+        <li>
+          <NavLink activeClassName="burger-Nav" id="title" to="/NrgyBox">
+            NRGYBox
+          </NavLink>
+        </li>
+        <li className="separation" />
+        <li>
+          <NavLink activeClassName="burger-Nav" id="title" to="/ContactUs">
+            Nous contacter
+          </NavLink>
+        </li>
+      </Ul>
+    </nav>
   );
 };
 

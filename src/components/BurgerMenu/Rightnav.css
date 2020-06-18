@@ -5,3 +5,8 @@
 .li:hover {
   cursor: pointer;
 }
+
+.separation {
+  background-color: #235a8c;
+  padding: 5px;;
+}
