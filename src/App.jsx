@@ -1,11 +1,16 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+
+import Favoris from './Components/Favoris';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">bande de tocards</header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/Favoris" component={Favoris} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
