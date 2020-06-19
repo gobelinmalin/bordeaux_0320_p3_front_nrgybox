@@ -26,7 +26,7 @@ const Ul = styled.ul`
     li {
       color: #235a8c;
       padding: 40px;
-      font-size: 30px;
+      font-size: 15px;
     }
     li: hover {
       color: #e9e98a;
