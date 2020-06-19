@@ -15,9 +15,10 @@ const Ul = styled.ul`
     flex-flow: column nowrap;
     background-color: #c5daed;
     position: fixed;
-    transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(100%)')};
+    transform: ${({ open }) => (open ? 'translateY(30%)' : 'translateY(100%)')};
     top: 0;
     right: 0;
+    border-radius: 6px;
     height: 100vh;
     width: 100vw;
     padding-top: 3.5rem;
