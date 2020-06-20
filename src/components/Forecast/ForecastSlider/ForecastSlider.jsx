@@ -99,18 +99,16 @@ const ForecastSlider = (props) => {
         <Slider {...settings}>
           <div className="cardSlider">
             <div className="card1">
-              {/* {props.map((element, index) => {
+              {/* {props_array.map((element, index) => {
                 return <ForecastDetails
                   key={index}
-                  sunrise={element.sunrise}
-                  sunset={element.sunset}
-                  iconWeather={element.iconWeather}
                   forecastMoon={element.forecastMoon}
+                  selectedDay={element.selectedDay}
                   dateStartProgram={element.dateStartProgram}
                   dateEndProgram={element.dateEndProgram}
                 />
               })} */}
-              coucou
+              <ForecastDetails allDataForecast={props.allDataForecast} />
             </div>
           </div>
         </Slider>

@@ -1,18 +1,28 @@
+// Modules
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+
+// Components
 import App from './App';
+import reducers from './reducers/index';
+import { weatherForecast } from './actions/ForecastAction';
 
-import reducers from './reducers/reducers';
-
+// CSS
 import './index.css';
 
 const store = createStore(
   reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  compose(
+    applyMiddleware(thunkMiddleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
+
+store.dispatch(weatherForecast());
 
 ReactDOM.render(
   <Provider store={store}>

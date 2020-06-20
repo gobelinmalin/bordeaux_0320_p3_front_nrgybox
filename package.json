@@ -36,6 +36,7 @@
     "react-slick": "^0.26.1",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.1",
     "use-position": "0.0.7"
   },

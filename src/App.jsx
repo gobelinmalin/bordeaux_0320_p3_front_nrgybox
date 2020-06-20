@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import ForecastContainer from './components/Forecast/ForecastContainer';
-import StateContainer from './container/StateContainer';
+// import StateContainer from './container/StateContainer';
 
 
 import './App.css';
@@ -16,7 +16,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route path="/" component={Home} exact />
-            <StateContainer />
+            {/* <StateContainer /> */}
             <Route path="/weather" component={ForecastContainer} />
           </Switch>
         </div>

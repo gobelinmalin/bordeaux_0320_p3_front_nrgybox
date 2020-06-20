@@ -12,19 +12,21 @@ import TimePicker2 from '../../../Assets/TimePicker2';
 import './ForecastDetails.css';
 
 const ForecastDetails = (props) => {
+
   return (
     <div className="ForecastDetailsContainer">
       <div className="dateWeatherContainer">
         <div className="dateFavouritContainer">
           <div className="dateForcast">
-            <p>{props.currentDate}</p>
+            <p>{props.allDataForecast[0] && props.allDataForecast[0].selectedDay && props.allDataForecast[0].selectedDay.timestamp}</p>
+            {props.allDataForecast && props.allDataForecast.loading && <p>...</p>}
           </div>
         </div>
         <div className="weatherContainer">
           <div className="weatherIcon">
             <img
               // src={`http://openweathermap.org/img/wn/${iconWeather}.png`}
-              src={props.iconWeather}
+              // src={}
               alt="Weather icon"
             />
           </div>
