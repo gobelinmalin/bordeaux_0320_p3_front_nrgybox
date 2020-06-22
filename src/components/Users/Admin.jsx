@@ -17,6 +17,7 @@ class Admin extends Component {
     this.setState({value: event.target.value})
     console.log(this.state.value)  
     alert ("Hello" + this.state.value);
+    
 }
 
 
@@ -68,7 +69,7 @@ class Admin extends Component {
               <br></br>
             </div>
             <div className="RoleField">
-              <select value={this.state.value}  id="Role" name="Role" form= "form" onChange={this.handleChange} onSelect={this.handleSubmit}>
+              <select value={this.state.value}  id="Role" name="Role" form= "form" onChange={this.handleChange} >
                 <option value="NoOption"></option>
                 <option value="Mayor">Role: Maire</option>
                 <option value="TechnicalTeam">Role: Service Technique</option>
