@@ -8,27 +8,22 @@ import Axios from 'axios';
 import { ReactComponent as EditPen } from '../../icons/editPen.svg';
 import ForecastSlider from './ForecastSlider/ForecastSlider';
 import reducers from '../../reducers/index';
-import { weatherForecast } from '../../actions/ForecastAction';
+import { weatherForecast, moonForecast, dataProgramForecast } from '../../actions/ForecastAction';
 
 // CSS
 import './ForecastContainer.css';
 
 
-const ForecastContainer = ({ dispatch }) => {
-
-  // const store = createStore(reducers, applyMiddleware(thunk));
+const ForecastContainer = ({ forecast }) => {
   
   const [select, setSelect] = useState("semaine");
-  // const [sunrise, setSunrise] = useState({});
-  // const [sunset, setSunset] = useState({});
-  // const [iconWeather, setInconWeather] = useState({});
   const [forecastMoon, setForecastMoon] = useState({});
-  const [dateStartProgram, setDateStartProgram] = useState({});
-  const [dateEndProgram, setDateEndProgram] = useState({});
+  // const [dateStartProgram, setDateStartProgram] = useState({});
+  // const [dateEndProgram, setDateEndProgram] = useState({});
+  const [datesProgram, setDatesProgram] = useState({});
   const [forecastWeather, setForecastWeather] = useState({});
   const [selectedDay, setSelectedDay] = useState({});
-  // tableau de données des api
-  const [allDataForecast, setAllDataForecast] = useState([]);
+  const [allDataForecast, setAllDataForecast] = useState([]); // tableau de données des api
   const [loading, setLoading] = useState(false);
 
   // useEffect(() => {
@@ -87,18 +82,49 @@ const ForecastContainer = ({ dispatch }) => {
 
   // }, []);
 
-  // weather
-  const fetchDataWeather = () => {
-    return(dispatch) => {
-      Axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+  useEffect(() => {
+    // weather API
+    const fetchDataWeather = async() => {
+      await Axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
       .then(data => {
-        dispatch(weatherForecast(data))
+        weatherForecast(data)
       })
       .catch(err => {
         throw(err)
       });
     };
-  };
+
+    // moon API
+    const fetchDataMoon = async() => {
+      await Axios.get(`http://www.lunopia.com/call?what=rs&where=Bordeaux&when=current&key=${process.env.REACT_APP_MOON_API_KEY}`)
+      .then(data => {
+        moonForecast(data)
+      })
+      .catch(err => {
+        throw(err)
+      });
+    };
+
+    // dates start and end program
+    const fetchDataProgram = async() => {
+      await Axios({
+        method: 'GET',
+        url: `${process.env.REACT_APP_URL}/programs`,
+        data: dataProgramForecast
+      })
+      .catch(err => {
+        throw(err)
+      });
+    };
+
+    Promise.all([fetchDataWeather(), fetchDataMoon(), fetchDataProgram()])
+      .then((results) => {
+        setForecastWeather(results);
+        setForecastMoon(results);
+        setDatesProgram(results);
+      });
+
+  }, [])
 
   // handle the select element with the onChange method
   const handleChangeSelect = (e) => {
@@ -196,8 +222,8 @@ const ForecastContainer = ({ dispatch }) => {
         <ForecastSlider
           forecastMoon={forecastMoon}
           selectedDay={selectedDay}
-          dateStartProgram={dateStartProgram}
-          dateEndProgram={dateEndProgram}
+          // dateStartProgram={dateStartProgram}
+          // dateEndProgram={dateEndProgram}
           loading={loading}
           allDataForecast={allDataForecast}
         />
@@ -206,13 +232,11 @@ const ForecastContainer = ({ dispatch }) => {
   );
 };
 
-// store.dispatch({ type: "SELECT_DAY_FETCH_DATA" });
-
 const mapStateToProps = (state) => {
-  // return {
-  //   forecast: state.forecast,
-  // };
-  return state;
+  return {
+    forecast: state.forecast,
+  };
 };
 
-export default connect(mapStateToProps)(ForecastContainer);
+
+export default connect(mapStateToProps, null)(ForecastContainer);
