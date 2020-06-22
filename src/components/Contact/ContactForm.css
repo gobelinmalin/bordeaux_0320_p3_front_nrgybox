@@ -1,0 +1,9 @@
+.ContactForm {
+  color: #c5daed;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

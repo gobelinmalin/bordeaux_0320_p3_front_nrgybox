@@ -15,7 +15,7 @@ const Ul = styled.ul`
     flex-flow: column nowrap;
     background-color: #c5daed;
     position: fixed;
-    transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(100%)')};
+    transform: ${({ open }) => (open ? 'translateY(10%)' : 'translateY(100%)')};
     top: 0;
     right: 0;
     height: 100vh;
@@ -24,8 +24,9 @@ const Ul = styled.ul`
     transition: transform 0.7s ease-in-out;
     li {
       color: #235a8c;
-      padding: 40px;
-      font-size: 30px;
+      padding: 20px;
+      font-size: 20px;
+      border-bottom: solid 2px;
     }
     li: hover {
       color: #e9e98a;
