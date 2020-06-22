@@ -1,0 +1,63 @@
+@media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
+    .AdminPageContainer {
+        display: block;
+        justify-content: center;
+        height: 100vh;
+        color: #538abc;
+    }
+    .AdminPageContainer h1 {
+        display: flex;
+        justify-content: center;
+        font-family: 'aqua';
+        font-size: 40px;
+        margin-top: 13px;
+    }
+    .TitleCreateUser {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #e9e98a;
+        font-size: 25px;
+
+    }
+    .CreateUserFormContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row-reverse;
+        color: #538abc;
+        margin: auto;
+        width: 50%;
+    }
+    .lastname {
+        width: 126%
+    }
+
+    input[type="text"],input[type="email"],input[type="number"], textarea {
+        border: none;
+        background-color : #2a2754;
+        border-radius: 6px;
+        width: 126%;
+        margin-left: -12%;
+      
+      }
+      ::placeholder {
+        color: rgba(245, 245, 245, 0.411);
+        margin-left: 5px;
+
+      }
+
+    .BurgerMenu {
+        margin-bottom: 60px;
+        width: 56%;
+    }
+    .LogoStartAdmin {
+        color: #538abc;
+        font-family: 'aqua';
+    }
+    .LogoEndAdmin {
+        color: #e9e98a;
+        font-family: 'aqua';
+    }
+  }
+

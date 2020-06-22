@@ -2,11 +2,14 @@
   /* body {
     background-color: #2a2754;
   } */
+  .leaflet-container {
+    width: 10px;
+    height: 10px;
+  }
   .container_01 {
     display: block;
     justify-content: center;
     height: 100vh;
-    background-color: #2a2754;
   }
   .container_01 h1 {
     display: flex;
@@ -47,7 +50,7 @@
   .lamp_logo {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 94px;
   }
   .text_intro {
     display: flex;

@@ -3,20 +3,21 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 
-
 // Components
 import { ReactComponent as EditPen } from '../../icons/editPen.svg';
 import ForecastSlider from './ForecastSlider/ForecastSlider';
 import reducers from '../../reducers/index';
-import { weatherForecast, moonForecast, dataProgramForecast } from '../../actions/ForecastAction';
+import {
+  weatherForecast,
+  moonForecast,
+  dataProgramForecast,
+} from '../../actions/ForecastAction';
 
 // CSS
 import './ForecastContainer.css';
 
-
 const ForecastContainer = ({ forecast }) => {
-  
-  const [select, setSelect] = useState("semaine");
+  const [select, setSelect] = useState('semaine');
   const [forecastMoon, setForecastMoon] = useState({});
   // const [dateStartProgram, setDateStartProgram] = useState({});
   // const [dateEndProgram, setDateEndProgram] = useState({});
@@ -25,6 +26,9 @@ const ForecastContainer = ({ forecast }) => {
   const [selectedDay, setSelectedDay] = useState({});
   const [allDataForecast, setAllDataForecast] = useState([]); // tableau de données des api
   const [loading, setLoading] = useState(false);
+  const [position, setPosition] = useState(
+    JSON.parse(localStorage.getItem('position'))
+  );
 
   // useEffect(() => {
   //   setLoading(true);
@@ -84,47 +88,52 @@ const ForecastContainer = ({ forecast }) => {
 
   useEffect(() => {
     // weather API
-    const fetchDataWeather = async() => {
-      await Axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
-      .then(data => {
-        weatherForecast(data)
-      })
-      .catch(err => {
-        throw(err)
-      });
+    const fetchDataWeather = async () => {
+      if (position) {
+        await Axios.get(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${position.latitude}&lon=${position.longitude}&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        )
+          .then((data) => {
+            weatherForecast(data);
+          })
+          .catch((err) => {
+            throw err;
+          });
+      }
     };
 
     // moon API
-    const fetchDataMoon = async() => {
-      await Axios.get(`http://www.lunopia.com/call?what=rs&where=Bordeaux&when=current&key=${process.env.REACT_APP_MOON_API_KEY}`)
-      .then(data => {
-        moonForecast(data)
-      })
-      .catch(err => {
-        throw(err)
-      });
+    const fetchDataMoon = async () => {
+      await Axios.get(
+        `http://www.lunopia.com/call?what=rs&where=Bordeaux&when=current&key=${process.env.REACT_APP_MOON_API_KEY}`
+      )
+        .then((data) => {
+          moonForecast(data);
+        })
+        .catch((err) => {
+          throw err;
+        });
     };
 
     // dates start and end program
-    const fetchDataProgram = async() => {
+    const fetchDataProgram = async () => {
       await Axios({
         method: 'GET',
         url: `${process.env.REACT_APP_URL}/programs`,
-        data: dataProgramForecast
-      })
-      .catch(err => {
-        throw(err)
+        data: dataProgramForecast,
+      }).catch((err) => {
+        throw err;
       });
     };
 
-    Promise.all([fetchDataWeather(), fetchDataMoon(), fetchDataProgram()])
-      .then((results) => {
+    Promise.all([fetchDataWeather(), fetchDataMoon(), fetchDataProgram()]).then(
+      (results) => {
         setForecastWeather(results);
         setForecastMoon(results);
         setDatesProgram(results);
-      });
-
-  }, [])
+      }
+    );
+  }, []);
 
   // handle the select element with the onChange method
   const handleChangeSelect = (e) => {
@@ -137,37 +146,37 @@ const ForecastContainer = ({ forecast }) => {
     let daySelect = {};
 
     switch (valueSelect) {
-      case "Semaine":
+      case 'Semaine':
         daySelect = data.daily[0];
         break;
-      case "Lundi":
+      case 'Lundi':
         daySelect = data.daily[1];
         break;
-      case "Mardi":
+      case 'Mardi':
         daySelect = data.daily[2];
         break;
-      case "Mercredi":
+      case 'Mercredi':
         daySelect = data.daily[3];
         break;
-      case "Jeudi":
+      case 'Jeudi':
         daySelect = data.daily[4];
         break;
-      case "Vendredi":
+      case 'Vendredi':
         daySelect = data.daily[5];
         break;
-      case "Samedi":
+      case 'Samedi':
         daySelect = data.daily[6];
         break;
-      case "Dimanche":
+      case 'Dimanche':
         daySelect = data.daily[7];
         break;
-    };
+    }
 
     return setSelectedDay({
       timestamp: daySelect.dt,
       sunrise: daySelect.sunrise,
       sunset: daySelect.sunset,
-        // iconWeather: daySelect.weather[0].icon
+      // iconWeather: daySelect.weather[0].icon
     });
   };
 
@@ -188,14 +197,23 @@ const ForecastContainer = ({ forecast }) => {
   };
 
   // "semaine" get the current weather and get the weekly forecast lighting
-  const arrayDay = forecastWeather.daily && forecastWeather.daily.map((day, index) => {
-    if(index === 0){
-      return <option key={index} value="Semaine">Semaine</option>;
-    }
-    else{
-      return <option key={index} value={timestampToDay(day.dt)}>{timestampToDay(day.dt)}</option>;
-    }
-  });
+  const arrayDay =
+    forecastWeather.daily &&
+    forecastWeather.daily.map((day, index) => {
+      if (index === 0) {
+        return (
+          <option key={index} value="Semaine">
+            Semaine
+          </option>
+        );
+      } else {
+        return (
+          <option key={index} value={timestampToDay(day.dt)}>
+            {timestampToDay(day.dt)}
+          </option>
+        );
+      }
+    });
 
   return (
     <div className="ForecastContainer">
@@ -212,7 +230,12 @@ const ForecastContainer = ({ forecast }) => {
             <h3>Adresse</h3>
           </div>
           <div>
-            <select id="selectDayForecast" name="selectDayForecast" value={select} onChange={(e) => handleChangeSelect(e)}>
+            <select
+              id="selectDayForecast"
+              name="selectDayForecast"
+              value={select}
+              onChange={(e) => handleChangeSelect(e)}
+            >
               {arrayDay}
             </select>
           </div>
@@ -237,6 +260,5 @@ const mapStateToProps = (state) => {
     forecast: state.forecast,
   };
 };
-
 
 export default connect(mapStateToProps, null)(ForecastContainer);
