@@ -3,7 +3,6 @@
 }
 
 .leaflet-container, .leaflet-touch.leaflet-retina, .leaflet-safari.leaflet-fade-anim, .leaflet-grab.leaflet-touch-drag, .leaflet-touch-zoom {
-    background: rgba(255, 0, 0, 0);
     position: absolute;
     height: 77%;
     width: 89%;

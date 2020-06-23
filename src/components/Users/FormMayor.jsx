@@ -106,6 +106,7 @@ handleSelect = (time) => {
                     confirmText="Valider"
                     cancelText="Annuler"
                     theme="android"
+                    required
                    
                    
                   />
@@ -115,6 +116,7 @@ handleSelect = (time) => {
         <div className="CityReferenceField">
           <input
             type="text"
+            required
             name="CityReference"
             id="CityReference"
             placeholder="Bordeaux"

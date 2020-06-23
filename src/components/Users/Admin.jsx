@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Burger from '../BurgerMenu/Burger';
 import FormMayor from './FormMayor';
-import FormTechnicalServices from './FormTechnicalServices'
+import FormTechnicalServices from './FormTechnicalServices';
 
 import './admin.css';
+
+
 
 class Admin extends Component {
   constructor(props) {
@@ -21,12 +23,6 @@ class Admin extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.onChange = this.onChange.bind(this);
-    // this.onLastNameChange = this.onLastNameChange.bind(this);
-    // this.onFirstNameChange = this.onFirstNameChange.bind(this);
-    // this.onCityChange = this.onCityChange.bind(this);
-    // this.onZipCodeChange = this.onZipCodeChange.bind(this);
-    // this.onEmailChange = this.onEmailChange.bind(this);
-    // this.onPasswordChange = this.onPasswordChange.bind(this);
   }
 
   handleSubmit(e) {
@@ -63,42 +59,17 @@ class Admin extends Component {
     }));
   }
 
- onChange(event) {
-   this.setState({[event.target.name]: event.target.value});
- }
-
-  // onFirstNameChange(event) {
-  //   this.setState({ firstname: event.target.value });
-  // }
-
-  // onLastNameChange(event) {
-  //   this.setState({ lastname: event.target.value });
-  // }
-
-  // onZipCodeChange(event) {
-  //   this.setState({ zipCode: event.target.value });
-  // }
-
-  // onCityChange(event) {
-  //   this.setState({ city: event.target.value });
-  // }
-
-  // onPasswordChange(event) {
-  //   this.setState({ password: event.target.value });
-  // }
-
-  // onEmailChange(event) {
-  //   this.setState({ email: event.target.value });
-  // }
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
   render() {
-
     let selectedRole;
 
-    if (this.state.value === "Mayor") {
-      selectedRole = [<FormMayor />]
-    } else  if (this.state.value === "TechnicalTeam"){
-      selectedRole = [<FormTechnicalServices />]
+    if (this.state.value === 'Mayor') {
+      selectedRole = [<FormMayor />];
+    } else if (this.state.value === 'TechnicalTeam') {
+      selectedRole = [<FormTechnicalServices />];
     }
 
     return (
@@ -118,10 +89,13 @@ class Admin extends Component {
             id="user-form"
             onSubmit={this.handleSubmit.bind(this)}
             method="POST"
+          
           >
             <div className="LastNameField">
               <input
                 type="text"
+                required
+                pattern="^[a-zA-Z]"
                 name="lastname"
                 id="LastName"
                 placeholder="Dupont"
@@ -134,6 +108,7 @@ class Admin extends Component {
             <div className="FirstNameField">
               <input
                 type="text"
+                required
                 name="firstname"
                 id="FirstName"
                 placeholder="Jean"
@@ -146,6 +121,7 @@ class Admin extends Component {
             <div className="ZipCodeField">
               <input
                 type="number"
+                required
                 name="ZipCode"
                 id="ZipCode"
                 placeholder="33000"
@@ -158,6 +134,7 @@ class Admin extends Component {
             <div className="CityField">
               <input
                 type="text"
+                required
                 name="City"
                 id="City"
                 placeholder="Bordeaux"
@@ -170,6 +147,7 @@ class Admin extends Component {
             <div className="EmailField">
               <input
                 type="email"
+                required
                 name="email"
                 id="email"
                 placeholder="j.dupont@orange.fr"
@@ -182,6 +160,7 @@ class Admin extends Component {
             <div className="PasswordField">
               <input
                 type="text"
+                required
                 name="Password"
                 id="Password"
                 placeholder=""
@@ -194,6 +173,7 @@ class Admin extends Component {
             <div className="RoleField">
               <select
                 value={this.state.value}
+                required
                 id="Role"
                 name="Role"
                 form="form"
@@ -209,9 +189,7 @@ class Admin extends Component {
               <label htmlFor="Role">Role</label>
               <br />
             </div>
-            <div className="Dynamiquefields">
-             {selectedRole}
-            </div>
+            <div className="Dynamiquefields">{selectedRole}</div>
 
             <button type="submit" className="btn-primary">
               Enregistrer
