@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Burger from '../BurgerMenu/Burger';
 import FormMayor from './FormMayor';
+import FormTechnicalServices from './FormTechnicalServices'
 
 import './admin.css';
 
@@ -91,6 +92,15 @@ class Admin extends Component {
   // }
 
   render() {
+
+    let selectedRole;
+
+    if (this.state.value === "Mayor") {
+      selectedRole = [<FormMayor />]
+    } else  if (this.state.value === "TechnicalTeam"){
+      selectedRole = [<FormTechnicalServices />]
+    }
+
     return (
       <div className="AdminPageContainer">
         <div className="BurgerMenu">
@@ -199,8 +209,8 @@ class Admin extends Component {
               <label htmlFor="Role">Role</label>
               <br />
             </div>
-            <div className="Mayorfields">
-              <FormMayor />
+            <div className="Dynamiquefields">
+             {selectedRole}
             </div>
 
             <button type="submit" className="btn-primary">

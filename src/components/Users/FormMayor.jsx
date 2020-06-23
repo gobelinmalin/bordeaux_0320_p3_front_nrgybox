@@ -2,7 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DatePicker from 'react-mobile-datepicker';
 
-const test = "red"
+
+function convertDate(date, formate) {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
+
+  return formate
+       .replace(/Y+/, year)
+       .replace(/M+/, month)
+       .replace(/D+/, day)
+       .replace(/h+/, hour)
+       .replace(/m+/, minute)
+       .replace(/s+/, second);
+}
 
 class FormMayor extends React.Component {
   constructor(props) {
@@ -22,11 +38,13 @@ handleCancel = () => {
     this.setState({ isOpen: false });
 }
 
+
+
 handleSelect = (time) => {
     this.setState({ time, isOpen: false });
-    const test2 = "bonjour"
-    alert(this.state.time + test2)
 }
+
+
 
 
   render() {
@@ -62,27 +80,17 @@ handleSelect = (time) => {
         step: 1,
       },
     };
-    
-  
 
-    
-    
-  
-    
-    
-    
-   
 
     
     return (
       <div>
         <div className="TimePicker">
-
-      
+        
         <a
                     className="select-btn"
                     onClick={this.handleClick}>
-                    select time 
+                    {convertDate(this.state.time, 'DD-MM-YYYY')}
                 </a>
               
                 

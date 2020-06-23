@@ -1,22 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-class FormTechnicalServices extends React.component {
-  render() {
+class FormTechnicalServices extends React.Component {
+  render () {
     return (
       <div>
-        <div className="CompagnyField">
-          <input
-            type="text"
-            name="Compagny"
-            id="Compagny"
-            placeholder="Eclairage S.A."
-          />
-          <label htmlfor="LastName">Entreprise</label>
-          <br></br>
-        </div>
+        coucou
       </div>
-    );
+
+    )
   }
 }
 
-export default FormTechnicalServices;
+export default FormTechnicalServices
