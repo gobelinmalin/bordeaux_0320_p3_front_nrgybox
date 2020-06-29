@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 // Components
 import App from './App';
 import reducers from './reducers/index';
-import { weatherForecast, moonForecast, dataProgramForecast } from './actions/ForecastAction';
 
 // CSS
 import './index.css';
@@ -21,8 +20,6 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
-
-store.dispatch(weatherForecast(), moonForecast(), dataProgramForecast());
 
 ReactDOM.render(
   <Provider store={store}>

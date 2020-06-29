@@ -37,6 +37,7 @@
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.1.1",
     "use-position": "0.0.7"
   },

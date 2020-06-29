@@ -1,16 +1,17 @@
 @media (max-width: 376px){
 
-    .ForecastContainer {
+    /* .ForecastContainer {
         width: 100%;
         flex-direction: column;
-    }
+    } */
 
-    .ForecastSlider{
+    /* .ForecastSlider{
+        display: flex;
         width: 93%;
         height: 500px;
         margin-left: auto;
         margin-right:auto;
-    }
+    } */
 
     /* .ForecastSlider{
         width: 80%;
@@ -19,7 +20,7 @@
         height: 380px;
     } */
     
-    .cardSlider {
+    /* .cardSlider {
         width: 370px;
         height:550px;
         border-color: blue;
@@ -30,6 +31,6 @@
         border-color:red;
         height: 550px;
 
-    }
+    } */
 
 }

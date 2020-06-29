@@ -1,175 +1,25 @@
 // Modules
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import Axios from 'axios';
-
+import PropTypes from 'prop-types';
 
 // Components
 import { ReactComponent as EditPen } from '../../icons/editPen.svg';
 import ForecastSlider from './ForecastSlider/ForecastSlider';
-import reducers from '../../reducers/index';
-import { weatherForecast, moonForecast, dataProgramForecast } from '../../actions/ForecastAction';
+import {
+  weatherForecast,
+  dataProgramForecast,
+  allDay,
+} from '../../actions/ForecastAction';
 
 // CSS
 import './ForecastContainer.css';
 
+const ForecastContainer = ({ arrayAllDay }) => {
+  const [isLoading, setIsLoading] = useState(true);
 
-const ForecastContainer = ({ forecast }) => {
-  
-  const [select, setSelect] = useState("semaine");
-  const [forecastMoon, setForecastMoon] = useState({});
-  // const [dateStartProgram, setDateStartProgram] = useState({});
-  // const [dateEndProgram, setDateEndProgram] = useState({});
-  const [datesProgram, setDatesProgram] = useState({});
-  const [forecastWeather, setForecastWeather] = useState({});
-  const [selectedDay, setSelectedDay] = useState({});
-  const [allDataForecast, setAllDataForecast] = useState([]); // tableau de données des api
-  const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   setLoading(true);
-
-  //   // get data from the weather API
-  //   const getWeather = () => {
-  //     return Axios.get(
-  //       `https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-  //     );
-  //   };
-
-  //   // get data from lunopia API (moon ephemeris)
-  //   const getMoon = () => {
-  //     return Axios.get(
-  //       `http://www.lunopia.com/call?what=rs&where=Bordeaux&when=current&key=${process.env.REACT_APP_MOON_API_KEY}`
-  //     );
-  //   };
-
-  //   // get data from de database (program table)
-  //   const getDataDB = () => {
-  //     return Axios({
-  //       method: 'GET',
-  //       url: `${process.env.REACT_APP_URL}api/programs`,
-  //       data: dateStartProgram,
-  //       data: dateEndProgram
-  //     });
-  //   };
-
-  //   Promise.all([getWeather(), getMoon(), getDataDB()])
-  //     .then((results) => {
-  //       setSelectedDay({
-  //         timestamp: results[0].data.current.dt,
-  //         sunrise: results[0].data.current.sunrise,
-  //         sunset: results[0].data.current.sunset,
-  //         iconWeather: results[0].data.current.weather[0].icon
-  //       });
-  //       setForecastWeather(results[0].data);
-
-  //       setForecastMoon(results[1].data);
-
-  //       setDateStartProgram(results[2].data[0].date_start);
-  //       setDateEndProgram(results[2].data[0].date_end);
-
-  //       setAllDataForecast([
-  //         {
-  //           selectedDay,
-  //           dateStartProgram,
-  //           dateEndProgram,
-  //           loading
-  //         }
-  //       ]);
-
-  //       setLoading(false);
-  //     });
-
-  // }, []);
-
-  useEffect(() => {
-    // weather API
-    const fetchDataWeather = async() => {
-      await Axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
-      .then(data => {
-        weatherForecast(data)
-      })
-      .catch(err => {
-        throw(err)
-      });
-    };
-
-    // moon API
-    const fetchDataMoon = async() => {
-      await Axios.get(`http://www.lunopia.com/call?what=rs&where=Bordeaux&when=current&key=${process.env.REACT_APP_MOON_API_KEY}`)
-      .then(data => {
-        moonForecast(data)
-      })
-      .catch(err => {
-        throw(err)
-      });
-    };
-
-    // dates start and end program
-    const fetchDataProgram = async() => {
-      await Axios({
-        method: 'GET',
-        url: `${process.env.REACT_APP_URL}/programs`,
-        data: dataProgramForecast
-      })
-      .catch(err => {
-        throw(err)
-      });
-    };
-
-    Promise.all([fetchDataWeather(), fetchDataMoon(), fetchDataProgram()])
-      .then((results) => {
-        setForecastWeather(results);
-        setForecastMoon(results);
-        setDatesProgram(results);
-      });
-
-  }, [])
-
-  // handle the select element with the onChange method
-  const handleChangeSelect = (e) => {
-    e.preventDefault();
-
-    const valueSelect = e.target.value;
-    setSelect(valueSelect);
-
-    const data = forecastWeather;
-    let daySelect = {};
-
-    switch (valueSelect) {
-      case "Semaine":
-        daySelect = data.daily[0];
-        break;
-      case "Lundi":
-        daySelect = data.daily[1];
-        break;
-      case "Mardi":
-        daySelect = data.daily[2];
-        break;
-      case "Mercredi":
-        daySelect = data.daily[3];
-        break;
-      case "Jeudi":
-        daySelect = data.daily[4];
-        break;
-      case "Vendredi":
-        daySelect = data.daily[5];
-        break;
-      case "Samedi":
-        daySelect = data.daily[6];
-        break;
-      case "Dimanche":
-        daySelect = data.daily[7];
-        break;
-    };
-
-    return setSelectedDay({
-      timestamp: daySelect.dt,
-      sunrise: daySelect.sunrise,
-      sunset: daySelect.sunset,
-        // iconWeather: daySelect.weather[0].icon
-    });
-  };
+  const dispatch = useDispatch();
 
   // transform a timestamp in a day by the array of days
   const timestampToDay = (timestamp) => {
@@ -187,15 +37,104 @@ const ForecastContainer = ({ forecast }) => {
     return jours[date.getDay()];
   };
 
-  // "semaine" get the current weather and get the weekly forecast lighting
-  const arrayDay = forecastWeather.daily && forecastWeather.daily.map((day, index) => {
-    if(index === 0){
-      return <option key={index} value="Semaine">Semaine</option>;
-    }
-    else{
-      return <option key={index} value={timestampToDay(day.dt)}>{timestampToDay(day.dt)}</option>;
-    }
-  });
+  // transform a timestamp in entire format date
+  const formatDate = (timestamp) => {
+    // date construction
+    const jours = [
+      'Dimanche',
+      'Lundi',
+      'Mardi',
+      'Mercredi',
+      'Jeudi',
+      'Vendredi',
+      'Samedi',
+    ];
+
+    const mois = [
+      'Janvier',
+      'Fevrier',
+      'Mars',
+      'Avril',
+      'Mai',
+      'Juin',
+      'Juillet',
+      'Aout',
+      'Septembre',
+      'Octobre',
+      'Novembre',
+      'Decembre',
+    ];
+
+    // get the current date
+    const date = new Date(timestamp * 1000);
+
+    // get the current date related to arrays and construction of the entire date
+    const currentDate = `${jours[date.getDay()]} ${date.getDate()} ${
+      mois[date.getMonth()]
+    } ${date.getFullYear()}`;
+
+    return currentDate;
+  };
+
+  useEffect(() => {
+    // weather API
+    const fetchDataWeather = () => {
+      return Axios.get(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=44.910544&lon=-0.236538&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+      );
+    };
+
+    // dates start and end program
+    // const fetchDataProgram = () => {
+    //   return Axios({
+    //     method: 'GET',
+    //     url: `${process.env.REACT_APP_URL}/programs`
+    //   })
+    // };
+
+    Promise.all([fetchDataWeather()]) // fetchDataProgram()
+      .then((results) => {
+        dispatch(weatherForecast(results[0].data));
+        // dispatch(dataProgramForecast(results[1]));
+
+        const arr = [];
+
+        // for each day, construct an array of objects with all day informations
+        results[0].data.daily.forEach((day, index) => {
+          // get the current date
+          const date = new Date(day.dt * 1000);
+
+          // moon API
+          Axios.get(
+            `http://www.lunopia.com/call?what=rs&where=Bordeaux&when=specDate&day=${date.getDate()}&month=${
+              date.getMonth() + 1
+            }&year=${date.getFullYear()}&key=${
+              process.env.REACT_APP_MOON_API_KEY
+            }`
+          )
+            .then((res) => res.data)
+            .then((data) => {
+              arr[index] = {
+                date: formatDate(day.dt),
+                currentDay: timestampToDay(day.dt),
+                sunrise: data.SOLEIL.LEVE,
+                sunset: data.SOLEIL.COUCHE,
+                // results[1].date_start
+                // results[1].date_end
+                moonrise: data.LUNE.LEVE,
+                moonset: data.LUNE.COUCHE,
+                temp: Math.floor(day.temp.day),
+                iconWeather: day.weather[0].icon,
+              };
+              if (arr.length === 8) {
+                setIsLoading(false);
+              }
+            })
+            .catch((err) => console.log(err));
+        });
+        dispatch(allDay(arr));
+      });
+  }, []);
 
   return (
     <div className="ForecastContainer">
@@ -211,22 +150,10 @@ const ForecastContainer = ({ forecast }) => {
             </div>
             <h3>Adresse</h3>
           </div>
-          <div>
-            <select id="selectDayForecast" name="selectDayForecast" value={select} onChange={(e) => handleChangeSelect(e)}>
-              {arrayDay}
-            </select>
-          </div>
         </div>
       </div>
       <div className="cardContainer">
-        <ForecastSlider
-          forecastMoon={forecastMoon}
-          selectedDay={selectedDay}
-          // dateStartProgram={dateStartProgram}
-          // dateEndProgram={dateEndProgram}
-          loading={loading}
-          allDataForecast={allDataForecast}
-        />
+        <ForecastSlider arrayAllDay={arrayAllDay} isLoading={isLoading} />
       </div>
     </div>
   );
@@ -234,9 +161,16 @@ const ForecastContainer = ({ forecast }) => {
 
 const mapStateToProps = (state) => {
   return {
-    forecast: state.forecast,
+    arrayAllDay: state.ForecastDaysReducer.data,
   };
 };
 
+ForecastContainer.defaultProps = {
+  arrayAllDay: [{}],
+};
+
+ForecastContainer.propTypes = {
+  arrayAllDay: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default connect(mapStateToProps, null)(ForecastContainer);
