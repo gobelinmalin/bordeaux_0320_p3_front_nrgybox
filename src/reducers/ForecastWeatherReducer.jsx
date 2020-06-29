@@ -6,7 +6,6 @@ const ForecastWeatherReducer = (state = {}, action) => {
         data: action.payload,
       };
     }
-      // break;
     default: {
       return state;
     }
