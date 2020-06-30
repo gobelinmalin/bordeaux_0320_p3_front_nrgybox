@@ -17,7 +17,7 @@
         justify-content: center;
         align-items: center;
         color: #e9e98a;
-        font-size: 25px;
+        font-size: 35px;
 
     }
     .CreateUserFormContainer {
@@ -33,14 +33,7 @@
         width: 126%
     }
 
-    input[type="text"],input[type="email"],input[type="number"], textarea {
-        border: none;
-        background-color : #2a2754;
-        border-radius: 6px;
-        width: 126%;
-        margin-left: -12%;
-      
-      }
+  
       ::placeholder {
         color: rgba(245, 245, 245, 0.411);
         margin-left: 5px;
@@ -58,6 +51,27 @@
     .LogoEndAdmin {
         color: #e9e98a;
         font-family: 'aqua';
+    }
+
+    .containerHR {
+        width:300px;
+    }
+
+    hr.inputFieldHR {
+       background:#92CEEF;
+       margin:0;
+       height:1.5px;
+    }
+
+    label{
+        color:#92CEEF;
+    }
+
+    input#LastName, input#FirstName, input#ZipCode, input#City {
+        width:300px;
+        background:none;
+        border:none;
+        height:40px;
     }
   }
 

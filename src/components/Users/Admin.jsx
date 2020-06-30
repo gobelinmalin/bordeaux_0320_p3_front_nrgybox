@@ -82,7 +82,7 @@ class Admin extends Component {
           <Burger />
         </div>
         <div className="TitleCreateUser">
-          <p>Création d'utilisateur</p>
+          <p className="titleCreateUserForm">Création d'utilisateurs</p>
         </div>
         <div className="CreateUserFormContainer">
           <form
@@ -102,6 +102,9 @@ class Admin extends Component {
                 value={this.state.lastname}
                 onChange={this.onChange.bind(this)}
               />
+              <div className="containerHR" >
+                <hr className="inputFieldHR"/>
+              </div>
               <label htmlFor="LastName">Nom </label>
               <br />
             </div>
@@ -115,6 +118,9 @@ class Admin extends Component {
                 value={this.state.firstname}
                 onChange={this.onChange.bind(this)}
               />
+               <div className="containerHR" >
+                <hr className="inputFieldHR"/>
+              </div>
               <label htmlFor="FirstName">Prénom</label>
               <br />
             </div>
@@ -128,6 +134,9 @@ class Admin extends Component {
                 value={this.state.zipCode}
                 onChange={this.onChange.bind(this)}
               />
+               <div className="containerHR" >
+                <hr className="inputFieldHR"/>
+              </div>
               <label htmlFor="ZipCode">Code Postal</label>
               <br />
             </div>
@@ -141,6 +150,9 @@ class Admin extends Component {
                 value={this.state.city}
                 onChange={this.onChange.bind(this)}
               />
+               <div className="containerHR" >
+                <hr className="inputFieldHR"/>
+              </div>
               <label htmlFor="City">Ville</label>
               <br />
             </div>
@@ -154,6 +166,9 @@ class Admin extends Component {
                 value={this.state.email}
                 onChange={this.onChange.bind(this)}
               />
+               <div className="containerHR" >
+                <hr className="inputFieldHR"/>
+              </div>
               <label htmlFor="Email">Email</label>
               <br />
             </div>
@@ -167,6 +182,9 @@ class Admin extends Component {
                 value={this.state.password}
                 onChange={this.onChange.bind(this)}
               />
+               <div className="containerHR" >
+                <hr className="inputFieldHR"/>
+              </div>
               <label htmlFor="Password">Mot de passe</label>
               <br />
             </div>
@@ -185,7 +203,9 @@ class Admin extends Component {
                 <option value="TechnicalTeam">Role: Service Technique</option>
                 <option value="Administrator">Role: Administrateur</option>
               </select>
-
+              <div className="containerHR" >
+                <hr className="inputFieldHR"/>
+              </div>
               <label htmlFor="Role">Role</label>
               <br />
             </div>
