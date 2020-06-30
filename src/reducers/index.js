@@ -1,5 +1,6 @@
 // can having many reducers files and use them all
 import { combineReducers } from 'redux';
-import ForecastReducer from './ForecastReducer';
+import ForecastWeatherReducer from './ForecastWeatherReducer';
+import ForecastDaysReducer from './ForecastDaysReducer';
 
-export default combineReducers({ ForecastReducer });
+export default combineReducers({ ForecastWeatherReducer, ForecastDaysReducer });

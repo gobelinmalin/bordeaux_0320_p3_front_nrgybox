@@ -1,6 +1,7 @@
 // Modules
 import React from 'react';
 import SemiCircleProgressBar from 'react-progressbar-semicircle';
+import PropTypes from 'prop-types';
 
 // Components
 // import { ReactComponent as Heart } from '../../../../icons/heartSolid.svg';
@@ -11,29 +12,24 @@ import TimePicker2 from '../../../Assets/TimePicker2';
 // CSS
 import './ForecastDetails.css';
 
-const ForecastDetails = (props) => {
-
+const ForecastDetails = ({ day }) => {
   return (
     <div className="ForecastDetailsContainer">
       <div className="dateWeatherContainer">
         <div className="dateFavouritContainer">
           <div className="dateForcast">
-            <p>{props.allDataForecast[0] && props.allDataForecast[0].selectedDay && props.allDataForecast[0].selectedDay.timestamp}</p>
-            {props.allDataForecast && props.allDataForecast.loading && <p>...</p>}
+            <p>{day.date}</p>
           </div>
         </div>
         <div className="weatherContainer">
           <div className="weatherIcon">
             <img
-              // src={`http://openweathermap.org/img/wn/${iconWeather}.png`}
-              // src={}
+              src={`http://openweathermap.org/img/wn/${day.iconWeather}.png`}
               alt="Weather icon"
             />
           </div>
           <div className="weatherTemperature">
-            {/* {forecastWeather && (
-              <p>{Math.round(props.forecastWeatherTemp)}°C</p>
-            )} */}
+            <p>{day.temp}°C</p>
           </div>
         </div>
         <div className="hrContainer">
@@ -50,18 +46,18 @@ const ForecastDetails = (props) => {
         </div>
         <div className="sunriseContainer">
           <div className="sunriseLabel">
-            <p>Levé</p>
+            <p>Lever</p>
           </div>
           <div className="sunriseValue">
-            {/* <p>{timeSunrise}</p> */}
+            <p>{day.sunrise}</p>
           </div>
         </div>
         <div className="sunsetContainer">
           <div className="sunsetLabel">
-            <p>Couché</p>
+            <p>Coucher</p>
           </div>
           <div className="sunsetValue">
-            {/* <p>{timeSunset}</p> */}
+            <p>{day.sunset}</p>
           </div>
         </div>
       </div>
@@ -78,18 +74,18 @@ const ForecastDetails = (props) => {
         </div>
         <div className="moonriseContainer">
           <div className="moonriseLabel">
-            <p>Levé</p>
+            <p>Lever</p>
           </div>
           <div className="moonriseValue">
-            <p>{props.forecastMoon}</p>
+            <p>{day.moonrise}</p>
           </div>
         </div>
         <div className="moonsetContainer">
           <div className="moonsetLabel">
-            <p>Couché</p>
+            <p>Coucher</p>
           </div>
           <div className="moonsetValue">
-            <p>{props.forecastMoon}</p>
+            <p>{day.moonset}</p>
           </div>
         </div>
       </div>
@@ -136,4 +132,13 @@ const ForecastDetails = (props) => {
     </div>
   );
 };
+
+ForecastDetails.defaultProps = {
+  day: {},
+};
+
+ForecastDetails.propTypes = {
+  day: PropTypes.arrayOf(PropTypes.object),
+};
+
 export default ForecastDetails;

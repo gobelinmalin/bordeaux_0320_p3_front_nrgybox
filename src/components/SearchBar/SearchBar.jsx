@@ -20,7 +20,10 @@ class SearchBar extends Component {
       for (let i = data.results.length - 1; i >= 0; i--) {
         results.addLayer(L.marker(data.results[i].latlng));
       }
-      localStorage.setItem('data', JSON.stringify({ data: data.results }));
+      localStorage.setItem(
+        'datageoloc',
+        JSON.stringify({ datageoloc: data.results })
+      );
     });
   }
 

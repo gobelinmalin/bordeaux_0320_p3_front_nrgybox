@@ -5,7 +5,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
-import React, { Component } from 'react';
+import React, { useState, Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import { render } from 'react-dom';
 import Burger from '../BurgerMenu/Burger';
@@ -34,6 +34,7 @@ class Home extends Component {
   
 
   render() {
+    
     return (
       <div className="container_01">
         <Burger />

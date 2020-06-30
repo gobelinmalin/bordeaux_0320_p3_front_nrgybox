@@ -1,120 +1,98 @@
 // modules
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
-// css
-import './ForecastSlider.css';
+import PropTypes from 'prop-types';
+
 // components
 import ForecastDetails from './ForecastDetails/ForecastDetails';
 
-const ForecastSlider = (props) => {
-  // const [forecastUpdate, setForecastUpdate] = useState({});
+// css
+import './ForecastSlider.css';
 
-  // const forecastFromDetails = (dataFromChild) => {
-  //   setForecastUpdate(dataFromChild)
-  // }
+const ForecastSlider = ({ arrayAllDay, isLoading }) => {
+  const [slider, setSlider] = useState(null);
+  const [select, setSelect] = useState(0);
 
   const settings = {
     dots: true,
-    // appendDots: dots => (
-    //     <div
-    //       style={{
-    //         color: "#FFF"
-    //       }}
-    //     >
-    //     </div>
-    //   ),
     arrows: false,
     infinite: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     adaptiveHeight: true,
     swipeToSlide: true,
+    beforeChange: (current, next) => setSelect(next),
     responsive: [
       {
-        breakpoint: 375,
+        breakpoint: 480,
       },
     ],
   };
 
-   // date construction
-   const jours = [
-    'Dimanche',
-    'Lundi',
-    'Mardi',
-    'Mercredi',
-    'Jeudi',
-    'Vendredi',
-    'Samedi',
-  ];
+  // handle the select element with the onChange method
+  const handleChangeSelect = (e) => {
+    slider.slickGoTo(e.target.value);
+  };
 
-  const mois = [
-    'Janvier',
-    'Fevrier',
-    'Mars',
-    'Avril',
-    'Mai',
-    'Juin',
-    'Juillet',
-    'Aout',
-    'Septembre',
-    'Octobre',
-    'Novembre',
-    'Decembre',
-  ];
-
-  // get the current date
-  const date = new Date();
-
-  // get the current date related to arrays and construction of the entire date
-  const currentDate = `${jours[date.getDay()]} ${date.getDate()} ${mois[date.getMonth()]
-  } ${date.getFullYear()}`;
-
-  // // get the weather icon in the Weather API
-  // const iconWeather =
-  //   forecastWeather &&
-  //   forecastWeather.current &&
-  //   forecastWeather.current.weather[0].icon;
-
-  // // get the sunrise and the sunset timestamps
-  // const timeStampSunrise = forecastWeather &&
-  //   forecastWeather.current &&
-  //   forecastWeather.daily[0].sunrise;
-  // const timeStampSunset = forecastWeather &&
-  //   forecastWeather.current &&
-  //   forecastWeather.daily[0].sunset;
-  // const transformSunrise = timeStampSunrise * 1000;
-  // const transformSunset = timeStampSunset * 1000;
-
-  // // transform the timestamps to a basic date format
-  // const sunrise = new Date(transformSunrise);
-  // const sunset = new Date(transformSunset);
-
-  // // get only the time
-  // const timeSunrise = `${sunrise.getHours()}:${sunrise.getMinutes()}`;
-  // const timeSunset = `${sunset.getHours()}:${sunset.getMinutes()}`;
+  // get the current day for the weekly forecast lighting
+  const arrayDay =
+    arrayAllDay &&
+    arrayAllDay.map((day, index) => {
+      const selected = index === select ? 'selected' : '';
+      if (index === 0) {
+        return (
+          <option selected={selected} key={index} value={index}>
+            Aujourd'hui
+          </option>
+        );
+      } else {
+        return (
+          <option selected={selected} key={index} value={index}>
+            {day.currentDay}
+          </option>
+        );
+      }
+    });
 
   return (
-    <div className="ForecastContainer">
-      <div className="ForecastSlider">
-        <Slider {...settings}>
-          <div className="cardSlider">
-            <div className="card1">
-              {/* {props_array.map((element, index) => {
-                return <ForecastDetails
-                  key={index}
-                  forecastMoon={element.forecastMoon}
-                  selectedDay={element.selectedDay}
-                  dateStartProgram={element.dateStartProgram}
-                  dateEndProgram={element.dateEndProgram}
-                />
-              })} */}
-              <ForecastDetails allDataForecast={props.allDataForecast} />
-            </div>
-          </div>
-        </Slider>
+    <div className="ForecastSlider">
+      <div>
+        <select
+          id="selectDayForecast"
+          name="selectDayForecast"
+          onChange={(e) => handleChangeSelect(e)}
+        >
+          {arrayDay}
+        </select>
       </div>
+      {isLoading ? (
+        '...wait for it'
+      ) : (
+        <Slider ref={(slider) => setSlider(slider)} {...settings}>
+          {arrayAllDay &&
+            arrayAllDay.map((day, index) => {
+              return (
+                <div key={index} className="cardSlider">
+                  <div className="card1">
+                    <ForecastDetails day={day} />
+                  </div>
+                </div>
+              );
+            })}
+        </Slider>
+      )}
     </div>
   );
+};
+
+ForecastSlider.defaultProps = {
+  arrayAllDay: [{}],
+  isLoading: true,
+};
+
+ForecastSlider.propTypes = {
+  arrayAllDay: PropTypes.arrayOf(PropTypes.object),
+  isLoading: PropTypes.bool,
 };
 
 export default ForecastSlider;
