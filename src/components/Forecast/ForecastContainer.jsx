@@ -18,6 +18,8 @@ import './ForecastContainer.css';
 
 const ForecastContainer = ({ arrayAllDay }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [datageoloc, setDatageoloc] = useState([]);
+  const [position, setPosition] = useState({});
 
   const dispatch = useDispatch();
 
@@ -76,23 +78,17 @@ const ForecastContainer = ({ arrayAllDay }) => {
     return currentDate;
   };
 
-  const [datageoloc, setDatageoloc] = useState([]);
-
-
-  const [position, setPosition] = useState({});
-
   useEffect(() => {
     // set local storage 
-    setDatageoloc(JSON.parse(localStorage.getItem('datageoloc')));
+    // setDatageoloc(JSON.parse(localStorage.getItem('datageoloc')));
     setPosition(JSON.parse(localStorage.getItem('position')));
+
     // weather API
     const fetchDataWeather = () => {
       return Axios.get(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${position.latitude}&lon=${position.longitude}exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
     };
-
-
 
     // dates start and end program
     const fetchDataProgram = () => {
@@ -145,7 +141,8 @@ const ForecastContainer = ({ arrayAllDay }) => {
     });
   }, []);
 
-  const LocalStorageGeoloc = JSON.parse(localStorage.getItem('datageoloc')); 
+  // const LocalStorageGeoloc = JSON.parse(localStorage.getItem('datageoloc'));
+
   return (
     <div className="ForecastContainer">
       <h1>Les prévisions lumineuses</h1>
@@ -154,7 +151,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
           <div className="GeolocUser">
             <div className="CityIconEdit">
               <h3>nom ville</h3>
-              {LocalStorageGeoloc[0].text}
+              {/* {LocalStorageGeoloc[0].text} */}
               <div className="EditAdressIcon">
                 <EditPen />
               </div>
