@@ -85,55 +85,54 @@ const ForecastContainer = ({ arrayAllDay }) => {
     };
 
     // dates start and end program
-    // const fetchDataProgram = () => {
-    //   return Axios({
-    //     method: 'GET',
-    //     url: `${process.env.REACT_APP_URL}/programs`
-    //   })
-    // };
-
-    Promise.all([fetchDataWeather()]) // fetchDataProgram()
-      .then((results) => {
-        dispatch(weatherForecast(results[0].data));
-        // dispatch(dataProgramForecast(results[1]));
-
-        const arr = [];
-
-        // for each day, construct an array of objects with all day informations
-        results[0].data.daily.forEach((day, index) => {
-          // get the current date
-          const date = new Date(day.dt * 1000);
-
-          // moon API
-          Axios.get(
-            `http://www.lunopia.com/call?what=rs&where=Bordeaux&when=specDate&day=${date.getDate()}&month=${
-              date.getMonth() + 1
-            }&year=${date.getFullYear()}&key=${
-              process.env.REACT_APP_MOON_API_KEY
-            }`
-          )
-            .then((res) => res.data)
-            .then((data) => {
-              arr[index] = {
-                date: formatDate(day.dt),
-                currentDay: timestampToDay(day.dt),
-                sunrise: data.SOLEIL.LEVE,
-                sunset: data.SOLEIL.COUCHE,
-                // results[1].date_start
-                // results[1].date_end
-                moonrise: data.LUNE.LEVE,
-                moonset: data.LUNE.COUCHE,
-                temp: Math.floor(day.temp.day),
-                iconWeather: day.weather[0].icon,
-              };
-              if (arr.length === 8) {
-                setIsLoading(false);
-              }
-            })
-            .catch((err) => console.log(err));
-        });
-        dispatch(allDay(arr));
+    const fetchDataProgram = () => {
+      return Axios({
+        method: 'GET',
+        url: `${process.env.REACT_APP_URL}/programs`,
       });
+    };
+
+    Promise.all([fetchDataWeather(), fetchDataProgram()]).then((results) => {
+      dispatch(weatherForecast(results[0].data));
+      dispatch(dataProgramForecast(results[1]));
+
+      const arr = [];
+
+      // for each day, construct an array of objects with all day informations
+      results[0].data.daily.forEach((day, index) => {
+        // get the current date
+        const date = new Date(day.dt * 1000);
+
+        // moon API
+        Axios.get(
+          `http://www.lunopia.com/call?what=rs&where=Bordeaux&when=specDate&day=${date.getDate()}&month=${
+            date.getMonth() + 1
+          }&year=${date.getFullYear()}&key=${
+            process.env.REACT_APP_MOON_API_KEY
+          }`
+        )
+          .then((res) => res.data)
+          .then((data) => {
+            arr[index] = {
+              date: formatDate(day.dt),
+              currentDay: timestampToDay(day.dt),
+              sunrise: data.SOLEIL.LEVE,
+              sunset: data.SOLEIL.COUCHE,
+              startProg: results[1].data[index].date_start,
+              endProg: results[1].data[index].date_end,
+              moonrise: data.LUNE.LEVE,
+              moonset: data.LUNE.COUCHE,
+              temp: Math.floor(day.temp.day),
+              iconWeather: day.weather[0].icon,
+            };
+            if (arr.length === 8) {
+              setIsLoading(false);
+            }
+          })
+          .catch((err) => console.log(err));
+      });
+      dispatch(allDay(arr));
+    });
   }, []);
 
   return (
