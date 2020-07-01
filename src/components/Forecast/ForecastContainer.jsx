@@ -78,11 +78,10 @@ const ForecastContainer = ({ arrayAllDay }) => {
 
   const [datageoloc, setDatageoloc] = useState([]);
 
-
   const [position, setPosition] = useState({});
 
   useEffect(() => {
-    // set local storage 
+    // set local storage
     setDatageoloc(JSON.parse(localStorage.getItem('datageoloc')));
     setPosition(JSON.parse(localStorage.getItem('position')));
     // weather API
@@ -91,8 +90,6 @@ const ForecastContainer = ({ arrayAllDay }) => {
         `https://api.openweathermap.org/data/2.5/onecall?lat=${position.latitude}&lon=${position.longitude}exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
     };
-
-
 
     // dates start and end program
     // const fetchDataProgram = () => {
@@ -146,7 +143,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
       });
   }, []);
 
-  const LocalStorageGeoloc = JSON.parse(localStorage.getItem('datageoloc')); 
+  const LocalStorageGeoloc = JSON.parse(localStorage.getItem('datageoloc'));
   return (
     <div className="ForecastContainer">
       <h1>Les prévisions lumineuses</h1>
