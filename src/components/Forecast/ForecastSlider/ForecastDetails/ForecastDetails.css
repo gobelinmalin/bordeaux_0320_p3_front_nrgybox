@@ -1,0 +1,145 @@
+.ForecastDetailsContainer{
+    background-color: #C5DAED;
+    border-radius: 10px;
+    width:100%;
+}
+
+.dateFavouritContainer{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+.FavouritIcon {
+    width: 13%;
+    margin-right: 5%;
+    margin-top: 3%;
+}
+
+.dateForcast{
+    margin-left: 85px;
+    color:black;
+    font-weight: bold;
+    margin-top: 5%;
+    font-size: 16px;
+}
+
+.weatherContainer{
+    display:flex;
+    justify-content:center;
+    color:black;
+    margin-top:-3%;
+}
+
+
+.hr1{
+    border-top: 0.5px solid #54739762;
+    width: 75%;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: -3%;
+}
+
+.sunriseSunsetContainer, .moonriseMoonsetContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left:-50px;
+    margin-top:-20px;
+}
+
+.sunriseSunsetContainer {
+    stroke:#F3BB33!important;
+    fill:#F3BB33!important;  
+}
+
+.sunriseLabel, .sunsetLabel, .moonriseLabel, .moonsetLabel, .dayforecastLightningLabel, .nightforecastLightningLabel, .hourValue {
+    color: #547397;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.nightforecastLightningLabel {
+    text-align:center;
+}
+
+.sunriseValue, .sunsetValue, .moonriseValue, .moonsetValue {
+    color: black;
+    margin-top:-20px;
+    font-size: 1em;
+}
+
+.sunriseContainer, .moonriseContainer {
+    margin-left:-30px;
+}
+
+.sunsetContainer, .moonsetContainer {
+    margin-left:-30px;
+}
+
+.moonriseContainer {
+ padding-left: 9px;
+}
+
+.sunIcon {
+    margin-top:7px;
+    margin-left:50px;
+    width: 50px;
+    height: 50px; 
+}
+
+.sunIcon2 {
+    margin-top:2px;
+    width: 45px;
+    height: 45px; 
+}
+
+
+.moonIcon {
+    margin-top:10px;
+    margin-left:55px;
+}
+
+.moonIcon2 {
+    margin-top:2px;
+    width: 37px;
+    height: 37px; 
+}
+
+.forecastLightningContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.forecastLightningContainer {
+    margin-top: -15px;
+}
+
+
+.dayforecastLightningContainer {
+    text-align: center;
+}
+
+
+
+.dayforecastLightningJauge  {
+    margin-top:-7px;
+    display: flex;
+    justify-content: center;
+}
+
+.dayforecastLightningHourInfo {
+    display: flex;
+    justify-content: space-between;
+    font-size:1em;
+}
+
+.hourValue {
+    color: black;
+    font-size:1em;
+    margin-top: 10px;
+}
+
+.dayforecastLightningHourInfo {
+    padding-bottom: 7px;
+}

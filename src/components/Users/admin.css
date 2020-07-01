@@ -1,0 +1,77 @@
+@media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
+    .AdminPageContainer {
+        display: block;
+        justify-content: center;
+        height: 100vh;
+        color: #538abc;
+    }
+    .AdminPageContainer h1 {
+        display: flex;
+        justify-content: center;
+        font-family: 'aqua';
+        font-size: 40px;
+        margin-top: 13px;
+    }
+    .TitleCreateUser {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #e9e98a;
+        font-size: 35px;
+
+    }
+    .CreateUserFormContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row-reverse;
+        color: #538abc;
+        margin: auto;
+        width: 50%;
+    }
+    .lastname {
+        width: 126%
+    }
+
+  
+      ::placeholder {
+        color: rgba(245, 245, 245, 0.411);
+        margin-left: 5px;
+
+      }
+
+    .BurgerMenu {
+        margin-bottom: 60px;
+        width: 56%;
+    }
+    .LogoStartAdmin {
+        color: #538abc;
+        font-family: 'aqua';
+    }
+    .LogoEndAdmin {
+        color: #e9e98a;
+        font-family: 'aqua';
+    }
+
+    .containerHR {
+        width:300px;
+    }
+
+    hr.inputFieldHR {
+       background:#92CEEF;
+       margin:0;
+       height:1.5px;
+    }
+
+    label{
+        color:#92CEEF;
+    }
+
+    input#LastName, input#FirstName, input#ZipCode, input#City {
+        width:300px;
+        background:none;
+        border:none;
+        height:40px;
+    }
+  }
+
