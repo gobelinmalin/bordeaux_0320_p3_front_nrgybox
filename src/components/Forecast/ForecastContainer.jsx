@@ -19,7 +19,7 @@ import './ForecastContainer.css';
 const ForecastContainer = ({ arrayAllDay }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [datageoloc, setDatageoloc] = useState([]);
-  const [position, setPosition] = useState({});
+  // const [position, setPosition] = useState({});
 
   const dispatch = useDispatch();
 
@@ -78,15 +78,16 @@ const ForecastContainer = ({ arrayAllDay }) => {
     return currentDate;
   };
 
+  // const LocalStorageGeoloc = JSON.parse(localStorage.getItem('datageoloc'));
+
   useEffect(() => {
-    // set local storage 
-    // setDatageoloc(JSON.parse(localStorage.getItem('datageoloc')));
-    setPosition(JSON.parse(localStorage.getItem('position')));
+    // set local storage
+    const testPosition = JSON.parse(localStorage.getItem('position'));
 
     // weather API
     const fetchDataWeather = () => {
       return Axios.get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${position.latitude}&lon=${position.longitude}exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${testPosition.latitude}&lon=${testPosition.longitude}&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
     };
 
@@ -99,9 +100,6 @@ const ForecastContainer = ({ arrayAllDay }) => {
     };
 
     Promise.all([fetchDataWeather(), fetchDataProgram()]).then((results) => {
-      dispatch(weatherForecast(results[0].data));
-      dispatch(dataProgramForecast(results[1]));
-
       const arr = [];
 
       // for each day, construct an array of objects with all day informations
@@ -111,7 +109,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
 
         // moon API
         Axios.get(
-          `http://www.lunopia.com/call?what=rs&where=Bordeaux&when=specDate&day=${date.getDate()}&month=${
+          `http://www.lunopia.com/call?what=rs&where=Paris&when=specDate&day=${date.getDate()}&month=${
             date.getMonth() + 1
           }&year=${date.getFullYear()}&key=${
             process.env.REACT_APP_MOON_API_KEY
@@ -133,15 +131,13 @@ const ForecastContainer = ({ arrayAllDay }) => {
             };
             if (arr.length === 8) {
               setIsLoading(false);
+              dispatch(allDay(arr));
             }
           })
           .catch((err) => console.log(err));
       });
-      dispatch(allDay(arr));
     });
   }, []);
-
-  // const LocalStorageGeoloc = JSON.parse(localStorage.getItem('datageoloc'));
 
   return (
     <div className="ForecastContainer">
@@ -157,7 +153,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
               </div>
             </div>
             <h3>Adresse</h3>
-            {position.latitude}
+            {/* {testPosition.latitude} */}
           </div>
         </div>
       </div>
