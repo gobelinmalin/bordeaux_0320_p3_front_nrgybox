@@ -13,12 +13,16 @@ import reducers from './reducers/index';
 // CSS
 import './index.css';
 
+let devTools = window.__REDUX_DEVTOOLS_EXTENSION__
+? window.__REDUX_DEVTOOLS_EXTENSION__()
+: f => f
+
 const store = createStore(
   reducers,
   compose(
     applyMiddleware(thunkMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+    devTools,
+  ),
 );
 
 ReactDOM.render(
