@@ -7,6 +7,7 @@
 //   return (
 //     <div>
 //       <ForecastContainer />
+//       {/* <ForecastContainer /> */}
 //     </div>
 //   );
 // };
@@ -14,6 +15,7 @@
 // const mapStateToProps = (state) => {
 //   return {
 //     forecast: state.forecast,
+//     forecast: state,
 //   };
 // };
 

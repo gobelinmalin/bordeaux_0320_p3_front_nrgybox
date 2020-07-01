@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 import './Rightnav.css';
 
 const Ul = styled.ul`
@@ -26,8 +26,9 @@ const Ul = styled.ul`
     transition: transform 0.7s ease-in-out;
     li {
       color: #235a8c;
-      padding: 40px;
-      font-size: 15px;
+      padding: 20px;
+      font-size: 20px;
+      border-bottom: solid 2px;
     }
     li: hover {
       color: #e9e98a;
@@ -37,31 +38,28 @@ const Ul = styled.ul`
 
 const RightNav = ({ open }) => {
   return (
-    <nav>
-      <Ul open={open}>
-        <li>
-          <NavLink activeClassName="burger-Nav" id="title" to="/Connexion">
-            Se connecter/Se déconnecter
-          </NavLink>
-        </li>
-        <li className="separation" />
-        <li>
-          <NavLink activeClassName="burger-Nav">Mes favoris</NavLink>
-        </li>
-        <li className="separation" />
-        <li>
-          <NavLink activeClassName="burger-Nav" id="title" to="/NrgyBox">
-            NRGYBox
-          </NavLink>
-        </li>
-        <li className="separation" />
-        <li>
-          <NavLink activeClassName="burger-Nav" id="title" to="/ContactUs">
-            Nous contacter
-          </NavLink>
-        </li>
-      </Ul>
-    </nav>
+    <Ul open={open}>
+      <li>
+        <NavLink exact activeClassName="burger-Nav" id="title" to="/">
+          Se connecter Se déconnecter
+        </NavLink>
+      </li>
+      <li>
+        <NavLink activeClassName="burger-Nav" id="favoris" to="/favoris">
+          Mes favoris
+        </NavLink>
+      </li>
+      <li>
+        <NavLink activeClassName="burger-Nav" id="About" to="/Apropos">
+          NRGYBox
+        </NavLink>
+      </li>
+      <li>
+        <NavLink activeClassName="burger-Nav" id="contact" to="/contactus">
+          Nous contacter
+        </NavLink>
+      </li>
+    </Ul>
   );
 };
 

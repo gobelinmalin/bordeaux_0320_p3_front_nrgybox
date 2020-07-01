@@ -10,6 +10,7 @@
     display: block;
     justify-content: center;
     height: 100vh;
+    background-color: #182c61;
   }
   .container_01 h1 {
     display: flex;
@@ -56,7 +57,7 @@
     display: flex;
     justify-content: center;
     font-size: 30px;
-    font-family: 'aqua'
+    font-family: 'aqua';
   }
   .text_start_intro {
     color: #538abc;
