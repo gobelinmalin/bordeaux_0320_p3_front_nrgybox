@@ -107,8 +107,8 @@ const ForecastDetails = ({ day }) => {
             />
           </div>
           <div className="dayforecastLightningHourInfo">
-            {/* <p className="hourValue">{props.dataForecast.data && dataForecast.data[0].date_start}</p>
-            <p className="hourValue">{props.dataForecast.data && dataForecast.data[0].date_end}</p> */}
+            <p className="hourValue">{day.startProg}</p>
+            <p className="hourValue">{day.endProg}</p>
           </div>
         </div>
       </div>
@@ -118,7 +118,7 @@ const ForecastDetails = ({ day }) => {
       <div className="mapHourforecastLightningContainer">
         <div className="hourForcastContainer">
           <div className="hourForcastLabel">
-            <p>Voir l'éclairage à</p>
+            <p>Voir l&apos;éclairage à</p>
             <TimePicker2 />
           </div>
           <div className="hourForcastDropDown">

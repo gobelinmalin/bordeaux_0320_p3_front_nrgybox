@@ -18,6 +18,8 @@ import './ForecastContainer.css';
 
 const ForecastContainer = ({ arrayAllDay }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [datageoloc, setDatageoloc] = useState([]);
+  const [position, setPosition] = useState({});
 
   const dispatch = useDispatch();
 
@@ -76,14 +78,11 @@ const ForecastContainer = ({ arrayAllDay }) => {
     return currentDate;
   };
 
-  const [datageoloc, setDatageoloc] = useState([]);
-
-  const [position, setPosition] = useState({});
-
   useEffect(() => {
     // set local storage
     setDatageoloc(JSON.parse(localStorage.getItem('datageoloc')));
     setPosition(JSON.parse(localStorage.getItem('position')));
+
     // weather API
     const fetchDataWeather = () => {
       return Axios.get(
@@ -92,55 +91,54 @@ const ForecastContainer = ({ arrayAllDay }) => {
     };
 
     // dates start and end program
-    // const fetchDataProgram = () => {
-    //   return Axios({
-    //     method: 'GET',
-    //     url: `${process.env.REACT_APP_URL}/programs`
-    //   })
-    // };
-
-    Promise.all([fetchDataWeather()]) // fetchDataProgram()
-      .then((results) => {
-        dispatch(weatherForecast(results[0].data));
-        // dispatch(dataProgramForecast(results[1]));
-
-        const arr = [];
-
-        // for each day, construct an array of objects with all day informations
-        results[0].data.daily.forEach((day, index) => {
-          // get the current date
-          const date = new Date(day.dt * 1000);
-
-          // moon API
-          Axios.get(
-            `http://www.lunopia.com/call?what=rs&where=Bordeaux&when=specDate&day=${date.getDate()}&month=${
-              date.getMonth() + 1
-            }&year=${date.getFullYear()}&key=${
-              process.env.REACT_APP_MOON_API_KEY
-            }`
-          )
-            .then((res) => res.data)
-            .then((data) => {
-              arr[index] = {
-                date: formatDate(day.dt),
-                currentDay: timestampToDay(day.dt),
-                sunrise: data.SOLEIL.LEVE,
-                sunset: data.SOLEIL.COUCHE,
-                // results[1].date_start
-                // results[1].date_end
-                moonrise: data.LUNE.LEVE,
-                moonset: data.LUNE.COUCHE,
-                temp: Math.floor(day.temp.day),
-                iconWeather: day.weather[0].icon,
-              };
-              if (arr.length === 8) {
-                setIsLoading(false);
-              }
-            })
-            .catch((err) => console.log(err));
-        });
-        dispatch(allDay(arr));
+    const fetchDataProgram = () => {
+      return Axios({
+        method: 'GET',
+        url: `${process.env.REACT_APP_URL}/programs`,
       });
+    };
+
+    Promise.all([fetchDataWeather(), fetchDataProgram()]).then((results) => {
+      dispatch(weatherForecast(results[0].data));
+      dispatch(dataProgramForecast(results[1]));
+
+      const arr = [];
+
+      // for each day, construct an array of objects with all day informations
+      results[0].data.daily.forEach((day, index) => {
+        // get the current date
+        const date = new Date(day.dt * 1000);
+
+        // moon API
+        Axios.get(
+          `http://www.lunopia.com/call?what=rs&where=Bordeaux&when=specDate&day=${date.getDate()}&month=${
+            date.getMonth() + 1
+          }&year=${date.getFullYear()}&key=${
+            process.env.REACT_APP_MOON_API_KEY
+          }`
+        )
+          .then((res) => res.data)
+          .then((data) => {
+            arr[index] = {
+              date: formatDate(day.dt),
+              currentDay: timestampToDay(day.dt),
+              sunrise: data.SOLEIL.LEVE,
+              sunset: data.SOLEIL.COUCHE,
+              startProg: results[1].data[index].date_start,
+              endProg: results[1].data[index].date_end,
+              moonrise: data.LUNE.LEVE,
+              moonset: data.LUNE.COUCHE,
+              temp: Math.floor(day.temp.day),
+              iconWeather: day.weather[0].icon,
+            };
+            if (arr.length === 8) {
+              setIsLoading(false);
+            }
+          })
+          .catch((err) => console.log(err));
+      });
+      dispatch(allDay(arr));
+    });
   }, []);
 
   const LocalStorageGeoloc = JSON.parse(localStorage.getItem('datageoloc'));
@@ -152,7 +150,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
           <div className="GeolocUser">
             <div className="CityIconEdit">
               <h3>nom ville</h3>
-              {LocalStorageGeoloc[0].text}
+              {/* {LocalStorageGeoloc[0].text} */}
               <div className="EditAdressIcon">
                 <EditPen />
               </div>
