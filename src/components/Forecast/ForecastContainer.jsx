@@ -76,11 +76,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
     return currentDate;
   };
 
-  const [datageoloc, setDatageoloc] = useState([]);
-  
   const [position, setPosition] = useState({});
-
-
 
   useEffect(() => {
     // set local storage 
@@ -92,6 +88,8 @@ const ForecastContainer = ({ arrayAllDay }) => {
         `https://api.openweathermap.org/data/2.5/onecall?lat=${position.latitude}&lon=${position.longitude}exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
     };
+
+
 
     // dates start and end program
     // const fetchDataProgram = () => {
@@ -145,7 +143,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
       });
   }, []);
 
-  console.log(datageoloc)
+  const localStorageGeoloc = JSON.parse(localStorage.getItem('datageoloc')); 
   return (
     <div className="ForecastContainer">
       <h1>Les prévisions lumineuses</h1>
@@ -154,11 +152,13 @@ const ForecastContainer = ({ arrayAllDay }) => {
           <div className="GeolocUser">
             <div className="CityIconEdit">
               <h3>nom ville</h3>
+              {localStorageGeoloc[0].text}
               <div className="EditAdressIcon">
                 <EditPen />
               </div>
             </div>
             <h3>Adresse</h3>
+            {position.latitude}
           </div>
         </div>
       </div>
