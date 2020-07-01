@@ -64,7 +64,7 @@ const ForecastDetails = ({ day }) => {
       <div className="hrContainer">
         <hr className="hr1" />
       </div>
-      <div className="moonriseMoonsetContainer">
+      {/* <div className="moonriseMoonsetContainer">
         <div className="moonIcon">
           <img
             className="moonIcon2"
@@ -88,10 +88,10 @@ const ForecastDetails = ({ day }) => {
             <p>{day.moonset}</p>
           </div>
         </div>
-      </div>
-      <div className="hrContainer">
+      </div> */}
+      {/* <div className="hrContainer">
         <hr className="hr1" />
-      </div>
+      </div> */}
       <div className="forecastLightningContainer">
         <div className="dayforecastLightningContainer">
           <div className="dayforecastLightningLabel">

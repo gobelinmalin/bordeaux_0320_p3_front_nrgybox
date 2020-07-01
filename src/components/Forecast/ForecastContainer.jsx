@@ -7,19 +7,13 @@ import PropTypes from 'prop-types';
 // Components
 import { ReactComponent as EditPen } from '../../icons/editPen.svg';
 import ForecastSlider from './ForecastSlider/ForecastSlider';
-import {
-  weatherForecast,
-  dataProgramForecast,
-  allDay,
-} from '../../actions/ForecastAction';
+import { allDay } from '../../actions/ForecastAction';
 
 // CSS
 import './ForecastContainer.css';
 
 const ForecastContainer = ({ arrayAllDay }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [datageoloc, setDatageoloc] = useState([]);
-  // const [position, setPosition] = useState({});
 
   const dispatch = useDispatch();
 
@@ -37,6 +31,12 @@ const ForecastContainer = ({ arrayAllDay }) => {
       'Samedi',
     ];
     return jours[date.getDay()];
+  };
+
+  const timestampToHour = (timestamp) => {
+    const transformTimestamp = timestamp * 1000;
+    const hour = new Date(transformTimestamp);
+    return `${hour.getHours()}:${hour.getMinutes()}`;
   };
 
   // transform a timestamp in entire format date
@@ -78,16 +78,30 @@ const ForecastContainer = ({ arrayAllDay }) => {
     return currentDate;
   };
 
-  // const LocalStorageGeoloc = JSON.parse(localStorage.getItem('datageoloc'));
-
   useEffect(() => {
-    // set local storage
-    const testPosition = JSON.parse(localStorage.getItem('position'));
+    let position = {};
+
+    if (localStorage.getItem('datageoloc')) {
+      const jsonParse = JSON.parse(localStorage.getItem('datageoloc'))[0]
+        .latlng;
+
+      position = {
+        lat: jsonParse.lat,
+        lng: jsonParse.lng,
+      };
+    } else {
+      const jsonParse = JSON.parse(localStorage.getItem('position'));
+
+      position = {
+        lat: jsonParse.latitude,
+        lng: jsonParse.longitude,
+      };
+    }
 
     // weather API
     const fetchDataWeather = () => {
       return Axios.get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${testPosition.latitude}&lon=${testPosition.longitude}&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${position.lat}&lon=${position.lng}&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
     };
 
@@ -104,37 +118,20 @@ const ForecastContainer = ({ arrayAllDay }) => {
 
       // for each day, construct an array of objects with all day informations
       results[0].data.daily.forEach((day, index) => {
-        // get the current date
-        const date = new Date(day.dt * 1000);
-
-        // moon API
-        Axios.get(
-          `http://www.lunopia.com/call?what=rs&where=Paris&when=specDate&day=${date.getDate()}&month=${
-            date.getMonth() + 1
-          }&year=${date.getFullYear()}&key=${
-            process.env.REACT_APP_MOON_API_KEY
-          }`
-        )
-          .then((res) => res.data)
-          .then((data) => {
-            arr[index] = {
-              date: formatDate(day.dt),
-              currentDay: timestampToDay(day.dt),
-              sunrise: data.SOLEIL.LEVE,
-              sunset: data.SOLEIL.COUCHE,
-              startProg: results[1].data[index].date_start,
-              endProg: results[1].data[index].date_end,
-              moonrise: data.LUNE.LEVE,
-              moonset: data.LUNE.COUCHE,
-              temp: Math.floor(day.temp.day),
-              iconWeather: day.weather[0].icon,
-            };
-            if (arr.length === 8) {
-              setIsLoading(false);
-              dispatch(allDay(arr));
-            }
-          })
-          .catch((err) => console.log(err));
+        arr[index] = {
+          date: formatDate(day.dt),
+          currentDay: timestampToDay(day.dt),
+          sunrise: timestampToHour(day.sunrise),
+          sunset: timestampToHour(day.sunset),
+          startProg: results[1].data[index].date_start,
+          endProg: results[1].data[index].date_end,
+          temp: Math.floor(day.temp.day),
+          iconWeather: day.weather[0].icon,
+        };
+        if (arr.length === 8) {
+          setIsLoading(false);
+          dispatch(allDay(arr));
+        }
       });
     });
   }, []);
@@ -153,7 +150,6 @@ const ForecastContainer = ({ arrayAllDay }) => {
               </div>
             </div>
             <h3>Adresse</h3>
-            {/* {testPosition.latitude} */}
           </div>
         </div>
       </div>
