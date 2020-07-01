@@ -8,5 +8,10 @@
 
 .separation {
   background-color: #235a8c;
-  padding: 5px;;
+  padding: 5px;
+}
+
+.sc-AxjAm.jZJahn {
+  position: absolute;
+  z-index:2
 }

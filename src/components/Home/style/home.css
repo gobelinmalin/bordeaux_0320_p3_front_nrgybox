@@ -2,12 +2,16 @@
   body {
     background-color: #2a2754;
   }
-  .container {
+  .leaflet-container {
+    width: 10px;
+    height: 10px;
+  }
+  .container_01 {
     display: block;
     justify-content: center;
     height: 100vh;
   }
-  .container h1 {
+  .container_01 h1 {
     display: flex;
     justify-content: center;
     font-family: 'aqua';
@@ -21,9 +25,11 @@
   }
   .logo_start {
     color: #538abc;
+    font-family: 'aqua';
   }
   .logo_end {
     color: #e9e98a;
+    font-family: 'aqua';
   }
   .search_bar {
     display: flex;
@@ -44,12 +50,13 @@
   .lamp_logo {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 94px;
   }
   .text_intro {
     display: flex;
     justify-content: center;
     font-size: 30px;
+    font-family: 'aqua'
   }
   .text_start_intro {
     color: #538abc;
@@ -69,6 +76,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    font-family: 'roboto';
   }
 }
 

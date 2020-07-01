@@ -2,6 +2,13 @@
   src: url('./../src/font/aqua.ttf');
   font-family: 'aqua';
 }
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #182c61;
 
@@ -16,4 +23,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.leaflet-container {
+  height: 420px;
+  width: 100%;
 }

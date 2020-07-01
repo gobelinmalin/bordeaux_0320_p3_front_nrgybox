@@ -19,7 +19,7 @@ const Nav = styled.nav`
 
 const Navbar = () => {
   return (
-    <Nav>
+    <Nav className="container_nav">
       <div className="logo">
         <h1>
           <a className="logo-start">Nrgy</a>
