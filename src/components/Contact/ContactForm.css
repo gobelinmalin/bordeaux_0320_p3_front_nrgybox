@@ -1,0 +1,29 @@
+.ContactForm {
+  color: #c5daed;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-contact {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border: none;
+  width: 370px;
+}
+
+.submit-form {
+  border-radius: 10px;
+  border: none;
+  background-color: #c5daed;
+  outline: none;
+}
+
+.form-title {
+  text-align: center;
+}
