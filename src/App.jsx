@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import ForecastContainer from './components/Forecast/ForecastContainer';
+import Admin from './components/Users/Admin';
+import ShowLocation from './components/Geolocation/ShowLocation';
+
+
 // import StateContainer from './container/StateContainer';
 
 
@@ -18,6 +22,8 @@ class App extends Component {
             <Route path="/" component={Home} exact />
             {/* <StateContainer /> */}
             <Route path="/weather" component={ForecastContainer} />
+            <Route path="/admin" component={Admin} />
+            <Route path="/map" component={ShowLocation} />
           </Switch>
         </div>
       </BrowserRouter>
