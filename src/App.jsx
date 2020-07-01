@@ -5,11 +5,7 @@ import Home from './components/Home/Home';
 import ForecastContainer from './components/Forecast/ForecastContainer';
 import Admin from './components/Users/Admin';
 import ShowLocation from './components/Geolocation/ShowLocation';
-
-
 // import StateContainer from './container/StateContainer';
-
-
 import './App.css';
 import ContactForm from './components/Contact/ContactForm';
 // import { Button } from "reactstrap";
