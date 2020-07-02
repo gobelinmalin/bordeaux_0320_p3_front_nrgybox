@@ -4,6 +4,7 @@ import { connect, useDispatch } from 'react-redux';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
 
+
 // Components
 import { ReactComponent as EditPen } from '../../icons/editPen.svg';
 import ForecastSlider from './ForecastSlider/ForecastSlider';
