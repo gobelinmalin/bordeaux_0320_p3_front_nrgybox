@@ -1,0 +1,21 @@
+.Home_map .leaflet-pane, .Home_map .leaflet-map-pane { 
+  display: block;
+  height:150px!important;
+}
+
+.Home_map {
+  width: 330px!important;
+  height: 150px!important;
+  text-align: center;
+  border-bottom-left-radius: 20px!important;
+  border-radius: 10px!important;
+  -webkit-border-radius: 10px!important;
+  -moz-border-radius: 10px!important;
+  -ms-border-radius: 10px!important;
+  -o-border-radius: 10px!important;
+}
+
+.mapContainerWeather {
+  display:flex;
+  justify-content: center;
+}

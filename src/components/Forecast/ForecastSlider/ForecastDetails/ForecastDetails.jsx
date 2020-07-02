@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 // import { ReactComponent as Heart } from '../../../../icons/heartSolid.svg';
 // import { ReactComponent as Sun } from '../../../../icons/sunnyOutline.svg';
 // import { ReactComponent as Moon } from '../../../../icons/moonOutline.svg';
-import TimePicker2 from '../../../Assets/TimePicker2';
+import ForecastMap from '../ForecastMap/ForecastMap';
 
 // CSS
 import './ForecastDetails.css';
@@ -64,7 +64,7 @@ const ForecastDetails = ({ day }) => {
       <div className="hrContainer">
         <hr className="hr1" />
       </div>
-      <div className="moonriseMoonsetContainer">
+      {/* <div className="moonriseMoonsetContainer">
         <div className="moonIcon">
           <img
             className="moonIcon2"
@@ -88,10 +88,10 @@ const ForecastDetails = ({ day }) => {
             <p>{day.moonset}</p>
           </div>
         </div>
-      </div>
-      <div className="hrContainer">
+      </div> */}
+      {/* <div className="hrContainer">
         <hr className="hr1" />
-      </div>
+      </div> */}
       <div className="forecastLightningContainer">
         <div className="dayforecastLightningContainer">
           <div className="dayforecastLightningLabel">
@@ -117,16 +117,15 @@ const ForecastDetails = ({ day }) => {
       </div>
       <div className="mapHourforecastLightningContainer">
         <div className="hourForcastContainer">
-          <div className="hourForcastLabel">
-            <p>Voir l&apos;éclairage à</p>
-            <TimePicker2 />
+          {/* <div className="hourForcastLabel">
+           
           </div>
           <div className="hourForcastDropDown">
-            <select>hours</select>
-          </div>
+           
+          </div> */}
         </div>
         <div className="mapForcastContainer">
-          <p>map here</p>
+          <ForecastMap day={day} />
         </div>
       </div>
     </div>

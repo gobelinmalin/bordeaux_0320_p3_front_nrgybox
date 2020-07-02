@@ -5,6 +5,7 @@
 
 .Home_map .leaflet-pane, .Home_map .leaflet-map-pane {
     display: block;
+    height:150px;
 }
 
 .leaflet-container, .leaflet-touch.leaflet-retina, .leaflet-safari.leaflet-fade-anim, .leaflet-grab.leaflet-touch-drag, .leaflet-touch-zoom {
