@@ -3,13 +3,11 @@ import React from 'react';
 import SemiCircleProgressBar from 'react-progressbar-semicircle';
 import PropTypes from 'prop-types';
 
-
 // Components
 // import { ReactComponent as Heart } from '../../../../icons/heartSolid.svg';
 // import { ReactComponent as Sun } from '../../../../icons/sunnyOutline.svg';
 // import { ReactComponent as Moon } from '../../../../icons/moonOutline.svg';
-import TimePicker2 from '../../../Assets/TimePicker2';
-import ForecastMap from '../ForecastMap/ForecastMap'
+import ForecastMap from '../ForecastMap/ForecastMap';
 
 // CSS
 import './ForecastDetails.css';
