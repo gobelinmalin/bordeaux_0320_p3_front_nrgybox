@@ -19,18 +19,20 @@
         margin: 0 auto;
         height: 380px;
     } */
-    
-    /* .cardSlider {
-        width: 370px;
-        height:550px;
-        border-color: blue;
-        justify-content: left;
-    }
 
     .card1 {
-        border-color:red;
+        width: 350px;
         height: 550px;
+        margin-left: 12px;
+    }
 
-    } */
+    .slick-list{
+        height: 510px!important;
+    }
+ 
+    button::before {
+        background-color:white;
+        border-radius: 20px;
+    }
 
 }

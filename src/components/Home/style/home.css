@@ -51,6 +51,7 @@
     display: flex;
     justify-content: center;
     margin-top: 94px;
+    flex-direction: column;
   }
   .text_intro {
     display: flex;
@@ -77,5 +78,61 @@
     justify-content: center;
     text-align: center;
     font-family: 'roboto';
+  }
+
+  .searchCTAContainer{
+    width:375px;
+    height: 50px;
+    display:flex;
+    justify-content: center;
+    z-index:2;
+    border-color:green;
+    border-style:solid;
+  }
+
+  .mapAndSearchContainer {
+    z-index:1
+  }
+
+  button.searchCTA {
+    width:150px;
+    border-color:blue;
+    border-style:solid;
+    height:35px;
+    text-align:center;
+    border-radius:20px;
+    border:none;
+    background-color: rgb(255, 247, 0, 0.77);
+    color: white;
+    font-weight: bold;
+    margin-top:-10%;
+    position: absolute;
+    z-index:3;
+  }
+
+  button.searchCTA:hover {
+    width:150px;
+    height:35px;
+    text-align:center;
+    border-radius:20px;
+    border:none;
+    background-color: rgba(255, 247, 0, 0.77);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    z-index:3;
+  }
+
+  .logoHome{
+    display:flex;
+    justify-content: center;
+  }
+
+  .linkToForecats {
+    border-color:red;
+    border-style:solid;
+    width:375px;
+    
   }
 }

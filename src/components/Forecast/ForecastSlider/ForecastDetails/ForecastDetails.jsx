@@ -119,16 +119,15 @@ const ForecastDetails = ({ day }) => {
       </div>
       <div className="mapHourforecastLightningContainer">
         <div className="hourForcastContainer">
-          <div className="hourForcastLabel">
-            <p>Voir l&apos;éclairage à</p>
+          {/* <div className="hourForcastLabel">
+           
           </div>
           <div className="hourForcastDropDown">
-            <select>hours</select>
-          </div>
+           
+          </div> */}
         </div>
         <div className="mapForcastContainer">
-         <ForecastMap /> 
-        <p> coucou chloe</p>
+          <ForecastMap day={day} />
         </div>
       </div>
     </div>

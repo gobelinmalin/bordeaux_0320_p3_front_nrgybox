@@ -8,6 +8,7 @@ import ForecastDetails from './ForecastDetails/ForecastDetails';
 
 // css
 import './ForecastSlider.css';
+import ForecastMap from './ForecastMap/ForecastMap';
 
 const ForecastSlider = ({ arrayAllDay, isLoading }) => {
   const [slider, setSlider] = useState(null);
@@ -68,6 +69,7 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
       {isLoading ? (
         '...wait for it'
       ) : (
+        /* eslint-disable react/jsx-props-no-spreading */
         <Slider ref={(slider) => setSlider(slider)} {...settings}>
           {arrayAllDay &&
             arrayAllDay.map((day, index) => {

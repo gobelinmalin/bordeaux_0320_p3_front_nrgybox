@@ -4,17 +4,18 @@ import { connect, useDispatch } from 'react-redux';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
 
-
 // Components
 import { ReactComponent as EditPen } from '../../icons/editPen.svg';
 import ForecastSlider from './ForecastSlider/ForecastSlider';
 import { allDay } from '../../actions/ForecastAction';
+
 
 // CSS
 import './ForecastContainer.css';
 
 const ForecastContainer = ({ arrayAllDay }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [reverseLatLng, setReverseLatLng] = useState({});
 
   const dispatch = useDispatch();
 
@@ -79,25 +80,35 @@ const ForecastContainer = ({ arrayAllDay }) => {
     return currentDate;
   };
 
+  
   useEffect(() => {
     let position = {};
-
+  
     if (localStorage.getItem('datageoloc')) {
-      const jsonParse = JSON.parse(localStorage.getItem('datageoloc'))[0]
+      const jsonParseCity = JSON.parse(localStorage.getItem('datageoloc'))[0]
         .latlng;
-
+  
       position = {
-        lat: jsonParse.lat,
-        lng: jsonParse.lng,
+        lat: jsonParseCity.lat,
+        lng: jsonParseCity.lng,
       };
     } else {
-      const jsonParse = JSON.parse(localStorage.getItem('position'));
-
+      const jsonParseGeoloc = JSON.parse(localStorage.getItem('position'));
+  
       position = {
-        lat: jsonParse.latitude,
-        lng: jsonParse.longitude,
+        lat: jsonParseGeoloc.latitude,
+        lng: jsonParseGeoloc.longitude,
       };
     }
+
+    // reverse latitude and longitude to get the city name
+    const reverseLatLng = () => {
+      return Axios.get(
+        `https://api-adresse.data.gouv.fr/reverse/?lat=${position.lat}&long=${position.lng}`
+      )
+      .then(res => res.data)
+      .then(data => setReverseLatLng(data.features[0].properties.label))
+    };
 
     // weather API
     const fetchDataWeather = () => {
@@ -114,12 +125,13 @@ const ForecastContainer = ({ arrayAllDay }) => {
       });
     };
 
-    Promise.all([fetchDataWeather(), fetchDataProgram()]).then((results) => {
+    Promise.all([fetchDataWeather(), fetchDataProgram(), reverseLatLng()]).then((results) => {
       const arr = [];
 
       // for each day, construct an array of objects with all day informations
       results[0].data.daily.forEach((day, index) => {
         arr[index] = {
+          geoloc: position,
           date: formatDate(day.dt),
           currentDay: timestampToDay(day.dt),
           sunrise: timestampToHour(day.sunrise),
@@ -137,6 +149,8 @@ const ForecastContainer = ({ arrayAllDay }) => {
     });
   }, []);
 
+  const cityName = JSON.parse(localStorage.getItem('datageoloc'))[0].text;
+
   return (
     <div className="ForecastContainer">
       <h1>Les prévisions lumineuses</h1>
@@ -144,18 +158,19 @@ const ForecastContainer = ({ arrayAllDay }) => {
         <div className="ForecastContainerHeaderElem">
           <div className="GeolocUser">
             <div className="CityIconEdit">
-              <h3>nom ville</h3>
-              {/* {LocalStorageGeoloc[0].text} */}
+              <h3>{localStorage.getItem('datageoloc') && cityName}</h3>
               <div className="EditAdressIcon">
                 <EditPen />
               </div>
             </div>
-            <h3>Adresse</h3>
           </div>
         </div>
       </div>
       <div className="cardContainer">
-        <ForecastSlider arrayAllDay={arrayAllDay} isLoading={isLoading} />
+        <ForecastSlider
+          arrayAllDay={arrayAllDay}
+          isLoading={isLoading}
+        />
       </div>
     </div>
   );

@@ -10,10 +10,8 @@
 }
 
 body {
-  background-color: #182c61;
-
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'aqua', 'Segoe UI', 'Roboto',
+  font-family: 'Segoe UI', 'Roboto',
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
