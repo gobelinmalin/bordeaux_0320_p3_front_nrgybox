@@ -5,7 +5,7 @@ import Home from './components/Home/Home';
 import ForecastContainer from './components/Forecast/ForecastContainer';
 import Admin from './components/Users/Admin';
 import ShowLocation from './components/Geolocation/ShowLocation';
-import Programme from './Components/Programme';
+import Programme from './components/Programme/Programme';
 
 import './App.css';
 import ContactForm from './components/Contact/ContactForm';
