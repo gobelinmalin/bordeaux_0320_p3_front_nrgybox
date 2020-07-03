@@ -86,8 +86,6 @@
     display:flex;
     justify-content: center;
     z-index:2;
-    border-color:green;
-    border-style:solid;
   }
 
   .mapAndSearchContainer {
@@ -96,8 +94,6 @@
 
   button.searchCTA {
     width:150px;
-    border-color:blue;
-    border-style:solid;
     height:35px;
     text-align:center;
     border-radius:20px;
@@ -130,9 +126,10 @@
   }
 
   .linkToForecats {
-    border-color:red;
+    display: flex;
+    justify-content: center;
     border-style:solid;
     width:375px;
-    
+    border: none;
   }
 }
