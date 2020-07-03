@@ -134,8 +134,8 @@ const ForecastContainer = ({ arrayAllDay }) => {
           currentDay: timestampToDay(day.dt),
           sunrise: timestampToHour(day.sunrise),
           sunset: timestampToHour(day.sunset),
-          startProg: results[1].data[index] ? results[1].data[index].date_start : false,
-          endProg: results[1].data[index] ? results[1].data[index].date_end : false,
+          startProg: results[1].data[index].date_start,
+          endProg: results[1].data[index].date_end,
           temp: Math.floor(day.temp.day),
           iconWeather: day.weather[0].icon,
         };

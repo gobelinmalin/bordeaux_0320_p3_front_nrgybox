@@ -107,8 +107,8 @@ const ForecastDetails = ({ day }) => {
             />
           </div>
           <div className="dayforecastLightningHourInfo">
-            <p className="hourValue">{day.startProg !== false && day.startProg}</p>
-            <p className="hourValue">{day.endProg !== false && day.endProg}</p>
+            <p className="hourValue">{day.startProg}</p>
+            <p className="hourValue">{day.endProg}</p>
           </div>
         </div>
       </div>
