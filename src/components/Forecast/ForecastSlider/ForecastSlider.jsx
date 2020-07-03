@@ -8,12 +8,12 @@ import ForecastDetails from './ForecastDetails/ForecastDetails';
 
 // css
 import './ForecastSlider.css';
-import ForecastMap from './ForecastMap/ForecastMap';
 
 const ForecastSlider = ({ arrayAllDay, isLoading }) => {
   const [slider, setSlider] = useState(null);
   const [select, setSelect] = useState(0);
 
+  /* eslint-disable no-unused-vars */
   const settings = {
     dots: true,
     arrows: false,
@@ -23,6 +23,16 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
     adaptiveHeight: true,
     swipeToSlide: true,
     beforeChange: (current, next) => setSelect(next),
+    customPaging: (pagi, i) => {
+      const style = {
+        width: 13,
+        height: 13,
+        display: 'inline-block',
+        backgroundColor: 'white',
+        borderRadius: '50%',
+      };
+      return <a className="slick-dot" style={style} />;
+    },
     responsive: [
       {
         breakpoint: 480,
@@ -43,7 +53,7 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
       if (index === 0) {
         return (
           <option selected={selected} key={index} value={index}>
-            Aujourd'hui
+            Aujourd&apos;hui
           </option>
         );
       } else {
@@ -57,7 +67,7 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
 
   return (
     <div className="ForecastSlider">
-      <div>
+      <div className="ContainerSelect">
         <select
           id="selectDayForecast"
           name="selectDayForecast"

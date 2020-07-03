@@ -1,12 +1,7 @@
-.Home_map .leaflet-pane, .Home_map .leaflet-map-pane { 
-  display: block;
-  height:150px!important;
-}
-
 .Home_map {
   width: 330px!important;
-  height: 150px!important;
-  text-align: center;
+  height: 130px!important;
+  /* text-align: center; */
   border-bottom-left-radius: 20px!important;
   border-radius: 10px!important;
   -webkit-border-radius: 10px!important;

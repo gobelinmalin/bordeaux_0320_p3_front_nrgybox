@@ -1,38 +1,30 @@
 @media (max-width: 376px){
+  .ForecastSlider .ContainerSelect{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
 
-    /* .ForecastContainer {
-        width: 100%;
-        flex-direction: column;
-    } */
+  .card1 {
+    width: 350px;
+    height: 550px;
+    margin-left: 12px;
+  }
 
-    /* .ForecastSlider{
-        display: flex;
-        width: 93%;
-        height: 500px;
-        margin-left: auto;
-        margin-right:auto;
-    } */
+  .slick-list{
+    height: 510px!important;
+  }
 
-    /* .ForecastSlider{
-        width: 80%;
-        margin-top: 20px;
-        margin: 0 auto;
-        height: 380px;
-    } */
+  .slick-dots .slick-active{
+    opacity: 0.5!important;
+  }
 
-    .card1 {
-        width: 350px;
-        height: 550px;
-        margin-left: 12px;
-    }
-
-    .slick-list{
-        height: 510px!important;
-    }
- 
-    button::before {
-        background-color:white;
-        border-radius: 20px;
-    }
-
+  button::before {
+    background-color:white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
 }

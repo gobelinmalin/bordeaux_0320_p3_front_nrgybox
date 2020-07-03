@@ -1,5 +1,6 @@
 // Modules
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect, useDispatch } from 'react-redux';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
@@ -134,8 +135,15 @@ const ForecastContainer = ({ arrayAllDay }) => {
           currentDay: timestampToDay(day.dt),
           sunrise: timestampToHour(day.sunrise),
           sunset: timestampToHour(day.sunset),
-          startProg: results[1].data[index].date_start ? results[1].data[index].date_start : false,
-          endProg: results[1].data[index].date_end ? results[1].data[index].date_end : false,
+          // make a condition if the data in the database exist or not
+          startProg:
+            results[1].data[index] !== undefined
+              ? results[1].data[index].date_start
+              : false,
+          endProg:
+            results[1].data[index] !== undefined
+              ? results[1].data[index].date_end
+              : false,
           temp: Math.floor(day.temp.day),
           iconWeather: day.weather[0].icon,
         };
@@ -151,15 +159,11 @@ const ForecastContainer = ({ arrayAllDay }) => {
     <div className="ForecastContainer">
       <h1>Les prévisions lumineuses</h1>
       <div className="ForecastContainerHeader">
-        <div className="ForecastContainerHeaderElem">
-          <div className="GeolocUser">
-            <div className="CityIconEdit">
-              <h3>{cityName !== '' ? cityName : reverseLatLng}</h3>
-              <div className="EditAdressIcon">
-                <EditPen />
-              </div>
-            </div>
-          </div>
+        <h3>{cityName !== '' ? cityName : reverseLatLng}</h3>
+        <div className="EditAdressIcon">
+          <Link to="/">
+            <EditPen />
+          </Link>
         </div>
       </div>
       <div className="cardContainer">
