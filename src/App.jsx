@@ -5,7 +5,7 @@ import Home from './components/Home/Home';
 import ForecastContainer from './components/Forecast/ForecastContainer';
 import Admin from './components/Users/Admin';
 import ShowLocation from './components/Geolocation/ShowLocation';
-
+import Navbar from './components/BurgerMenu/Navbar';
 
 // import StateContainer from './container/StateContainer';
 
@@ -18,16 +18,17 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Switch>
-            <Route path="/" component={Home} exact />
-            {/* <StateContainer /> */}
-            <Route path="/weather" component={ForecastContainer} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/map" component={ShowLocation} />
-            <Route path="/contactus" component={ContactForm} />
-          </Switch>
-        </div>
+        <Switch>
+          <div>
+            <Navbar />
+              <Route path="/" component={Home} exact />
+              <Route path="/weather" component={ForecastContainer} />
+              <Route path="/admin" component={Admin} />
+              <Route path="/map" component={ShowLocation} />
+              <Route path="/contactus" component={ContactForm} />
+            {/* footer */}
+          </div>
+        </Switch>
       </BrowserRouter>
     );
   }

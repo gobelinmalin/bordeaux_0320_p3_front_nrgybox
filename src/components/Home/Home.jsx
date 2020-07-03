@@ -38,7 +38,6 @@ class Home extends Component {
     
     return (
       <div className="container_01">
-        <Burger />
         <h1>
           <p className="logo_start">NRGY</p>
           <p className="logo_end">Box</p>
