@@ -1,7 +1,7 @@
 .ForecastDetailsContainer{
   background-color: #C5DAED;
   width: 100%;
-  height: 500px;
+  height: 380px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -109,8 +109,4 @@
   color: black;
   font-size:1em;
   margin-top: 10px;
-}
-
-.mapForecastLightningContainer{
-  height: 130px;
 }

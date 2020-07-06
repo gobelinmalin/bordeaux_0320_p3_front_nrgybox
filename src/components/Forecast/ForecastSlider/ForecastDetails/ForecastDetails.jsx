@@ -68,9 +68,9 @@ const ForecastDetails = ({ day }) => {
           <p>Aucune donnée trouvée</p>
         )}
       </div>
-      <div className="mapForecastLightningContainer">
+      {/* <div className="mapForecastLightningContainer">
         <ForecastMap day={day} />
-      </div>
+      </div> */}
     </div>
   );
 };

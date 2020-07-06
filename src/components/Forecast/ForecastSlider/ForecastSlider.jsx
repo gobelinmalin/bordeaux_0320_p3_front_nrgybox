@@ -18,10 +18,11 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
     dots: true,
     arrows: false,
     infinite: false,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    variableWidth: true,
     adaptiveHeight: true,
-    swipeToSlide: true,
+    swipeToSlide: false,
     beforeChange: (current, next) => setSelect(next),
     customPaging: (pagi, i) => {
       const style = {
@@ -35,7 +36,13 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
     },
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          swipeToSlide: true,
+          // variableWidth: false,
+        }
       },
     ],
   };
@@ -80,18 +87,20 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
         '...wait for it'
       ) : (
         /* eslint-disable react/jsx-props-no-spreading */
-        <Slider ref={(slider) => setSlider(slider)} {...settings}>
-          {arrayAllDay &&
-            arrayAllDay.map((day, index) => {
-              return (
-                <div key={index} className="cardSlider">
-                  <div className="card1">
-                    <ForecastDetails day={day} />
+        <div className="ContainerSliderElements">
+          <Slider ref={(slider) => setSlider(slider)} {...settings}>
+            {arrayAllDay &&
+              arrayAllDay.map((day, index) => {
+                return (
+                  <div key={index} className="card-slider">
+                    <div className="card1">
+                      <ForecastDetails day={day} />
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-        </Slider>
+                );
+              })}
+          </Slider>
+        </div>
       )}
     </div>
   );

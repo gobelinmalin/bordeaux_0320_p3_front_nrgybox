@@ -12,6 +12,7 @@ import { allDay } from '../../actions/ForecastAction';
 
 // CSS
 import './ForecastContainer.css';
+import ForecastMap from './ForecastSlider/ForecastMap/ForecastMap';
 
 const ForecastContainer = ({ arrayAllDay }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -168,6 +169,9 @@ const ForecastContainer = ({ arrayAllDay }) => {
       </div>
       <div className="cardContainer">
         <ForecastSlider arrayAllDay={arrayAllDay} isLoading={isLoading} />
+      </div>
+      <div className="mapForecastLightningContainer">
+        <ForecastMap arrayAllDay={arrayAllDay} />
       </div>
     </div>
   );
