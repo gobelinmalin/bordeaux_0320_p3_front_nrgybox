@@ -126,6 +126,27 @@ const ForecastContainer = ({ arrayAllDay }) => {
     };
 
     Promise.all([fetchDataWeather(), fetchDataProgram()]).then((results) => {
+      // find in data (get in the database) if there are multiple programs for one date
+      const progsPerDays = [];
+      const progsDone = [];
+
+      const progs = results[1].data;
+
+      progs.forEach((prog, index, arr) => {
+        const progDay = [];
+
+        if (progsDone.indexOf(prog.date) === -1) {
+          arr.forEach((prog2) => {
+            if (prog2.date === prog.date) {
+              progDay.push(prog2);
+            }
+          });
+
+          progsPerDays.push(progDay);
+          progsDone.push(prog.date);
+        }
+      });
+
       const arr = [];
 
       // for each day, construct an array of objects with all day informations
@@ -136,15 +157,8 @@ const ForecastContainer = ({ arrayAllDay }) => {
           currentDay: timestampToDay(day.dt),
           sunrise: timestampToHour(day.sunrise),
           sunset: timestampToHour(day.sunset),
-          // make a condition if the data in the database exist or not
-          startProg:
-            results[1].data[index] !== undefined
-              ? results[1].data[index].date_start
-              : false,
-          endProg:
-            results[1].data[index] !== undefined
-              ? results[1].data[index].date_end
-              : false,
+          // get the array of dates (program)
+          prog: progsPerDays[index],
           temp: Math.floor(day.temp.day),
           iconWeather: day.weather[0].icon,
         };

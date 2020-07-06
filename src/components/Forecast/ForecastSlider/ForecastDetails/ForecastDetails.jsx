@@ -2,12 +2,7 @@
 import React from 'react';
 import SemiCircleProgressBar from 'react-progressbar-semicircle';
 import PropTypes from 'prop-types';
-
-// Components
-// import { ReactComponent as Heart } from '../../../../icons/heartSolid.svg';
-// import { ReactComponent as Sun } from '../../../../icons/sunnyOutline.svg';
-// import { ReactComponent as Moon } from '../../../../icons/moonOutline.svg';
-import ForecastMap from '../ForecastMap/ForecastMap';
+import { Link } from 'react-router-dom';
 
 // CSS
 import './ForecastDetails.css';
@@ -59,18 +54,25 @@ const ForecastDetails = ({ day }) => {
             background="#FFFF"
           />
         </div>
-        {day.startProg !== false ? (
-          <div className="dayforecastLightningHourInfo">
-            <p className="hourValue">{day.startProg}</p>
-            <p className="hourValue">{day.endProg}</p>
-          </div>
+        {day.prog ? (
+          day.prog.map((date) => (
+            <div className="dayforecastLightningHourInfo">
+              <p className="hourValue">{date.date_start}</p>
+              <p className="hourValue">{date.date_end}</p>
+            </div>
+          ))
         ) : (
           <p>Aucune donnée trouvée</p>
         )}
       </div>
-      {/* <div className="mapForecastLightningContainer">
-        <ForecastMap day={day} />
-      </div> */}
+      <div className="ContainerAllDayPrograms">
+        <Link to="/programs">
+          <div className="ContainerPlusProgram">
+            <p>+</p>
+          </div>
+          Voir tous les programmes pour cette journée
+        </Link>
+      </div>
     </div>
   );
 };
