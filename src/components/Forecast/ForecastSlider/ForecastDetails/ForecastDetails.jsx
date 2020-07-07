@@ -1,13 +1,42 @@
 // Modules
 import React from 'react';
-import SemiCircleProgressBar from 'react-progressbar-semicircle';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 // CSS
 import './ForecastDetails.css';
 
 const ForecastDetails = ({ day }) => {
+  const arrProgsPercent = [];
+
+  day.prog &&
+    day.prog.map((elem) => {
+      const arrPercent = [];
+
+      const hourStart = elem.date_start.split(':');
+      const hourEnd = elem.date_end.split(':');
+
+      const convertHourStart = parseInt(hourStart[0], 10);
+      const convertHourEnd = parseInt(hourEnd[0], 10);
+      const convertMinuteStart = parseInt(hourStart[1], 10) / 60;
+      const convertMinuteEnd = parseInt(hourEnd[1], 10) / 60;
+
+      const calculPercentStart =
+        ((convertHourStart + convertMinuteStart) / 24) * (100).toFixed(2);
+
+      let calculPercentEnd = 0;
+
+      if (convertHourEnd === 0 && convertMinuteEnd === 0) {
+        calculPercentEnd = 100;
+      } else {
+        calculPercentEnd =
+          ((convertHourEnd + convertMinuteEnd) / 24) * (100).toFixed(2);
+      }
+
+      arrPercent.push(calculPercentStart, calculPercentEnd);
+
+      arrProgsPercent.push(arrPercent);
+    });
+
   return (
     <div className="ForecastDetailsContainer">
       <div className="dateWeatherContainer">
@@ -45,34 +74,32 @@ const ForecastDetails = ({ day }) => {
       </div>
       <div className="forecastLightningContainer">
         <p>Consignes d&apos;éclairage</p>
-        <div className="dayforecastLightningJauge">
-          <SemiCircleProgressBar
-            percentage={100}
-            stroke="#f2ef30"
-            strokeWidth={10}
-            diameter={130}
-            background="#FFFF"
-          />
+        <span>(sur 24h)</span>
+        <div className="AllTimeline">
+          {arrProgsPercent.length !== 0 ? (
+            arrProgsPercent.map((percent, index) => (
+              <div
+                className="ContainerPartTimeline"
+                style={{
+                  width: `${percent[1] - percent[0]}%`,
+                  left: `${percent[0]}%`,
+                }}
+              >
+                <div className="PartTimeline">
+                  <div className="PartTimelineElement start">
+                    {day.prog[index].date_start}
+                  </div>
+                  <div className="PartTimelineElement end">
+                    {day.prog[index].date_end}
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>Aucun programme trouvé</p>
+          )}
         </div>
-        {day.prog ? (
-          day.prog.map((date) => (
-            <div className="dayforecastLightningHourInfo">
-              <p className="hourValue">{date.date_start}</p>
-              <p className="hourValue">{date.date_end}</p>
-            </div>
-          ))
-        ) : (
-          <p>Aucun programme trouvé</p>
-        )}
       </div>
-      {/* <div className="ContainerAllDayPrograms">
-        <Link to="/programs">
-          <div className="ContainerPlusProgram">
-            <p>+</p>
-          </div>
-          Voir tous les programmes pour cette journée
-        </Link>
-      </div> */}
     </div>
   );
 };

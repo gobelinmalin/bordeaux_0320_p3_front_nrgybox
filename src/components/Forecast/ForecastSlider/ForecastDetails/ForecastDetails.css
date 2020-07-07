@@ -92,7 +92,12 @@
 
 .forecastLightningContainer p {
   color: black;
-  padding-bottom: 10px;
+}
+
+.forecastLightningContainer span{
+  padding-bottom: 55px;
+  color: black;
+  font-size: 0.8rem;
 }
 
 .dayforecastLightningJauge {
@@ -141,4 +146,81 @@
 
 .ContainerAllDayPrograms .ContainerPlusProgram p {
   font-size: 1.3rem;
+}
+
+.AllTimeline{
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  height: 10px;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.AllTimeline p{
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.ContainerPartTimeline{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  height: 10px;
+  background-color: #f6b93b;
+}
+
+.ContainerPartTimeline::before{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  width: 1px;
+  height: 200%;
+}
+
+.ContainerPartTimeline::after{
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  background-color: black;
+  width: 1px;
+  height: 200%;
+}
+
+.PartTimeline{
+  position: relative;
+  width: 100%;
+}
+
+.PartTimelineElement{
+  position: absolute;
+  width: 100%;
+  color: #547397;
+}
+
+.start{
+  top: -35px;
+  transform: translate(-45%, 0);
+  -webkit-transform: translate(-45%, 0);
+  -moz-transform: translate(-45%, 0);
+  -ms-transform: translate(-45%, 0);
+  -o-transform: translate(-45%, 0);
+}
+
+.end{
+  bottom: -35px;
+  transform: translate(45%, 0);
+  -webkit-transform: translate(45%, 0);
+  -moz-transform: translate(45%, 0);
+  -ms-transform: translate(45%, 0);
+  -o-transform: translate(45%, 0);
 }
