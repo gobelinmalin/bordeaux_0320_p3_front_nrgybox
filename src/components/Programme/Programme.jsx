@@ -1,17 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import './Programme.css';
+import DatePicker from 'react-mobile-datepicker';
 import Burger from '../BurgerMenu/Burger';
 
 const Programme = () => {
+  function convertDate(date, formate) {
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const second = date.getSeconds();
+
+    return formate
+      .replace(/h+/, hour)
+      .replace(/m+/, minute)
+      .replace(/s+/, second);
+  }
+  const [data, setData] = useState({
+    time: new Date(),
+    isOpen: false,
+  });
+
+  const handleClick = (time) => {
+    setData({ time, isOpen: true });
+  };
+
+  const handleCancel = () => {
+    setData({ isOpen: false });
+  };
+
+  const handleSelect = (time) => {
+    setData({ time, isOpen: false });
+  };
+
+  const dateConfig = {
+    hour: {
+      format: 'hh',
+      caption: 'Hour',
+      step: 1,
+    },
+    minute: {
+      format: 'mm',
+      caption: 'Min',
+      step: 1,
+    },
+    second: {
+      format: 'ss',
+      caption: 'Sec',
+      step: 1,
+    },
+  };
+
   function button() {
     // eslint-disable-next-line no-alert
     alert('Allumage opérationnel');
   }
+
   return (
     <div className="body">
       <div className="burger_menu">
@@ -32,28 +79,56 @@ const Programme = () => {
           iconStyle={{ background: 'rgb(255, 235, 118)', color: '#fff' }}
         >
           <h4 className="vertical-timeline-element-title">Début :</h4>
-          <select className="selectOption">
-            <option selected value="Horraire">
-              00H
-            </option>
-            <option value="Horraire">O1H</option>
-            <option value="Horraire">O2H</option>
-            <option value="Horraire">O3H</option>
-          </select>
+          <div className="TimePicker">
+            <button
+              type="button"
+              className="select-btn"
+              onClick={() => handleClick(data.time)}
+            >
+              {convertDate(data.time, 'hh:mm:ss')}
+            </button>
+            <DatePicker
+              value={data.time}
+              isOpen={data.isOpen}
+              isPopup
+              onSelect={handleSelect}
+              onCancel={handleCancel}
+              dateConfig={dateConfig}
+              headerFormat="hh:mm:ss"
+              confirmText="Valider"
+              cancelText="Annuler"
+              theme="android"
+              required
+            />
+          </div>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
           iconStyle={{ background: 'rgb(255, 235, 118)', color: '#fff' }}
         >
           <h4 className="vertical-timeline-element-title">Fin :</h4>
-          <select className="selectOption2">
-            <option selected value="Horraire">
-              00H
-            </option>
-            <option value="Horraire">O1H</option>
-            <option value="Horraire">O2H</option>
-            <option value="Horraire">O3H</option>
-          </select>
+          <div className="TimePicker">
+            <button
+              type="button"
+              className="select-btn2"
+              onClick={() => handleClick(data.time)}
+            >
+              {convertDate(data.time, 'hh:mm:ss')}
+            </button>
+            <DatePicker
+              value={data.time}
+              isOpen={data.isOpen}
+              isPopup
+              onSelect={handleSelect}
+              onCancel={handleCancel}
+              dateConfig={dateConfig}
+              headerFormat="hh:mm:ss"
+              confirmText="Valider"
+              cancelText="Annuler"
+              theme="android"
+              required
+            />
+          </div>
         </VerticalTimelineElement>
       </VerticalTimeline>
       <button type="button" className="button" onClick={button}>

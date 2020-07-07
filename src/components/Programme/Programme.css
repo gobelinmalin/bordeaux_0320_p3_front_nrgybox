@@ -69,7 +69,7 @@
     box-shadow: none;
 }
 
-.selectOption {
+.select-btn {
     border-radius: 30px;
     border-color: #E9E98A;
     border-width: 5px;
@@ -79,9 +79,11 @@
     width: 100px;
     margin-left: 20px;
     margin-top: -10px;
+    line-height: normal;
+    border-style: solid;
 }
 
-.selectOption2 {
+.select-btn2 {
     border-radius: 30px;
     border-color: #E9E98A;
     border-width: 5px;
@@ -91,4 +93,6 @@
     width: 100px;
     margin-top: -10px;
     margin-left: 58px;
+    line-height: normal;
+    border-style: solid;
 }
