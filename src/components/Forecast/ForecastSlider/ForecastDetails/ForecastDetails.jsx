@@ -62,17 +62,17 @@ const ForecastDetails = ({ day }) => {
             </div>
           ))
         ) : (
-          <p>Aucune donnée trouvée</p>
+          <p>Aucun programme trouvé</p>
         )}
       </div>
-      <div className="ContainerAllDayPrograms">
+      {/* <div className="ContainerAllDayPrograms">
         <Link to="/programs">
           <div className="ContainerPlusProgram">
             <p>+</p>
           </div>
           Voir tous les programmes pour cette journée
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };

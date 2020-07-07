@@ -20,7 +20,8 @@ class Home extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
+  getPosition(position) {
+    console.log(position);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude, longitude } = position.coords;
@@ -29,19 +30,24 @@ class Home extends Component {
           JSON.stringify({ latitude, longitude })
         );
       });
-    }
+      this.handleClick.bind(this)
+    }    
   }
 
-  
+  handleClick(e) {
+    this.getPosition("element clicked");
+  }
 
   render() {
-    
     return (
       <div className="container_01">
         <h1>
           <p className="logo_start">NRGY</p>
           <p className="logo_end">Box</p>
         </h1>
+        <NavLink className="linkToForecats" to="/weather">
+          <button className='searchCTA' onClick={(e) => this.handleClick(e)} value="Click me">Me localiser</button>
+        </NavLink>
         <div className="mapAndSearchContainer">
        <Map className="Home_map_none" center={{ lat: 51.5287718, lng: -0.2416804 }} style={{background: "#11ffee00"}} zoom={1}>
           <TileLayer
