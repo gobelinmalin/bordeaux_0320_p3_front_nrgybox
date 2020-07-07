@@ -86,8 +86,7 @@
     display:flex;
     justify-content: center;
     z-index:2;
-    border-color:green;
-    border-style:solid;
+   
   }
 
   .mapAndSearchContainer {
@@ -130,8 +129,9 @@
   }
 
   .linkToForecats {
-    border-color:red;
-    border-style:solid;
+    display: flex;
+    justify-content: center;
+    border: none;
     width:375px;
     
   }

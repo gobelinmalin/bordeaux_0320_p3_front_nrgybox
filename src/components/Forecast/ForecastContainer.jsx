@@ -80,8 +80,43 @@ const ForecastContainer = ({ arrayAllDay }) => {
     return currentDate;
   };
 
-  useEffect(() => {
-    let position = {};
+  // const [favorite, setFavorite] = useState(false);
+
+  //  // axios post donnée dans tables favoris avec idUser et idLocation
+  //   // setFavorite true
+
+  // const addToFavorite = () => {
+  //   Axios({
+  //     method: 'POST',
+  //     url: 'http://localhost:3000/api/favorites',
+  //     data: favorite
+  //     .then((res)=> {
+  //       if (res.data.status === 'success') {
+  //         setFavorite(true);
+  //       } else if(res.data.status === 'error') {
+  //         console.log(res.data.status);
+  //         setFavorite(false)
+  //       }
+  //     })
+  //   },
+  
+
+  //   // checker si iduser et id geoloc match
+  //   // get sur table favoris entre idUSer et idGeoloc
+  //   // si ca match setFavorites (true)
+
+  // useEffect(() => {
+  //   // let position = {};
+  //   // if (user_id === gps_id) {
+  //   //   Axios({
+  //   //     method:'GET',
+  //   //     url:'http://localhost:3000/api/favorites'
+  //   //   }).then(response) => { 
+
+  //   //   }
+  //   // }
+
+  
 
     if (localStorage.getItem('datageoloc')) {
       setCityName(JSON.parse(localStorage.getItem('datageoloc'))[0].text);
@@ -122,7 +157,6 @@ const ForecastContainer = ({ arrayAllDay }) => {
         url: `${process.env.REACT_APP_URL}/programs`,
       });
     };
-
     Promise.all([fetchDataWeather(), fetchDataProgram()]).then((results) => {
       const arr = [];
 
@@ -145,7 +179,8 @@ const ForecastContainer = ({ arrayAllDay }) => {
         }
       });
     });
-  }, []);
+  },[]);
+
 
   return (
     <div className="ForecastContainer">
@@ -157,6 +192,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
               <h3>{cityName !== '' ? cityName : reverseLatLng}</h3>
               <div className="EditAdressIcon">
                 <EditPen />
+                <button type='button' onClick={() => addToFavorite()}>{favorite ? "déja ajouté" : 'add fav'}</button>
               </div>
             </div>
           </div>

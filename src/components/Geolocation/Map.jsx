@@ -16,9 +16,8 @@ export default class MapExample extends Component {
       },
       onActivate: () => {} // callback before engine starts retrieving locations
   }
-
-
     return (
+      
       <Map center={this.props.center} zoom={this.props.zoom}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -26,6 +25,7 @@ export default class MapExample extends Component {
         />
          <LocateControl options={locateOptions} startDirectly/>
       </Map>
+     
     );
   }
 }

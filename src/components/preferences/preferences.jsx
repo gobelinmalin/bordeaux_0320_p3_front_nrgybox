@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Preferences = () => {
-  return (
-    <div className="Preferences-container">
-      <h1>Mes favoris</h1>
-    </div>
-  );
-};
+class Preferences extends Component {
 
-export default Preferences;
+state = {
+  
+}
+}
