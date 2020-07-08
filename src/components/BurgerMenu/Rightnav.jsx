@@ -40,7 +40,7 @@ const RightNav = ({ open }) => {
     <Ul open={open}>
       <li>
         <NavLink exact activeClassName="burger-Nav" id="title" to="/">
-          Se connecter Se déconnecter
+          Programmes
         </NavLink>
       </li>
       <li>

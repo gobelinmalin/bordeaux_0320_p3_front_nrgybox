@@ -38,6 +38,10 @@ class Home extends Component {
     
     return (
       <div className="container_01">
+            <NavLink active classname="Connexion-Link" id="connexion" to="/Login">
+  
+  Se connecter
+</NavLink>
         <Burger />
         <h1>
           <p className="logo_start">NRGY</p>
