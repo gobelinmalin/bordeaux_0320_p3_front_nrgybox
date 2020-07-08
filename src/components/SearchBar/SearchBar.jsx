@@ -11,7 +11,7 @@ class SearchBar extends Component {
       expanded: true,
       collapseAfterResult: false,
       placeholder: 'Adresse...',
-      position: 'topright',
+      // position: 'topleft',
     }).addTo(map);
     const results = new L.LayerGroup().addTo(map);
     //L.geoJSON(geojsonFeature).addTo(map);
