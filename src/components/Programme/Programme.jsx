@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -8,7 +10,9 @@ import './Programme.css';
 import DatePicker from 'react-mobile-datepicker';
 import Burger from '../BurgerMenu/Burger';
 
-const Programme = () => {
+const Programme = ({ arrayAllDay }) => {
+  console.log(arrayAllDay);
+
   function convertDate(date, formate) {
     const hour = date.getHours();
     const minute = date.getMinutes();
@@ -34,6 +38,23 @@ const Programme = () => {
 
   const handleSelect = (time) => {
     setData({ time, isOpen: false });
+  };
+
+  const [data2, setData2] = useState({
+    time: new Date(),
+    isOpen: false,
+  });
+
+  const handleClick2 = (time) => {
+    setData2({ time, isOpen: true });
+  };
+
+  const handleCancel2 = () => {
+    setData2({ isOpen: false });
+  };
+
+  const handleSelect2 = (time) => {
+    setData2({ time, isOpen: false });
   };
 
   const dateConfig = {
@@ -111,16 +132,16 @@ const Programme = () => {
             <button
               type="button"
               className="select-btn2"
-              onClick={() => handleClick(data.time)}
+              onClick={() => handleClick2(data2.time)}
             >
-              {convertDate(data.time, 'hh:mm:ss')}
+              {convertDate(data2.time, 'hh:mm:ss')}
             </button>
             <DatePicker
-              value={data.time}
-              isOpen={data.isOpen}
+              value={data2.time}
+              isOpen={data2.isOpen}
               isPopup
-              onSelect={handleSelect}
-              onCancel={handleCancel}
+              onSelect={handleSelect2}
+              onCancel={handleCancel2}
               dateConfig={dateConfig}
               headerFormat="hh:mm:ss"
               confirmText="Valider"
@@ -138,4 +159,18 @@ const Programme = () => {
   );
 };
 
-export default Programme;
+const mapStateToProps = (state) => {
+  return {
+    arrayAllDay: state.ForecastDaysReducer.data,
+  };
+};
+
+Programme.defaultProps = {
+  arrayAllDay: [{}],
+};
+
+Programme.propTypes = {
+  arrayAllDay: PropTypes.arrayOf(PropTypes.object),
+};
+
+export default connect(mapStateToProps)(Programme);
