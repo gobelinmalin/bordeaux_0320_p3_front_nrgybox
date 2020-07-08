@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, ListGroupItem, Row, Container, Col, Nav, NavLink, NavItem, Button } from "reactstrap";
+import Axios from 'axios';
 
 const Profile = () => {
   const [profile, setProfile] = useState({
-    email: "homer.simpson@wildcodeschool.fr",
-    name: "Homer",
-    lastname: "Simpson"
+    email: '',
+    firstname: '',
+    lastname: '',
+    role_id: '',
+    location_id: '',
   });
 
   useEffect(() => {
-    setProfile(JSON.parse(localStorage.getItem("profile")));
+    setProfile(
+      Axios.get('http://localhots:3000/users/:id')
+      .then(response => console.log(response.data))
+    );
   }, []);
 
+  const { email } = profile;
 
   return (
     <Container>
@@ -23,11 +30,12 @@ const Profile = () => {
       <Row>
         <Col>
           <ListGroup>
-            <ListGroupItem>test</ListGroupItem>
+            <ListGroupItem>{profile.name && email}</ListGroupItem>
           </ListGroup>
-          <Button href="/" onClick={() => localStorage.setItem("token", null)}>
+          <Button href="/signin" onClick={() => localStorage.setItem("token", null)}>
             Sign out
           </Button>
+          
         </Col>
       </Row>
     </Container>

@@ -1,38 +1,109 @@
-@media (max-width: 376px){
+.ForecastSlider .ContainerSelect {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
 
-    /* .ForecastContainer {
-        width: 100%;
-        flex-direction: column;
-    } */
+.ContainerSliderElements {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 15px;
+}
 
-    /* .ForecastSlider{
-        display: flex;
-        width: 93%;
-        height: 500px;
-        margin-left: auto;
-        margin-right:auto;
-    } */
+.card1 {
+  width: 450px;
+  height: 400px;
+}
 
-    /* .ForecastSlider{
-        width: 80%;
-        margin-top: 20px;
-        margin: 0 auto;
-        height: 380px;
-    } */
+.card-slider {
+  display: flex !important;
+  justify-content: center !important;
+}
 
-    .card1 {
-        width: 350px;
-        height: 550px;
-        margin-left: 12px;
-    }
+.slick-list {
+  height: 410px !important;
+}
 
-    .slick-list{
-        height: 510px!important;
-    }
- 
-    button::before {
-        background-color:white;
-        border-radius: 20px;
-    }
+.slick-dots {
+  bottom: -23px !important;
+}
 
+.slick-dots .slick-active {
+  opacity: 0.5 !important;
+}
+
+.slick-slide {
+  margin-left: 30px !important;
+}
+
+@media (max-width: 834px) {
+  .ContainerSliderElements {
+    padding-left: 0;
+  }
+
+  .card1 {
+    width: 400px;
+    height: 430px;
+    margin-top: 30px;
+  }
+
+  .slick-list {
+    height: 440px !important;
+  }
+
+  .slick-slide {
+    width: 834px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .slick-slide {
+    width: 768px !important;
+  }
+}
+
+@media (max-width: 414px) {
+  .card1 {
+    width: 390px;
+    height: 431px;
+    margin-top: 0;
+  }
+
+  .slick-slide {
+    width: 414px !important;
+  }
+
+  .slick-dots {
+    bottom: 9px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .card1 {
+    width: 350px;
+  }
+
+  .slick-slide {
+    width: 375px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .slick-slide {
+    width: 360px !important;
+  }
+
+  .card1 {
+    width: 335px;
+  }
+}
+
+@media (max-width: 320px) {
+  .slick-slide {
+    width: 320px !important;
+  }
+
+  .card1 {
+    width: 295px;
+  }
 }
