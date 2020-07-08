@@ -1,0 +1,46 @@
+.Home_map {
+  width: 1000px!important;
+  height: 250px!important;
+  border-bottom-left-radius: 20px!important;
+  border-radius: 10px!important;
+  -webkit-border-radius: 10px!important;
+  -moz-border-radius: 10px!important;
+  -ms-border-radius: 10px!important;
+  -o-border-radius: 10px!important;
+}
+
+.mapContainerWeather {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 834px){
+  .Home_map {
+    width: 600px!important;
+    height: 150px!important;
+  }
+}
+
+@media (max-width: 414px){
+  .Home_map {
+    width: 390px!important;
+  }
+}
+
+@media (max-width: 375px){
+  .Home_map {
+    width: 350px!important;
+  }
+}
+
+@media (max-width: 360px){
+  .Home_map {
+    width: 335px!important;
+  }
+}
+
+@media (max-width: 320px){
+  .Home_map {
+    width: 295px!important;
+  }
+}

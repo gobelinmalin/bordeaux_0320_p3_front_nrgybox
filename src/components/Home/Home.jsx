@@ -12,6 +12,7 @@ import Burger from '../BurgerMenu/Burger';
 import logo_nrgybox from './style/logo_nrgybox.png';
 import SearchBar from '../SearchBar/SearchBar';
 import './style/home.css';
+import { NavLink } from 'react-router-dom'
 
 class Home extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class Home extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
+  getPosition(position) {
+    console.log(position);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude, longitude } = position.coords;
@@ -28,29 +30,45 @@ class Home extends Component {
           JSON.stringify({ latitude, longitude })
         );
       });
-    }
+      this.handleClick.bind(this)
+    }    
   }
 
-  
+  handleClick(e) {
+    this.getPosition("element clicked");
+  }
 
   render() {
-    
     return (
       <div className="container_01">
-        <Burger />
         <h1>
           <p className="logo_start">NRGY</p>
           <p className="logo_end">Box</p>
         </h1>
-        <Map className="Home_map_none" center={{ lat: 51.5287718, lng: -0.2416804 }} style={{background: "#11ffee00"}} zoom={1}>
+        <NavLink className="linkToForecats" to="/weather">
+          <button className='searchCTA' onClick={(e) => this.handleClick(e)} value="Click me">Me localiser</button>
+        </NavLink>
+        <div className="mapAndSearchContainer">
+       <Map className="Home_map_none" center={{ lat: 51.5287718, lng: -0.2416804 }} style={{background: "#11ffee00"}} zoom={1}>
           <TileLayer
             attribution="&copy; <a href='https://osm.org/copyright'>OpenStreetMap</a> contributors"
             url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}
           ></TileLayer>
           <SearchBar />
-        </Map>
+    </Map> 
+    </div>
+        <div className="homeContent">
+        
         <div className="lamp_logo">
-          <img src={logo_nrgybox} alt="NRGYBox Logo" />
+          <div className="searchCTAContainer">
+            <NavLink className="linkToForecats" to='/weather'>
+                <button className="searchCTA"> Rechercher </button>
+            </NavLink>
+          </div>
+          <div className="logoHome">
+            <img src={logo_nrgybox} alt="NRGYBox Logo" />
+          </div>  
+        </div>
         </div>
         <div className="text_intro">
           <a className="text_start_intro" style={{ color: '#538abc' }}>

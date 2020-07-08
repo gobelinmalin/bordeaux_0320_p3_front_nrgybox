@@ -13,18 +13,36 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
   const [slider, setSlider] = useState(null);
   const [select, setSelect] = useState(0);
 
+  /* eslint-disable no-unused-vars */
   const settings = {
     dots: true,
     arrows: false,
     infinite: false,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    variableWidth: true,
     adaptiveHeight: true,
-    swipeToSlide: true,
+    swipeToSlide: false,
     beforeChange: (current, next) => setSelect(next),
+    customPaging: (pagi, i) => {
+      const style = {
+        width: 13,
+        height: 13,
+        display: 'inline-block',
+        backgroundColor: 'white',
+        borderRadius: '50%',
+      };
+      return <a className="slick-dot" style={style} />;
+    },
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          swipeToSlide: true,
+          // variableWidth: false,
+        }
       },
     ],
   };
@@ -42,7 +60,7 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
       if (index === 0) {
         return (
           <option selected={selected} key={index} value={index}>
-            Aujourd'hui
+            Aujourd&apos;hui
           </option>
         );
       } else {
@@ -56,7 +74,7 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
 
   return (
     <div className="ForecastSlider">
-      <div>
+      <div className="ContainerSelect">
         <select
           id="selectDayForecast"
           name="selectDayForecast"
@@ -68,18 +86,21 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
       {isLoading ? (
         '...wait for it'
       ) : (
-        <Slider ref={(slider) => setSlider(slider)} {...settings}>
-          {arrayAllDay &&
-            arrayAllDay.map((day, index) => {
-              return (
-                <div key={index} className="cardSlider">
-                  <div className="card1">
-                    <ForecastDetails day={day} />
+        /* eslint-disable react/jsx-props-no-spreading */
+        <div className="ContainerSliderElements">
+          <Slider ref={(slider) => setSlider(slider)} {...settings}>
+            {arrayAllDay &&
+              arrayAllDay.map((day, index) => {
+                return (
+                  <div key={index} className="card-slider">
+                    <div className="card1">
+                      <ForecastDetails day={day} />
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-        </Slider>
+                );
+              })}
+          </Slider>
+        </div>
       )}
     </div>
   );

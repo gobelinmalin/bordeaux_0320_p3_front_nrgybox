@@ -1,5 +1,14 @@
-.body {
-    background-color: #232142;   
+.Programme{
+    height: 110vh;
+}
+
+.composantChloe {
+    position: absolute;
+    z-index: 3;
+}
+
+.testchloe {
+    color:red;
 }
 
 .vertical-timeline-element-title {
@@ -7,10 +16,6 @@
 
 }
 
-.burger_menu2 {
-   display: flex;
-    
-}
 .vertical-timeline-element-content {
     position: relative;
     margin-left: 60px;

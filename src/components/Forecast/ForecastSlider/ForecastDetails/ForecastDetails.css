@@ -1,145 +1,226 @@
-.ForecastDetailsContainer{
-    background-color: #C5DAED;
-    border-radius: 10px;
-    width:100%;
+.ForecastDetailsContainer {
+  background-color: #c5daed;
+  width: 100%;
+  height: 393px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
-.dateFavouritContainer{
-    display:flex;
-    justify-content: space-between;
-    margin-top: 5%;
+.ForecastDetailsContainer p {
+  margin: 0;
 }
 
 .FavouritIcon {
-    width: 13%;
-    margin-right: 5%;
-    margin-top: 3%;
+  width: 13%;
+  margin-right: 5%;
+  margin-top: 3%;
 }
 
-.dateForcast{
-    margin-left: 85px;
-    color:black;
-    font-weight: bold;
-    margin-top: 5%;
-    font-size: 16px;
+.dateForcast {
+  margin-top: 10px;
+  text-align: center;
+  color: black;
+  font-weight: bold;
 }
 
-.weatherContainer{
-    display:flex;
-    justify-content:center;
-    color:black;
-    margin-top:-3%;
+.dateForcast p {
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
-
-.hr1{
-    border-top: 0.5px solid #54739762;
-    width: 75%;
-    text-align: center;
-    margin-left:auto;
-    margin-right: auto;
-    margin-top: -3%;
+.weatherContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  color: black;
 }
 
-.sunriseSunsetContainer, .moonriseMoonsetContainer {
-    display: flex;
-    justify-content: space-evenly;
-    margin-left:-50px;
-    margin-top:-20px;
+.weatherContainer img {
+  width: 55px;
+  height: auto;
+  margin-right: 10px;
 }
 
-.sunriseSunsetContainer {
-    stroke:#F3BB33!important;
-    fill:#F3BB33!important;  
+.weatherContainer {
+  font-size: 2rem;
 }
 
-.sunriseLabel, .sunsetLabel, .moonriseLabel, .moonsetLabel, .dayforecastLightningLabel, .nightforecastLightningLabel, .hourValue {
-    color: #547397;
-    font-size: 1em;
-    margin-top: 10px;
-}
-
-.nightforecastLightningLabel {
-    text-align:center;
-}
-
-.sunriseValue, .sunsetValue, .moonriseValue, .moonsetValue {
-    color: black;
-    margin-top:-20px;
-    font-size: 1em;
-}
-
-.sunriseContainer, .moonriseContainer {
-    margin-left:-30px;
-}
-
-.sunsetContainer, .moonsetContainer {
-    margin-left:-30px;
-}
-
-.moonriseContainer {
- padding-left: 9px;
+.hr1 {
+  border-top: 0.5px solid #54739762;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -3%;
 }
 
 .sunIcon {
-    margin-top:7px;
-    margin-left:50px;
-    width: 50px;
-    height: 50px; 
+  width: 50px;
+  height: 50px;
 }
 
-.sunIcon2 {
-    margin-top:2px;
-    width: 45px;
-    height: 45px; 
+.sunriseSunsetContainer {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 25px;
+  stroke: #f3bb33 !important;
+  fill: #f3bb33 !important;
 }
 
-
-.moonIcon {
-    margin-top:10px;
-    margin-left:55px;
+.sunriseContainer,
+.sunsetContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.moonIcon2 {
-    margin-top:2px;
-    width: 37px;
-    height: 37px; 
-}
-
-.forecastLightningContainer {
-    display: flex;
-    justify-content: center;
+.sunriseContainer p,
+.sunsetContainer p {
+  color: #547397;
+  font-size: 1em;
 }
 
 .forecastLightningContainer {
-    margin-top: -15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-.dayforecastLightningContainer {
-    text-align: center;
+.forecastLightningContainer p {
+  color: black;
 }
 
+.forecastLightningContainer span{
+  padding-bottom: 55px;
+  color: black;
+  font-size: 0.8rem;
+}
 
-
-.dayforecastLightningJauge  {
-    margin-top:-7px;
-    display: flex;
-    justify-content: center;
+.dayforecastLightningJauge {
+  padding-bottom: 10px;
 }
 
 .dayforecastLightningHourInfo {
-    display: flex;
-    justify-content: space-between;
-    font-size:1em;
+  display: flex;
+  justify-content: space-between;
+  width: 43%;
 }
 
 .hourValue {
-    color: black;
-    font-size:1em;
-    margin-top: 10px;
+  color: black;
+  font-size: 1em;
+  margin-top: 10px;
 }
 
-.dayforecastLightningHourInfo {
-    padding-bottom: 7px;
+.ContainerAllDayPrograms {
+  display: flex;
+  justify-content: center;
+}
+
+.ContainerAllDayPrograms a {
+  display: flex;
+  color: black;
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
+.ContainerAllDayPrograms .ContainerPlusProgram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.ContainerAllDayPrograms .ContainerPlusProgram p {
+  font-size: 1.3rem;
+}
+
+.AllTimeline{
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  height: 10px;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.AllTimeline p{
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.ContainerPartTimeline{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  height: 10px;
+  background-color: #f6b93b;
+}
+
+.ContainerPartTimeline::before{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  width: 1px;
+  height: 200%;
+}
+
+.ContainerPartTimeline::after{
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  background-color: black;
+  width: 1px;
+  height: 200%;
+}
+
+.PartTimeline{
+  position: relative;
+  width: 100%;
+}
+
+.PartTimelineElement{
+  position: absolute;
+  width: 100%;
+  color: #547397;
+}
+
+.start{
+  top: -35px;
+  transform: translate(-45%, 0);
+  -webkit-transform: translate(-45%, 0);
+  -moz-transform: translate(-45%, 0);
+  -ms-transform: translate(-45%, 0);
+  -o-transform: translate(-45%, 0);
+}
+
+.end{
+  bottom: -35px;
+  transform: translate(45%, 0);
+  -webkit-transform: translate(45%, 0);
+  -moz-transform: translate(45%, 0);
+  -ms-transform: translate(45%, 0);
+  -o-transform: translate(45%, 0);
 }
