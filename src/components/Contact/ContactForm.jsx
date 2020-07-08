@@ -97,8 +97,7 @@ const ContactForm = () => {
           <h3 className="form-title">Contactez-nous!</h3>
           <fieldset>
             <div className="form-container">
-              <label htmlFor="name" className="label-contact">
-                Votre nom:
+              <div className="nameField">
                 <input
                   type="text"
                   name="name"
@@ -106,40 +105,59 @@ const ContactForm = () => {
                   placeholder="Ex: Jean-Michel DURAND"
                   onChange={handleChange}
                   value={formData.name}
+                  required
                   noValidate
                 />
-              </label>
-              <label htmlFor="name" className="label-contact">
-                Votre mail:
+                <div className="containerHR" >
+                <hr className="inputFieldHR"/>
+              </div>
+              <label htmlFor="FirstName">Nom et Prénom</label>
+              </div>
+              <br />
+              <div className="emailField">
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Ex: jeanMichel@exemple.com"
+                  placeholder="Ex: jeanmichel@exemple.com"
                   onChange={handleChange}
                   value={formData.email}
+                  required
                   noValidate
                 />
-              </label>
-              <label htmlFor="comments" className="label-contact">
-                Votre message:
+                <div className="containerHR" >
+                <hr className="inputFieldHR"/>
+              </div>
+              <label htmlFor="FirstName">Email</label>
+              <br />
+                </div>
+             
+                <div className="messageField">
                 <textarea
                   type="text"
                   id="comment"
                   name="comment"
                   onChange={handleChange}
+                  placeholder="Ex: Votre message..."
+                  required
                   value={formData.comment}
                   noValidate
                 >
-                  Votre message ici...
+                
                 </textarea>
-              </label>
+                <div className="containerHR" >
+              </div>
+              <label htmlFor="FirstName">Message</label>
+              <br />
+                </div>
+                <div className="submitCTAContainer" >
               <input
                 onClick={handleShow}
-                className="submit-form"
+                className="btn-primary"
                 type="submit"
-                value="envoyer"
+                value="Envoyer"
               />
+              </div>
             </div>
           </fieldset>
         </form>

@@ -7,15 +7,20 @@
 .form-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width:360px;
 }
 
-.label-contact {
+.nameField, .emailField, .messageField {
   display: flex;
-  flex-direction: column;
-  padding: 15px;
-  border: none;
-  width: 370px;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
 }
+
 
 .submit-form {
   border-radius: 10px;
@@ -26,4 +31,62 @@
 
 .form-title {
   text-align: center;
+  color: #e9e98a;
+  font-size: 35px;
+  margin-bottom:20px;
+}
+
+.containerHR {
+  width:300px;
+}
+
+hr.inputFieldHR {
+ background:#92CEEF;
+ margin:0;
+ height:1.5px;
+ text-align:center;
+}
+
+label{
+  color:#92CEEF;
+  text-align:left;
+  width: 300px;
+}
+
+input#name 
+  {
+    width:300px;
+    background:none;
+    border:none;
+    height:40px;
+    text-align:center;
+}
+
+::placeholder {
+  color: rgba(245, 245, 245, 0.411);
+  margin-left: 5px;
+  font-style: italic;
+
+}
+
+textarea {
+  width: 300px;
+  height: 150px;
+  border-color: skyblue;
+  border-width: 2px;
+  background: none;
+}
+
+.btn-primary {
+  background-color: rgb(255, 247, 0, 0.77);; 
+  width: 150px;
+  height: 45px;
+  border:none;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.submitCTAContainer {
+  display: flex;
+  justify-content: center;
 }
