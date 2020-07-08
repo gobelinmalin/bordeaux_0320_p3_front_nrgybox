@@ -1,5 +1,6 @@
 // Modules
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect, useDispatch } from 'react-redux';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
@@ -11,6 +12,7 @@ import { allDay } from '../../actions/ForecastAction';
 
 // CSS
 import './ForecastContainer.css';
+import ForecastMap from './ForecastSlider/ForecastMap/ForecastMap';
 
 const ForecastContainer = ({ arrayAllDay }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -124,6 +126,27 @@ const ForecastContainer = ({ arrayAllDay }) => {
     };
 
     Promise.all([fetchDataWeather(), fetchDataProgram()]).then((results) => {
+      // find in data (get in the database) if there are multiple programs for one date
+      const progsPerDays = [];
+      const progsDone = [];
+
+      const progs = results[1].data;
+
+      progs.forEach((prog, index, arr) => {
+        const progDay = [];
+
+        if (progsDone.indexOf(prog.date) === -1) {
+          arr.forEach((prog2) => {
+            if (prog2.date === prog.date) {
+              progDay.push(prog2);
+            }
+          });
+
+          progsPerDays.push(progDay);
+          progsDone.push(prog.date);
+        }
+      });
+
       const arr = [];
 
       // for each day, construct an array of objects with all day informations
@@ -134,8 +157,8 @@ const ForecastContainer = ({ arrayAllDay }) => {
           currentDay: timestampToDay(day.dt),
           sunrise: timestampToHour(day.sunrise),
           sunset: timestampToHour(day.sunset),
-          startProg: results[1].data[index].date_start ? results[1].data[index].date_start : false,
-          endProg: results[1].data[index].date_end ? results[1].data[index].date_end : false,
+          // get the array of dates (program)
+          prog: progsPerDays[index],
           temp: Math.floor(day.temp.day),
           iconWeather: day.weather[0].icon,
         };
@@ -151,19 +174,18 @@ const ForecastContainer = ({ arrayAllDay }) => {
     <div className="ForecastContainer">
       <h1>Les prévisions lumineuses</h1>
       <div className="ForecastContainerHeader">
-        <div className="ForecastContainerHeaderElem">
-          <div className="GeolocUser">
-            <div className="CityIconEdit">
-              <h3>{cityName !== '' ? cityName : reverseLatLng}</h3>
-              <div className="EditAdressIcon">
-                <EditPen />
-              </div>
-            </div>
-          </div>
+        <h3>{cityName !== '' ? cityName : reverseLatLng}</h3>
+        <div className="EditAdressIcon">
+          <Link to="/">
+            <EditPen />
+          </Link>
         </div>
       </div>
       <div className="cardContainer">
         <ForecastSlider arrayAllDay={arrayAllDay} isLoading={isLoading} />
+      </div>
+      <div className="mapForecastLightningContainer">
+        <ForecastMap arrayAllDay={arrayAllDay} />
       </div>
     </div>
   );

@@ -12,6 +12,7 @@
     position: absolute;
     height: 77%;
     width: 89%;
+    cursor: initial;
 }
 
 #leaflet-control-zoom-in {
@@ -20,11 +21,4 @@
 
 .leaflet-control-zoom {
     display:none;
-}
-
-
-
-.geocoder-control-input {
-    width: 100px,
-    
 }
