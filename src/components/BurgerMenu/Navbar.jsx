@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Burger from './Burger';
 import './Navbar.css';
@@ -21,11 +22,14 @@ const Navbar = () => {
   return (
     <Nav className="container_nav">
       <div className="logo">
+      <NavLink style={{ textDecoration: 'none' }} to ='/'>
         <h1>
-          <a className="logo-start">Nrgy</a>
-          <a className="logo-end">Box</a>
+          <p className="logo-start">NRGY</p>
+          <p className="logo-end">Box</p>
         </h1>
+        </NavLink>
       </div>
+      <NavLink className="signup" style={{ textDecoration: 'none', marginRight: '45px', marginTop: '37px', color: '#e9e98a' }} to="/login">Se connecter</NavLink>
       <Burger />
     </Nav>
   );
