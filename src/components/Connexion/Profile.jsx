@@ -3,23 +3,21 @@ import { ListGroup, ListGroupItem, Row, Container, Col, Nav, NavLink, NavItem, B
 import Axios from 'axios';
 
 const Profile = () => {
-  const [profile, setProfile] = useState({
-    email: '',
-    firstname: '',
-    lastname: '',
-    role_id: '',
-    location_id: '',
-  });
+  const [profile, setProfile] = useState('');
 
-  useEffect(() => {
-    setProfile(
-      Axios.get('http://localhots:3000/users/:id')
-      .then(response => console.log(response.data))
-    );
-  }, []);
+  // useEffect( () => {
+    
+  // Axios({method: "post",url: 'http://localhost:3000/api/users/profile',
 
-  const { email } = profile;
+  //     headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+  //   })
+  //       .then((res) => res.data)
+  //       .then((data) => {
+  //         setProfile(data);
+  //       });
+  // }, []);
 
+ console.log(localStorage.getItem('token'));
   return (
     <Container>
       <Nav>
@@ -30,12 +28,11 @@ const Profile = () => {
       <Row>
         <Col>
           <ListGroup>
-            <ListGroupItem>{profile.name && email}</ListGroupItem>
+            <ListGroupItem></ListGroupItem>
           </ListGroup>
           <Button href="/signin" onClick={() => localStorage.setItem("token", null)}>
             Sign out
           </Button>
-          
         </Col>
       </Row>
     </Container>

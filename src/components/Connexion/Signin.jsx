@@ -43,7 +43,7 @@ const Signin = (props) => {
             <Input
               type='password'
               name='password'
-              placeholder='votre mot de passe'
+              placeholder='Votre mot de passe'
               onChange={(event) => setSignin({ ...signin, [event.target.name]: event.target.value })}
             />
             
