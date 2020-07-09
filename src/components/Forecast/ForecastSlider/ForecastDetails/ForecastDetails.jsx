@@ -1,6 +1,7 @@
 // Modules
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // CSS
 import './ForecastDetails.css';
@@ -73,8 +74,11 @@ const ForecastDetails = ({ day }) => {
         <hr className="hr1" />
       </div>
       <div className="forecastLightningContainer">
-        <p>Consignes d&apos;éclairage</p>
-        <span>(sur 24h)</span>
+        <div className="ContainerConsignes">
+          <p>Consignes d&apos;éclairage</p>
+          <span className="ConsigneElement">(sur 24h)</span>
+        </div>
+        <Link to={{ pathname: '/programme', state: { day } }}>modifier</Link>
         <div className="AllTimeline">
           {arrProgsPercent.length !== 0 ? (
             arrProgsPercent.map((percent, index) => (
