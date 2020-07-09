@@ -117,7 +117,6 @@
 
 .searchCTAContainer {
   height: 50px;
-  display: flex;
   justify-content: center;
   z-index: 2;
 }
@@ -129,8 +128,8 @@
   justify-content: center;
 }
 
-button.searchCTA {
-  width: 150px;
+button.searchCTA1 {
+  width: 117px;
   height: 35px;
   text-align: center;
   border-radius: 20px;
@@ -138,11 +137,28 @@ button.searchCTA {
   background-color: rgb(255, 247, 0, 0.77);
   color: white;
   font-weight: bold;
-  position: absolute;
+  /* position: absolute; */
   z-index: 3;
+  margin-top: -34px;
+  margin-left: -135px;
+  
+}
+button.searchCTA2 {
+  width: 117px;
+  height: 35px;
+  text-align: center;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(255, 247, 0, 0.77);
+  color: white;
+  font-weight: bold;
+  /* position: absolute; */
+  z-index: 3;
+  margin-top: -34px;
+  margin-right: -130px;
 }
 
-button.searchCTA:hover {
+button.searchCTA1 :hover {
   width: 150px;
   height: 35px;
   text-align: center;
@@ -152,9 +168,24 @@ button.searchCTA:hover {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  position: absolute;
+  /* position: absolute; */
   z-index: 3;
 }
+
+button.searchCTA2 :hover {
+  width: 150px;
+  height: 35px;
+  text-align: center;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(255, 247, 0, 0.77);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  /* position: absolute; */
+  z-index: 3;
+}
+
 
 .logoHome {
   display: flex;
@@ -166,6 +197,13 @@ button.searchCTA:hover {
   justify-content: center;
   border-style: solid;
   border: none;
+}
+.linkToForecats2 {
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  border: none;
+  margin-top: -1px;
 }
 
 @media (max-width: 834px) {

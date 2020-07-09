@@ -1,10 +1,24 @@
 .container_nav {
-  background-color: #182b61;
+  background-color: #182c61;
+  margin-top: -13px;
 }
 
 .logo-start {
   color: #538abc;
+  font-family: 'aqua';
+  display: inline;
+  font-size: 27px;
+  margin-left: -17px
 }
 .logo-end {
   color: #e9e98a;
+  font-family: 'aqua';
+  display: inline;
+  font-size: 27px;
+}
+
+.signup {
+
+  margin-right: 30px;
+  margin-top:30px
 }
