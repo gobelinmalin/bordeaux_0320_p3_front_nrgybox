@@ -31,6 +31,7 @@
   height: 45px !important;
   margin: 0 auto !important;
   right: initial !important;
+  position: relative!important;
 }
 
 .leaflet-control-attribution {

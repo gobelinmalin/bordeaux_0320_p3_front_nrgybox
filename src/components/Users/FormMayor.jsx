@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DatePicker from 'react-mobile-datepicker';
+import './admin.css'
 
 
 function convertDate(date, formate) {
@@ -85,8 +86,8 @@ handleSelect = (time) => {
     
     return (
       <div>
+        <br />
         <div className="TimePicker">
-        
         <a
                     className="select-btn"
                     onClick={this.handleClick}>
@@ -110,17 +111,27 @@ handleSelect = (time) => {
                    
                    
                   />
+                  <div className="spaceDiv">
+                    
+                  </div>
+                  <div className="containerHR" >
+              <hr className="inputFieldHR"/>
+              </div>
+          <label for="CityReference">Date fin de mandat</label>
          
         </div>
-
+        <br />
         <div className="CityReferenceField">
           <input
             type="text"
             required
             name="CityReference"
             id="CityReference"
-            placeholder="Bordeaux"
+            placeholder="Ex: Bordeaux"
           />
+          <div className="containerHR" >
+              <hr className="inputFieldHR"/>
+              </div>
           <label for="CityReference">Commune</label>
           <br></br>
         </div>
@@ -130,3 +141,7 @@ handleSelect = (time) => {
 }
 
 export default FormMayor;
+
+
+
+      
