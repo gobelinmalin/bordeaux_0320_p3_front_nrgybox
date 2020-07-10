@@ -18,7 +18,7 @@ function App(props) {
   }, []);
 
  if(localStorage.getItem("token")===null) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/" />;
   }
 
   console.log(props);
