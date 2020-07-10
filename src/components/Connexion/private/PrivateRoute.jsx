@@ -17,11 +17,11 @@ function App(props) {
       .catch(error => setError(true));
   }, []);
 
-  // if(error) {
-  //   return <Redirect to="/login" />;
-  // }
+ if(localStorage.getItem("token")===null) {
+    return <Redirect to="/login" />;
+  }
 
-  console.log(props)
+  console.log(props);
   return <Route path={props.pathReact} component={props.component} />;
 }
 
