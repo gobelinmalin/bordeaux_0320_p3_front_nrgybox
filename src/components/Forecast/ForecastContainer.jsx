@@ -82,11 +82,30 @@ const ForecastContainer = ({ arrayAllDay }) => {
     return currentDate;
   };
 
+  const convertDate = (date, formate) => {
+    const hour = (date.getHours() < 10 ? '0' : '') + date.getHours();
+    const minute = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+    const second = (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
+    const year = date.getFullYear();
+    const month = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
+    const day = (date.getDate() < 10 ? '0' : '') + date.getDate();
+  
+    return formate
+      .replace(/h+/, hour)
+      .replace(/m+/, minute)
+      .replace(/s+/, second)
+      .replace(/Y+/, year)
+      .replace(/M+/, month)
+      .replace(/D+/, day);
+  }
+
   useEffect(() => {
     let position = {};
 
+    let city;
     if (localStorage.getItem('datageoloc')) {
       setCityName(JSON.parse(localStorage.getItem('datageoloc'))[0].text);
+      city = JSON.parse(localStorage.getItem('datageoloc'))[0].text;
       const jsonParseCity = JSON.parse(localStorage.getItem('datageoloc'))[0]
         .latlng;
 
@@ -119,9 +138,10 @@ const ForecastContainer = ({ arrayAllDay }) => {
 
     // dates start and end program
     const fetchDataProgram = () => {
+      const nameOfCity = city.split(',')[0];
       return Axios({
         method: 'GET',
-        url: `${process.env.REACT_APP_URL}/programs`,
+        url: `${process.env.REACT_APP_URL}/programs?city=${nameOfCity !== '' ? nameOfCity : reverseLatLng}`,
       });
     };
 
@@ -150,7 +170,12 @@ const ForecastContainer = ({ arrayAllDay }) => {
       const arr = [];
 
       // for each day, construct an array of objects with all day informations
+
       results[0].data.daily.forEach((day, index) => {
+        const convertTimestamp = convertDate(new Date(day.dt * 1000), "YYYY-MM-DD");
+        let dateProg;
+        progsPerDays.map((dataProg, index, arrProg) => convertTimestamp === dataProg[index].date ? dateProg = arrProg[index] : dateProg = []);
+
         arr[index] = {
           geoloc: position,
           date: formatDate(day.dt),
@@ -158,7 +183,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
           sunrise: timestampToHour(day.sunrise),
           sunset: timestampToHour(day.sunset),
           // get the array of dates (program)
-          prog: progsPerDays[index],
+          prog: dateProg,
           temp: Math.floor(day.temp.day),
           iconWeather: day.weather[0].icon,
         };
