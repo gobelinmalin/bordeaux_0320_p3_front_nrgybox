@@ -18,7 +18,7 @@ function App(props) {
   }, []);
 
   if(error) {
-    return <Redirect to='/login'/>
+    return <Redirect to='/'/>
   }
 
   console.log(props)
