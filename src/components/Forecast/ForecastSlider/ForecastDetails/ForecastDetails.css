@@ -90,12 +90,25 @@
   align-items: center;
 }
 
-.forecastLightningContainer p {
+.ContainerConsignes{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   color: black;
 }
 
-.forecastLightningContainer span{
+.forecastLightningContainer a{
+  font-size: 0.8rem;
   padding-bottom: 55px;
+}
+
+.forecastLightningContainer p {
+  color: black;
+  margin-right: 10px;
+}
+
+.forecastLightningContainer .ConsigneElement{
   color: black;
   font-size: 0.8rem;
 }

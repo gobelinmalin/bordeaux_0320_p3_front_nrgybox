@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 // Components
 import { ReactComponent as EditPen } from '../../icons/editPen.svg';
 import ForecastSlider from './ForecastSlider/ForecastSlider';
+import ForecastMap from './ForecastSlider/ForecastMap/ForecastMap';
 import { allDay } from '../../actions/ForecastAction';
 
 // CSS
 import './ForecastContainer.css';
-import ForecastMap from './ForecastSlider/ForecastMap/ForecastMap';
 
 const ForecastContainer = ({ arrayAllDay }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -121,7 +121,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
     const fetchDataProgram = () => {
       return Axios({
         method: 'GET',
-        url: 'http://localhost:5001/api/programs',
+        url: `${process.env.REACT_APP_URL}/programs`,
       });
     };
 

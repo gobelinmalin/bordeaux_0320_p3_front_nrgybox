@@ -30,7 +30,7 @@ const Profile = () => {
           <ListGroup>
             <ListGroupItem></ListGroupItem>
           </ListGroup>
-          <Button href="/signin" onClick={() => localStorage.setItem("token", null)}>
+          <Button href="/login" onClick={() => localStorage.setItem("token", null)}>
             Sign out
           </Button>
         </Col>
