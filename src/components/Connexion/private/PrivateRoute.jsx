@@ -17,9 +17,9 @@ function App(props) {
       .catch(error => setError(true));
   }, []);
 
-  if(error) {
-    return <Redirect to='/login'/>
-  }
+  // if(error) {
+  //   return <Redirect to="/login" />;
+  // }
 
   console.log(props)
   return <Route path={props.pathReact} component={props.component} />;
