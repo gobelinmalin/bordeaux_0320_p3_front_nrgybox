@@ -1,40 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { ListGroup, ListGroupItem, Row, Container, Col, Nav, NavLink, NavItem, Button } from "reactstrap";
+import React, { useState, useEffect } from 'react';
+import { Container, Button } from 'reactstrap';
 import Axios from 'axios';
+import { useReducer } from 'react';
 
-const Profile = () => {
-  const [profile, setProfile] = useState('');
+const Profile = ({ history }) => {
+  // const [profile, setProfile] = useState('');
 
-  // useEffect( () => {
-    
-  // Axios({method: "post",url: 'http://localhost:3000/api/users/profile',
-
-  //     headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
-  //   })
+  // useEffect =
+  //   (() => {
+  //     Axios({
+  //       method: 'GET',
+  //       url: 'http://localhost:3000/api/users/profile',
+  //     })
   //       .then((res) => res.data)
-  //       .then((data) => {
-  //         setProfile(data);
-  //       });
-  // }, []);
+  //       .then((data) => setProfile(data));
+  //   },
+  //   []);
+  // console.log(history)
+  
 
- console.log(localStorage.getItem('token'));
   return (
     <Container>
-      <Nav>
-        <NavItem>
-          <NavLink href="/">Home</NavLink>
-        </NavItem>
-      </Nav>
-      <Row>
-        <Col>
-          <ListGroup>
-            <ListGroupItem></ListGroupItem>
-          </ListGroup>
-          <Button href="/login" onClick={() => localStorage.setItem("token", null)}>
-            Sign out
-          </Button>
-        </Col>
-      </Row>
+      <h2> Mon profil </h2>
+      <Button href="/login" onClick={() => localStorage.setItem('token', null)}>
+        Sign out
+      </Button>
+      {/* <div>nom: {user.name}</div> */}
     </Container>
   );
 };
