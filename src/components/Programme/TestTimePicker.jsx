@@ -23,7 +23,7 @@ function convertDate(date, formate) {
     constructor(props) {
       super(props);
       this.state = {
-        time: new Date(this.props.dateProg),
+        time: this.props.dateProg ? new Date(this.props.dateProg) : new Date(),
         isOpen: false,
       };
     }
@@ -38,21 +38,37 @@ function convertDate(date, formate) {
 
     handleSelect = (time) => {
       const newDate = convertDate(new Date(time), 'YYYY-MM-DD hh:mm:ss');
-      Axios({
-        method: 'PUT',
-        url: `${process.env.REACT_APP_URL}/programs/${this.props.idProg}`,
-        data: this.props.type === 'start' ? { date_start: newDate } : { date_end: newDate }
-      })
-      .then((res) => {
-        const newTime = this.props.type === 'start' ? res.data[0].full_date_start : res.data[0].full_date_end;
-        this.setState({
-          time: new Date(newTime),
-          isOpen: false
+
+      if (this.props.dateProg) {
+        Axios({
+          method: 'PUT',
+          url: `${process.env.REACT_APP_URL}/programs/${this.props.idProg}`,
+          data: this.props.type === 'start' ? { date_start: newDate } : { date_end: newDate }
         })
-      });
+        .then((res) => {
+          const newTime = this.props.type === 'start' ? res.data[0].full_date_start : res.data[0].full_date_end;
+          this.setState({
+            time: new Date(newTime),
+            isOpen: false
+          })
+        });
+      } else {
+        Axios({
+          method: 'POST',
+          url: `${process.env.REACT_APP_URL}/programs`,
+          data: this.props.type === 'start' ? { date_start: newDate } : { date_end: newDate }
+        })
+        .then((res) => {
+          const newTime = this.props.type === 'start' ? res.data[0].full_date_start : res.data[0].full_date_end;
+          this.setState({
+            time: new Date(newTime),
+            isOpen: false
+          })
+        })
+      }
     }
-    
     render() {
+      console.log(this.props)
       const dateConfig = {
         'hour': {
           format: 'hh',
