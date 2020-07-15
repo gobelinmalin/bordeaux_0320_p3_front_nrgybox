@@ -12,7 +12,7 @@ const Signin = (props) => {
   });
 
   const handleToken = (data) => {
-    console.log(data)
+    console.log('data', data)
     localStorage.setItem('token', data.token)
     props.history.push(`profile/${data.idUser}`)
   }

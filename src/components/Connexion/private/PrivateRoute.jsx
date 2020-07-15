@@ -23,7 +23,7 @@ function App(props) {
     return <Redirect to="/" />;
   }
 
-  return <Route path={props.pathReact} component={props.component} profile="ok" />;
+  return <Route path={props.pathReact} component={props.component} profile={profile} />;
 }
 
 export default App;
