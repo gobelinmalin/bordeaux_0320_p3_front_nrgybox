@@ -2,22 +2,13 @@ import React, { useState, useEffect } from "react";
 import { ListGroup, ListGroupItem, Row, Container, Col, Nav, NavLink, NavItem, Button } from "reactstrap";
 import Axios from 'axios';
 
-const Profile = () => {
-  const [profile, setProfile] = useState('');
+const Profile = (props) => {
+  console.log("ok", props.match.params)
+  const [profile, setProfile] = useState({})
+  Axios.get(`/users/${props.match.params}`)
+  .then((res) => res.data)
+  .then(data => setProfile)
 
-  // useEffect( () => {
-    
-  // Axios({method: "post",url: 'http://localhost:3000/api/users/profile',
-
-  //     headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
-  //   })
-  //       .then((res) => res.data)
-  //       .then((data) => {
-  //         setProfile(data);
-  //       });
-  // }, []);
-
- console.log(localStorage.getItem('token'));
   return (
     <Container>
       <Nav>

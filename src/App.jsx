@@ -32,7 +32,7 @@ class App extends Component {
             <Route path="/contactus" component={ContactForm} />
             <Route path="/login" component={Signin} />
             <PrivateRoute
-              pathReact="/profile"
+              pathReact="/profile/:id"
               pathBack="/profile"
               component={Profile}
             />
