@@ -27,9 +27,8 @@ const Profile = (props) => {
       .then((data) => setProfile(data[0]))
       .catch(error => setError(true));
   }, []);
-  console.log('Profile', profile)
 
-  
+  console.log('profile', profile)
   return (
     <Container>
       <Nav>
@@ -43,8 +42,7 @@ const Profile = (props) => {
             <ListGroupItem>
             </ListGroupItem>
           </ListGroup>
-          <button onClick={() => setProfile(profile)}> test </button>
-          <p style={{color: 'white'}}>{profile.email}</p>
+          <p style={{color: 'white'}}>{profile.lastname}, {profile.firstname}</p>
           <Button
             href="/login"
             onClick={() => localStorage.setItem('token', null)}
