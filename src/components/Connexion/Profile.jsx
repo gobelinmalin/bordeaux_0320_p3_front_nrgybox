@@ -14,7 +14,6 @@ import {
 import Axios from 'axios';
 
 const Profile = (props) => {
-  console.log('ok', props.match.params);
   const [profile, setProfile] = useState({});
   const [error, setError] = useState(false);
 
@@ -22,17 +21,15 @@ const Profile = (props) => {
 
    Axios({
       method: 'GET',
-      url: `http://localhost:3000/api/users/${props.match.params}`,
+      url: `http://localhost:3000/api/users/${props.match.params.id}`,
     })
-      .then((response) => console.log('test', response.data))
-      .then((data) => setProfile(data.user[0]))
+      .then((response) => response.data)
+      .then((data) => setProfile(data[0]))
       .catch(error => setError(true));
   }, []);
+  console.log('Profile', profile)
 
-  // Axios.get(`http://localhost:3000/api/users/${props.match.params}`)
-  //   .then((res) => console.log(res.data))
-  //   .then((data) => setProfile({data}));
-
+  
   return (
     <Container>
       <Nav>
@@ -46,6 +43,8 @@ const Profile = (props) => {
             <ListGroupItem>
             </ListGroupItem>
           </ListGroup>
+          <button onClick={() => setProfile(profile)}> test </button>
+          <p style={{color: 'white'}}>{profile.email}</p>
           <Button
             href="/login"
             onClick={() => localStorage.setItem('token', null)}
