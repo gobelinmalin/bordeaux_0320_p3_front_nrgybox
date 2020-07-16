@@ -12,6 +12,8 @@ import {
   Button,
 } from 'reactstrap';
 import Axios from 'axios';
+import './Profile.css';
+import avatar_placeholder from './placeholder-avatar.png'
 
 const Profile = (props) => {
   const [profile, setProfile] = useState({});
@@ -30,28 +32,31 @@ const Profile = (props) => {
 
   console.log('profile', profile)
   return (
-    <Container>
-      <Nav>
-        <NavItem>
-          <NavLink href="/">Home</NavLink>
-        </NavItem>
-      </Nav>
-      <Row>
-        <Col>
-          <ListGroup>
-            <ListGroupItem>
-            </ListGroupItem>
-          </ListGroup>
-          <p style={{color: 'white'}}>{profile.lastname}, {profile.firstname}</p>
-          <Button
+    
+    <div className= 'profile-container'>
+      <div className='profile-block'>
+        <img src={avatar_placeholder} className= "profile-avatar" alt="avatar"/>
+      </div>
+      <div className= "profile-block">
+        <h3 className='profile-title'>Profil</h3>
+          <p className="p-profile">{profile.firstname}, {profile.lastname}</p>
+      </div>
+      <div className= "profile-block">
+        <h3 className='profile-title'>Coordonnées</h3>
+          <p className="p-profile">{profile.email}</p>
+      </div>
+
+          <button 
+            className= "signout-button"
+            type="submit"
             href="/login"
             onClick={() => localStorage.setItem('token', null)}
           >
-            Sign out
-          </Button>
-        </Col>
-      </Row>
-    </Container>
+            Se déconnecter
+          </button>
+
+    </div>
+      
   );
 };
 
