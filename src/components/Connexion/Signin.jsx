@@ -11,6 +11,12 @@ const Signin = (props) => {
     password: "****"
   });
 
+  const handleToken = (data) => {
+    console.log('data', data)
+    localStorage.setItem('token', data.token)
+    props.history.push(`profile/${data.idUser}`)
+  }
+
   
   const handleSubmit = () => {
     axios({
@@ -22,8 +28,7 @@ const Signin = (props) => {
         }),
     })
       .then((response) => response.data)
-      .then((data) => localStorage.setItem('token', data.token))
-      .then(() => props.history.push('/profile'))
+      .then((data) => handleToken(data))
       .catch();
   }
 
