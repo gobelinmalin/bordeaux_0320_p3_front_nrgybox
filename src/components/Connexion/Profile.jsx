@@ -46,14 +46,13 @@ const Profile = (props) => {
           <p className="p-profile">{profile.email}</p>
       </div>
 
-          <button 
+          <Button 
             className= "signout-button"
-            type="submit"
             href="/login"
             onClick={() => localStorage.setItem('token', null)}
           >
             Se déconnecter
-          </button>
+          </Button>
 
     </div>
       
