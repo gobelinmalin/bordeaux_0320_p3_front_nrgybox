@@ -1,0 +1,103 @@
+.Programme{
+    height: 110vh;
+}
+
+.composantChloe {
+    position: absolute;
+    z-index: 3;
+}
+
+.testchloe {
+    color:red;
+}
+
+.vertical-timeline-element-title {
+    color : #92CEEF;
+
+}
+
+.vertical-timeline-element-content {
+    position: relative;
+    margin-left: 60px;
+    background: none;
+    border-radius: .25em;
+    padding: 1em;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display: flex;
+}
+
+.vertical-timeline-element-content-arrow {
+    content: '';
+    position: absolute;
+    top: 16px;
+    right: 100%;
+    height: 0;
+    width: 0;
+    border: none;
+    border-right: none;
+}
+
+.vertical-timeline::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 18px;
+    height: 85%;
+    width: 4px;
+    background: #fff;
+}
+
+.button {
+    color: #232142;
+    background-color: #FFEB76;
+    border-radius: 30px;
+    font-size: 20px;
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(./Vector.png);
+    background-repeat: no-repeat;
+    background-position: bottom 15px left 10px;
+    padding-left: 30px;
+}
+
+.vertical-timeline--animate .vertical-timeline-element-icon.bounce-in {
+    background-image: url(./sun.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.vertical-timeline-element-icon {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.select-btn {
+    border-radius: 30px;
+    border-color: #E9E98A;
+    border-width: 5px;
+    padding: 10px;
+    background-color: white;
+    color: #B2B1B1;
+    width: 100px;
+    margin-left: 20px;
+    margin-top: -10px;
+    line-height: normal;
+    border-style: solid;
+}
+
+.select-btn2 {
+    border-radius: 30px;
+    border-color: #E9E98A;
+    border-width: 5px;
+    padding: 10px;
+    background-color: white;
+    color: #B2B1B1;
+    width: 100px;
+    margin-top: -10px;
+    margin-left: 58px;
+    line-height: normal;
+    border-style: solid;
+}

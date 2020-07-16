@@ -1,0 +1,24 @@
+.Home_map_none .leaflet-pane, .Home_map_none .leaflet-map-pane {
+    display: none;
+    height: 30px;
+}
+
+.Home_map .leaflet-pane, .Home_map .leaflet-map-pane {
+    display: block;
+    height:150px;
+}
+
+.leaflet-container, .leaflet-touch.leaflet-retina, .leaflet-safari.leaflet-fade-anim, .leaflet-grab.leaflet-touch-drag, .leaflet-touch-zoom {
+    position: absolute;
+    height: 77%;
+    width: 89%;
+    cursor: initial;
+}
+
+#leaflet-control-zoom-in {
+    display: none;
+}
+
+.leaflet-control-zoom {
+    display:none;
+}

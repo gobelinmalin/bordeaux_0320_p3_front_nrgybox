@@ -1,0 +1,239 @@
+.ForecastDetailsContainer {
+  background-color: #c5daed;
+  width: 100%;
+  height: 393px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.ForecastDetailsContainer p {
+  margin: 0;
+}
+
+.FavouritIcon {
+  width: 13%;
+  margin-right: 5%;
+  margin-top: 3%;
+}
+
+.dateForcast {
+  margin-top: 10px;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+.dateForcast p {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.weatherContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  color: black;
+}
+
+.weatherContainer img {
+  width: 55px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.weatherContainer {
+  font-size: 2rem;
+}
+
+.hr1 {
+  border-top: 0.5px solid #54739762;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -3%;
+}
+
+.sunIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.sunriseSunsetContainer {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 25px;
+  stroke: #f3bb33 !important;
+  fill: #f3bb33 !important;
+}
+
+.sunriseContainer,
+.sunsetContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sunriseContainer p,
+.sunsetContainer p {
+  color: #547397;
+  font-size: 1em;
+}
+
+.forecastLightningContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ContainerConsignes{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: black;
+}
+
+.forecastLightningContainer a{
+  font-size: 0.8rem;
+  padding-bottom: 55px;
+}
+
+.forecastLightningContainer p {
+  color: black;
+  margin-right: 10px;
+}
+
+.forecastLightningContainer .ConsigneElement{
+  color: black;
+  font-size: 0.8rem;
+}
+
+.dayforecastLightningJauge {
+  padding-bottom: 10px;
+}
+
+.dayforecastLightningHourInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 43%;
+}
+
+.hourValue {
+  color: black;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.ContainerAllDayPrograms {
+  display: flex;
+  justify-content: center;
+}
+
+.ContainerAllDayPrograms a {
+  display: flex;
+  color: black;
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
+.ContainerAllDayPrograms .ContainerPlusProgram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.ContainerAllDayPrograms .ContainerPlusProgram p {
+  font-size: 1.3rem;
+}
+
+.AllTimeline{
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  height: 10px;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.AllTimeline p{
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.ContainerPartTimeline{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  height: 10px;
+  background-color: #f6b93b;
+}
+
+.ContainerPartTimeline::before{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  width: 1px;
+  height: 200%;
+}
+
+.ContainerPartTimeline::after{
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  background-color: black;
+  width: 1px;
+  height: 200%;
+}
+
+.PartTimeline{
+  position: relative;
+  width: 100%;
+}
+
+.PartTimelineElement{
+  position: absolute;
+  width: 100%;
+  color: #547397;
+}
+
+.start{
+  top: -35px;
+  transform: translate(-45%, 0);
+  -webkit-transform: translate(-45%, 0);
+  -moz-transform: translate(-45%, 0);
+  -ms-transform: translate(-45%, 0);
+  -o-transform: translate(-45%, 0);
+}
+
+.end{
+  bottom: -35px;
+  transform: translate(45%, 0);
+  -webkit-transform: translate(45%, 0);
+  -moz-transform: translate(45%, 0);
+  -ms-transform: translate(45%, 0);
+  -o-transform: translate(45%, 0);
+}

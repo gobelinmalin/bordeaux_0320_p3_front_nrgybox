@@ -1,0 +1,82 @@
+.ForecastContainer{
+  width: 100%;
+  height: 100vh;
+  margin-top: 30px;
+  background-color: #182c61;
+  color: white;
+}
+
+.ForecastContainer h1{
+  font-size: 2.5rem;
+  text-align: center;
+  font-family: 'Aqua', 'Roboto';
+}
+
+.ForecastContainerHeader{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.ForecastContainerHeader h3{
+  width: 55%;
+  margin-right: 5px;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  line-height: initial;
+}
+
+.CityIconEdit{
+  display: flex;
+  align-items: center;
+}
+
+.EditAdressIcon a{
+  color: white;
+}
+
+.EditAdressIcon svg{
+  width: 20px;
+}
+
+.cardContainer {
+  width: 100%;
+}
+
+.mapForecastLightningContainer{
+  height: 250px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+@media (max-width: 834px){
+  .ForecastContainer{
+    height: 89vh;
+  }
+
+  .ForecastContainerHeader h3{
+    width: 80%;
+    font-size: 1rem;
+  }
+  
+  .EditAdressIcon{
+    line-height: 0;
+  }
+  
+  .mapForecastLightningContainer{
+    height: 150px;
+    margin-bottom: 30px;
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 414px){
+  .ForecastContainerHeader h3{
+    font-size: 0.8rem;
+  }
+
+  .mapForecastLightningContainer{
+    margin-top: 0;
+  }
+}
