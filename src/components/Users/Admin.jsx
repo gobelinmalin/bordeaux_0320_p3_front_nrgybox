@@ -1,15 +1,10 @@
-/* eslint-disable react/sort-comp */
 import React, { Component } from 'react';
 import axios from 'axios';
 import Burger from '../BurgerMenu/Burger';
 import FormMayor from './FormMayor';
 import FormTechnicalServices from './FormTechnicalServices';
 
-
 import './admin.css';
-
-const onChange2 = (newValue) => console.log('onChange', newValue);
-const onSubmit2 = () => console.log('onSubmit');
 
 class Admin extends Component {
   constructor(props) {
@@ -36,14 +31,14 @@ class Admin extends Component {
     e.preventDefault();
     axios({
       method: 'POST',
-      url: 'http://localhost:3000/api/users',
+      url: 'http://process.env.REACT_APP_SERVER/api/users',
       data: this.state,
     }).then((response) => {
       if (response.data.status === 'success') {
-        console.log(response.data.status);
+        return response.data.status;
         this.resetForm();
       } else if (response.data.status === 'fail') {
-        console.log(response.data.status);
+        return response.data.status;
       }
     });
   }
@@ -229,9 +224,7 @@ class Admin extends Component {
               Enregistrer
             </button>
             </div>
-            
           </form>
-         
         </div>
         <br/>
         <br />

@@ -53,7 +53,7 @@
     "use-position": "0.0.7",
     "yup": "^0.29.1"
   },
-  "proxy": "http://localhost:3000/",
+  "proxy": "http://nrgybox.eu/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
