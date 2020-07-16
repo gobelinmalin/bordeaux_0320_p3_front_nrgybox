@@ -9,10 +9,6 @@ import Signin from './components/Connexion/Signin';
 import PrivateRoute from './components/Connexion/private/PrivateRoute';
 import Profile from './components/Connexion/Profile';
 
-
-// import StateContainer from './container/StateContainer';
-
-
 import Programme from './components/Programme/Programme';
 import Navbar from './components/BurgerMenu/Navbar';
 import './App.css';

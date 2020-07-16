@@ -14,40 +14,12 @@ const ContactForm = () => {
     comment: '',
   });
 
-  // eslint-disable-next-line no-unused-vars
   const [errorForm, setErrorForm] = useState('');
   const [successForm, setSuccessForm] = useState({});
 
   const handleChange = (e) => {
     e.preventDefault();
-    // const regexName = RegExp(/^[a-zA-Z]+/);
-    // const regexEmail = RegExp(/.+@.+\..+/);
     const { name, value } = e.target;
-    // if (name === 'name') {
-    //   if (!value.match(/^[a-zA-Z]+/) && value.length === 0) {
-    //     <span>Vous devez précisez votre nom, lettres seulement</span>;
-    //   } else {
-    //     value.toLowerCase();
-    //   }
-    // } else if (name === 'email') {
-    //   if (!value.match(/.+@.+\..+/) && value.length === 0) {
-    //     return (
-    //       <span>
-    //         Vous devez précisez votre email, ex: jean-dupont@gmail.com
-    //       </span>
-    //     );
-    //   }
-    // }
-    // switch (name) {
-    //   case 'name':
-    //     regexName && value.length === 0 ? "Le nom n'est pas valide" : "";
-    //     break;
-    //   case 'email':
-    //     regexEmail && value.length === 0 ? "L'email n'est pas valide" : "";
-    //     break;
-    //   default:
-    //     break;
-    // }
     setFormData({
       ...formData,
       [name]: value,
@@ -56,23 +28,7 @@ const ContactForm = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    const url = 'http://localhost:3000/api/send';
-    // try {
-    //   axios
-    //     .post(url, formData)
-    //     // .then((res) => <Alert key={res} variant="success" />)
-    //     .then((res) => res);
-    // } catch (err) {
-    //   throw new Error(err);
-    //   // setErrorForm({ message: 'Erreur ta mère' });
-    // } finally {
-    //   // setSuccessForm({ message: 'Le message a bien été envoyé !' });
-    //   setFormData({
-    //     name: '',
-    //     email: '',
-    //     comment: '',
-    //   });
-    // }
+    const url = 'http://process.env.REACT_APP_SERVER/api/send';
     axios.post(url, formData).then((res) => {
       if (res.data.status === 'success') {
         setSuccessForm(res);
@@ -90,7 +46,11 @@ const ContactForm = () => {
   return (
     <>
       <Modal show={show} onHide={handleClose}>
-        {successForm ? <p>ok</p> : <p>erreur</p>}
+        {successForm ? (
+          <p>ok</p>
+        ) : (
+          <p>il y a eu une erreur lors de votre création de formulaire</p>
+        )}
       </Modal>
       <div className="ContactForm">
         <form onSubmit={submitForm} noValidate>
@@ -108,10 +68,10 @@ const ContactForm = () => {
                   required
                   noValidate
                 />
-                <div className="containerHR" >
-                <hr className="inputFieldHR"/>
-              </div>
-              <label htmlFor="FirstName">Nom et Prénom</label>
+                <div className="containerHR">
+                  <hr className="inputFieldHR" />
+                </div>
+                <label htmlFor="FirstName">Nom et Prénom</label>
               </div>
               <br />
               <div className="emailField">
@@ -125,14 +85,14 @@ const ContactForm = () => {
                   required
                   noValidate
                 />
-                <div className="containerHR" >
-                <hr className="inputFieldHR"/>
-              </div>
-              <label htmlFor="FirstName">Email</label>
-              <br />
+                <div className="containerHR">
+                  <hr className="inputFieldHR" />
                 </div>
-             
-                <div className="messageField">
+                <label htmlFor="FirstName">Email</label>
+                <br />
+              </div>
+
+              <div className="messageField">
                 <textarea
                   type="text"
                   id="comment"
@@ -142,21 +102,18 @@ const ContactForm = () => {
                   required
                   value={formData.comment}
                   noValidate
-                >
-                
-                </textarea>
-                <div className="containerHR" >
+                />
+                <div className="containerHR" />
+                <label htmlFor="FirstName">Message</label>
+                <br />
               </div>
-              <label htmlFor="FirstName">Message</label>
-              <br />
-                </div>
-                <div className="submitCTAContainer" >
-              <input
-                onClick={handleShow}
-                className="btn-primary"
-                type="submit"
-                value="Envoyer"
-              />
+              <div className="submitCTAContainer">
+                <input
+                  onClick={handleShow}
+                  className="btn-primary"
+                  type="submit"
+                  value="Envoyer"
+                />
               </div>
             </div>
           </fieldset>

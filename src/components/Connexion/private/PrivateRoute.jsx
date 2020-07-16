@@ -9,7 +9,7 @@ function App(props) {
   useEffect(() => {
     axios({
       method: 'post',
-      url: `http://localhost:3000/api/users${props.pathBack}`,
+      url: `http://process.env.REACT_APP_SERVER/api/users${props.pathBack}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       },
@@ -23,7 +23,13 @@ function App(props) {
     return <Redirect to="/" />;
   }
 
-  return <Route path={props.pathReact} component={props.component} profile={profile} />;
+  return (
+    <Route
+      path={props.pathReact}
+      component={props.component}
+      profile={profile}
+    />
+  );
 }
 
 export default App;
