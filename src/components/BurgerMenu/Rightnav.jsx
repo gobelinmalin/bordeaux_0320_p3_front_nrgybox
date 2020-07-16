@@ -23,12 +23,13 @@ const Ul = styled.ul`
     border-radius: 6px;
     height: 100vh;
     width: 100vw;
-    padding-top: 3.5rem;
+    padding-top: 3rem;
     transition: transform 0.7s ease-in-out;
     li {
       color: #235a8c;
       padding: 40px;
       font-size: 15px;
+      border-bottom: solid #235a8c 2px;
     }
     li: hover {
       color: #e9e98a;
@@ -45,17 +46,17 @@ const RightNav = ({ open }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink activeClassName="burger-Nav" id="favoris" to="/favoris">
+        <NavLink exact activeClassName="burger-Nav" id="favoris" to="/favoris">
           Mes favoris
         </NavLink>
       </li>
       <li>
-        <NavLink activeClassName="burger-Nav" id="About" to="/Apropos">
+        <NavLink exact activeClassName="burger-Nav" id="About" to="/Apropos">
           NRGYBox
         </NavLink>
       </li>
       <li>
-        <NavLink activeClassName="burger-Nav" id="contact" to="/contactus">
+        <NavLink exact activeClassName="burger-Nav" id="contact" to="/contactus">
           Nous contacter
         </NavLink>
       </li>

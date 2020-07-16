@@ -33,7 +33,6 @@ const Profile = (props) => {
         <h3 className="profile-title">Coordonnées</h3>
         <p className="p-profile">{profile.email}</p>
       </div>
-
       <button
         className="signout-button"
         type="submit"
