@@ -123,7 +123,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
 
       // reverse latitude and longitude to get the city name
       Axios.get(
-        `https://api-adresse.data.gouv.fr/reverse/?lat=${position.lat}&long=${position.lng}`
+        `https://process.env.GOUV_APP/?lat=${position.lat}&long=${position.lng}`
       )
         .then((res) => res.data)
         .then((data) => setReverseLatLng(data.features[0].properties.label));
@@ -132,7 +132,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
     // weather API
     const fetchDataWeather = () => {
       return Axios.get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${position.lat}&lon=${position.lng}&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `https://process.env.WHEATHER_APP/onecall?lat=${position.lat}&lon=${position.lng}&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
     };
 

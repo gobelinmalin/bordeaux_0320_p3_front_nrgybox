@@ -13,7 +13,6 @@ const ForecastSlider = ({ arrayAllDay, isLoading }) => {
   const [slider, setSlider] = useState(null);
   const [select, setSelect] = useState(0);
 
-  /* eslint-disable no-unused-vars */
   const settings = {
     dots: true,
     arrows: false,

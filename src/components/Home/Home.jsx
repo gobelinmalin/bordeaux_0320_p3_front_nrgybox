@@ -1,10 +1,3 @@
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable func-names */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable camelcase */
-/* eslint-disable no-console */
 import React, { useState, Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import { render } from 'react-dom';
@@ -12,7 +5,7 @@ import Burger from '../BurgerMenu/Burger';
 import logo_nrgybox from './style/logo_nrgybox.png';
 import SearchBar from '../SearchBar/SearchBar';
 import './style/home.css';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 class Home extends Component {
   constructor(props) {
@@ -21,7 +14,6 @@ class Home extends Component {
   }
 
   getPosition(position) {
-    console.log(position);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude, longitude } = position.coords;

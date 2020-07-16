@@ -14,11 +14,6 @@ import TestTimePicker from './TestTimePicker';
 import './Programme.css';
 
 const Programme = ({ location }) => {
-  function button() {
-    // eslint-disable-next-line no-alert
-    alert('Allumage opérationnel');
-  }
-
   return (
     <div className="Programme">
       <VerticalTimeline>
@@ -68,7 +63,7 @@ const Programme = ({ location }) => {
           })}
         </div>
       </VerticalTimeline>
-      <button type="button" className="button" onClick={button}>
+      <button type="button" className="button">
         ALLUMER IMMEDIATEMENT
       </button>
     </div>
