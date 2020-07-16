@@ -1,10 +1,19 @@
+## Front Nrgybox
+
+Team : 
+- Chloé
+- Michaël
+- Johanna
+- Enzo
+- Benoit
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting started
 
 ```bash
-$ npx degit Karnak19/react-prettier-eslint-action my-app
-$ cd my-app && git init && npm install
+$ cd my-app 
+$ npm install
 $ npm start
 ```
 
