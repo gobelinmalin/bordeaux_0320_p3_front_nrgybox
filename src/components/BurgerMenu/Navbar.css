@@ -18,7 +18,22 @@
 }
 
 .signup {
+  text-decoration: none;
+  margin-right: 45px;
+  margin-top: 37px;
+  color: #e9e98a;
+}
 
-  margin-right: 30px;
-  margin-top:30px
+Nav {
+  width: 100%;
+  color: #e9e98a;
+  height: 75px;
+  border-bottom: 2px solid #f1f1f1;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  padding: 15px 0;
 }

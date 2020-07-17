@@ -1,0 +1,44 @@
+.profile-container{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.profile-block{
+    padding: 15px;
+    border-bottom: solid #92CEEF 2px;;
+}
+
+.profile-title{
+    color:#e9e98a;
+    padding: 5px;
+}
+
+.p-profile {
+    color: white;
+}
+
+.signout-button {
+
+    padding:10px;
+    margin: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color:rgb(255, 247, 0, 0.77);
+    color:white;
+    font-weight: bold;
+}
+
+.signout-button:hover {
+
+    background-color: #0069d9;
+}
+
+.profile-avatar {
+    widows: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 50%;
+
+}
+

@@ -21,7 +21,6 @@ const ForecastMap = ({ arrayAllDay }) => {
           attribution="&copy; <a href='https://osm.org/copyright'>OpenStreetMap</a> contributors"
           url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}
         />
-        {/* icon={generalistIcon} sur Marker */}
         <Marker position={geolocation} />
       </Map>
     </div>

@@ -10,8 +10,6 @@ import PrivateRoute from './components/Connexion/private/PrivateRoute';
 import Profile from './components/Connexion/Profile';
 import Favorites from './components/Favorites/Favorites';
 
-// import StateContainer from './container/StateContainer';
-
 
 import Programme from './components/Programme/Programme';
 import Navbar from './components/BurgerMenu/Navbar';
@@ -33,7 +31,7 @@ class App extends Component {
             <Route path="/login" component={Signin} />
             <Route path="/favorites" component={Favorites} />
             <PrivateRoute
-              pathReact="/profile"
+              pathReact="/profile/:id"
               pathBack="/profile"
               component={Profile}
             />
