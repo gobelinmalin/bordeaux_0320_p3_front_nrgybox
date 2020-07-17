@@ -31,7 +31,7 @@ class Admin extends Component {
     e.preventDefault();
     axios({
       method: 'POST',
-      url: 'http://process.env.REACT_APP_SERVER/api/users',
+      url: `${process.env.REACT_APP_URL}/users`,
       data: this.state,
     }).then((response) => {
       if (response.data.status === 'success') {
@@ -137,7 +137,7 @@ class Admin extends Component {
               <input
                 type="text"
                 required
-                name="ZipCode"
+                name="zipCode"
                 id="ZipCode"
                 placeholder="Ex: 33000"
                 value={this.state.zipCode}
@@ -153,7 +153,7 @@ class Admin extends Component {
               <input
                 type="text"
                 required
-                name="City"
+                name="city"
                 id="City"
                 placeholder="Ex: Bordeaux"
                 value={this.state.city}

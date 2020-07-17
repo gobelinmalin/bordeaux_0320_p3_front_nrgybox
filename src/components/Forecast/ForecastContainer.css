@@ -14,10 +14,35 @@
 
 .ForecastContainerHeader{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-top: 20px;
+  padding: 0 10px 0 10px;
 }
+
+.ForecastContainerHeader .ContainerIconFavorites{
+  margin-right: 20px;
+}
+
+.ContainerIconFavorites img{
+  width: 20px;
+  height: auto;
+}
+
+.EmptyHeart{
+  fill: none!important;
+  stroke: #FFF!important;
+}
+
+.FullHeart{
+  fill: #c0392b!important;
+  stroke: #c0392b!important;
+}
+
+/* .ContainerIconFavorites path{
+  stroke: yellow!important;
+} */
 
 .ForecastContainerHeader h3{
   width: 55%;

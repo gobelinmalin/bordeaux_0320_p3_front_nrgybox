@@ -9,7 +9,7 @@ function App(props) {
   useEffect(() => {
     axios({
       method: 'post',
-      url: `http://process.env.REACT_APP_SERVER/api/users${props.pathBack}`,
+      url: `${process.env.REACT_APP_URL}/users${props.pathBack}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       },
@@ -19,9 +19,11 @@ function App(props) {
       .catch(error => setError(true));
   }, []);
 
+
   if (localStorage.getItem('token') === null) {
     return <Redirect to="/" />;
   }
+
 
   return (
     <Route

@@ -100,7 +100,6 @@
 
 .forecastLightningContainer a{
   font-size: 0.8rem;
-  padding-bottom: 55px;
 }
 
 .forecastLightningContainer p {
@@ -164,6 +163,7 @@
 .AllTimeline{
   position: relative;
   margin: 0 auto;
+  margin-top: 50px;
   width: 80%;
   height: 10px;
   background-color: white;
@@ -177,7 +177,7 @@
 .AllTimeline p{
   width: 100%;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 30px;
 }
 
 .ContainerPartTimeline{

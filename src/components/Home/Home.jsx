@@ -5,12 +5,16 @@ import Burger from '../BurgerMenu/Burger';
 import logo_nrgybox from './style/logo_nrgybox.png';
 import SearchBar from '../SearchBar/SearchBar';
 import './style/home.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link, Redirect } from 'react-router-dom';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      searchHistory: [],
+    };
+    // this.handleSearchClick = this.handleSearchClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   getPosition(position) {
@@ -25,11 +29,33 @@ class Home extends Component {
       this.handleClick.bind(this)
     }    
   }
-
   handleClick(e) {
     this.getPosition("element clicked");
   }
 
+  // handleSearchClick(e) {
+  //   e.preventDefault();
+  //   this.setState({
+  //     searchHistory: [
+  //       JSON.parse(localStorage.getItem('datageoloc'))[0].text
+  //       // 'aze',
+  //       // 'test',
+  //       // 'truc'
+  //     ]
+  //   });
+  // }
+
+  handleKeyPress(e){
+    console.log(e.charCode === 13)
+    if (e.charCode === 13) {
+      this.setState({
+        searchHistory: [
+          JSON.parse(localStorage.getItem('datageoloc'))[0].text,
+        ]
+      });
+    }
+  }
+  
   render() {
     return (
       <div className="container_01">
@@ -44,7 +70,7 @@ class Home extends Component {
             attribution="&copy; <a href='https://osm.org/copyright'>OpenStreetMap</a> contributors"
             url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}
           ></TileLayer>
-          <SearchBar />
+          <SearchBar onKeyDown={(e) => this.handleKeyPress(e)} />
     </Map> 
     </div>
         <div className="homeContent">
@@ -59,6 +85,14 @@ class Home extends Component {
                   Rechercher
                 </button>
             </NavLink>
+            <div>
+              <h3>Vos dernière recherches :</h3>
+              {this.state.searchHistory.map(search => {
+                return (
+                  <Link to='/weather'>{search}</Link>
+                )
+              })}
+            </div>
           </div>
           <div className="logoHome">
             <img src={logo_nrgybox} alt="NRGYBox Logo" />

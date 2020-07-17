@@ -78,7 +78,9 @@ const ForecastDetails = ({ day }) => {
           <p>Consignes d&apos;éclairage</p>
           <span className="ConsigneElement">(sur 24h)</span>
         </div>
-        <Link to={{ pathname: '/programme', state: { day } }}>modifier</Link>
+        {arrProgsPercent.length !== 0 && (
+          <Link to={{ pathname: '/programme', state: { day } }}>modifier</Link>
+        )}
         <div className="AllTimeline">
           {arrProgsPercent.length !== 0 ? (
             arrProgsPercent.map((percent, index) => (

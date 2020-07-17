@@ -29,7 +29,7 @@ const Signin = (props) => {
   const handleSubmit = () => {
     axios({
       method: 'post',
-      url: 'http://process.env.REACT_APP_SERVER/api/users/login',
+      url: `${process.env.REACT_APP_URL}/users/login`,
       data: signin,
       headers: new Headers({
         'Content-Type': 'application/json',
