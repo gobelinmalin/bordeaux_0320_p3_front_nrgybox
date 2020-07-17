@@ -28,7 +28,7 @@ const ContactForm = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    const url = 'http://process.env.REACT_APP_SERVER/api/send';
+    const url = `${process.env.REACT_APP_URL}/send`;
     axios.post(url, formData).then((res) => {
       if (res.data.status === 'success') {
         setSuccessForm(res);
