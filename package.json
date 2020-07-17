@@ -56,7 +56,7 @@
     "use-position": "0.0.7",
     "yup": "^0.29.1"
   },
-  "proxy": "http://nrgybox.eu/",
+  "proxy": "http://nrgybox-back.nrgybox.eu:3000/api",
   "engines": {
     "node": "12.x",
     "npm": "6.x"
@@ -72,16 +72,8 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "devDependencies": {
     "eslint": "^6.8.0",
@@ -103,9 +95,6 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "./node_modules/.bin/eslint --max-warnings=0",
-      "pretty-quick --staged"
-    ]
+    "src/**/*.{js,jsx}": ["./node_modules/.bin/eslint --max-warnings=0", "pretty-quick --staged"]
   }
 }
