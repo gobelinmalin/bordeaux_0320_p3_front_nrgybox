@@ -11,7 +11,7 @@ const Profile = (props) => {
   useEffect(() => {
     Axios({
       method: 'GET',
-      url: `http://process.env.REACT_APP_SERVER/api/users/${props.match.params.id}`,
+      url: `${process.env.REACT_APP_URL}/users/${props.match.params.id}`,
     })
       .then((response) => response.data)
       .then((data) => setProfile(data[0]))

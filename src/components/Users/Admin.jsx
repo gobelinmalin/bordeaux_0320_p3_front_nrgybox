@@ -31,7 +31,7 @@ class Admin extends Component {
     e.preventDefault();
     axios({
       method: 'POST',
-      url: 'http://process.env.REACT_APP_SERVER/api/users',
+      url: `${process.env.REACT_APP_URL}/users`,
       data: this.state,
     }).then((response) => {
       if (response.data.status === 'success') {
