@@ -110,7 +110,6 @@ class Admin extends Component {
               <input
                 type="text"
                 required
-                pattern="^[a-zA-Z]"
                 name="lastname"
                 id="LastName"
                 placeholder="Ex: Dupont"
@@ -141,9 +140,9 @@ class Admin extends Component {
             </div>
             <div className="ZipCodeField">
               <input
-                type="number"
+                type="text"
                 required
-                name="ZipCode"
+                name="zipCode"
                 id="ZipCode"
                 placeholder="Ex: 33000"
                 value={this.state.zipCode}
@@ -159,7 +158,7 @@ class Admin extends Component {
               <input
                 type="text"
                 required
-                name="City"
+                name="city"
                 id="City"
                 placeholder="Ex: Bordeaux"
                 value={this.state.city}
