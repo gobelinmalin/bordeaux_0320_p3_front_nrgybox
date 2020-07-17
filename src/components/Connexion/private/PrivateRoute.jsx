@@ -19,9 +19,11 @@ function App(props) {
       .catch(error => setError(true));
   }, []);
 
+
   if (localStorage.getItem('token') === null) {
     return <Redirect to="/" />;
   }
+
 
   return (
     <Route

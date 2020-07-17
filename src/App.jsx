@@ -8,6 +8,8 @@ import ShowLocation from './components/Geolocation/ShowLocation';
 import Signin from './components/Connexion/Signin';
 import PrivateRoute from './components/Connexion/private/PrivateRoute';
 import Profile from './components/Connexion/Profile';
+import Favorites from './components/Favorites/Favorites';
+
 
 import Programme from './components/Programme/Programme';
 import Navbar from './components/BurgerMenu/Navbar';
@@ -27,6 +29,7 @@ class App extends Component {
             <Route path="/map" component={ShowLocation} />
             <Route path="/contactus" component={ContactForm} />
             <Route path="/login" component={Signin} />
+            <Route path="/favorites" component={Favorites} />
             <PrivateRoute
               pathReact="/profile/:id"
               pathBack="/profile"
