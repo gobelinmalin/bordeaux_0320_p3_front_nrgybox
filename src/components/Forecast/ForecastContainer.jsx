@@ -125,7 +125,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
 
       // reverse latitude and longitude to get the city name
       Axios.get(
-        `https://api-adresse.data.gouv.fr/reverse/?lat=${position.lat}&long=${position.lng}`
+        `${process.env.REACT_APP_GOUV}/reverse/?lat=${position.lat}&long=${position.lng}`
       )
         .then((res) => res.data)
         .then((data) => setReverseLatLng(data.features[0].properties.label));
@@ -134,7 +134,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
     // weather API
     const fetchDataWeather = () => {
       return Axios.get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${position.lat}&lon=${position.lng}&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `${process.env.REACT_APP_WEATHER}/onecall?lat=${position.lat}&lon=${position.lng}&exclude=hourly&units=metric&lang=fr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
     };
 
@@ -221,22 +221,11 @@ const ForecastContainer = ({ arrayAllDay }) => {
       }
     };
 
-    // for (let i = 0; i < arrFav.length; i++) {
-    //   if (arrFav[i] != geoloc) {
-    //     localStorage.setItem(localItem, favJson);
-    //     setState(favJson);
-    //   }
-    //   else {
-    //     localStorage.removeItem(localItem, geoloc);
-    //     setState(null);
-    //   }
-    // }
-
     return [loc, setLoc];
   }
 
   const [favorites, setFavorites] = useLocalStorage('favorites');
-  const styleFav = favorites == geoloc ? "FullHeart" : "EmptyHeart"; // de base : favorites != null
+  const styleFav = favorites == geoloc ? "FullHeart" : "EmptyHeart";
 
   return (
     <div className="ForecastContainer">
