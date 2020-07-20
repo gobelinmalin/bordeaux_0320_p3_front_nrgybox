@@ -91,7 +91,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
     const year = date.getFullYear();
     const month = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
     const day = (date.getDate() < 10 ? '0' : '') + date.getDate();
-  
+
     return formate
       .replace(/h+/, hour)
       .replace(/m+/, minute)
@@ -99,7 +99,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
       .replace(/Y+/, year)
       .replace(/M+/, month)
       .replace(/D+/, day);
-  }
+  };
 
   useEffect(() => {
     let position = {};
@@ -143,7 +143,9 @@ const ForecastContainer = ({ arrayAllDay }) => {
       const nameOfCity = city && city.split(',')[0];
       return Axios({
         method: 'GET',
-        url: `${process.env.REACT_APP_URL}/programs?city=${nameOfCity !== '' ? nameOfCity : reverseLatLng}`,
+        url: `${process.env.REACT_APP_URL}/programs?city=${
+          nameOfCity !== '' ? nameOfCity : reverseLatLng
+        }`,
       });
     };
 
@@ -173,9 +175,16 @@ const ForecastContainer = ({ arrayAllDay }) => {
 
       // for each day, construct an array of objects with all day informations
       results[0].data.daily.forEach((day, index) => {
-        const convertTimestamp = convertDate(new Date(day.dt * 1000), "YYYY-MM-DD");
+        const convertTimestamp = convertDate(
+          new Date(day.dt * 1000),
+          'YYYY-MM-DD'
+        );
         let dateProg;
-        progsPerDays.map((dataProg, index, arrProg) => convertTimestamp === dataProg[index].date ? dateProg = arrProg[index] : dateProg = []);
+        progsPerDays.map((dataProg, index, arrProg) =>
+          convertTimestamp === dataProg[index].date
+          ? dateProg = arrProg[index]
+          : (dateProg = [])
+        );
 
         arr[index] = {
           geoloc: position,
@@ -222,26 +231,35 @@ const ForecastContainer = ({ arrayAllDay }) => {
     };
 
     return [loc, setLoc];
-  }
+  };
 
   const [favorites, setFavorites] = useLocalStorage('favorites');
-  const styleFav = favorites == geoloc ? "FullHeart" : "EmptyHeart";
+  const styleFav = favorites === geoloc ? 'FullHeart' : 'EmptyHeart';
 
   return (
     <div className="ForecastContainer">
-      <h1>Les prévisions lumineuses</h1>
+      <h1 className="TitlePage">Les prévisions lumineuses</h1>
       <div className="ForecastContainerHeader">
         <h3>{cityName !== '' ? cityName : reverseLatLng}</h3>
         <div className="ContainerIconFavorites">
           <Link>
-            <svg onClick={() => setFavorites(geoloc)} xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'>
+            <svg onClick={() => setFavorites(geoloc)}
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 512 512"
+            >
               <title>ionicons-v5-f</title>
-              <path className={styleFav} d='M352.92,80C288,80,256,144,256,144s-32-64-96.92-64C106.32,80,64.54,124.14,64,176.81c-1.1,109.33,86.73,187.08,183,252.42a16,16,0,0,0,18,0c96.26-65.34,184.09-143.09,183-252.42C447.46,124.14,405.68,80,352.92,80Z'
-                style={{strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '32px'}}
+              <path
+                className={styleFav}
+                d="M352.92,80C288,80,256,144,256,144s-32-64-96.92-64C106.32,80,64.54,124.14,64,176.81c-1.1,109.33,86.73,187.08,183,252.42a16,16,0,0,0,18,0c96.26-65.34,184.09-143.09,183-252.42C447.46,124.14,405.68,80,352.92,80Z"
+                style={{strokeLinecap: 'round',
+                  strokeLinejoin: 'round',
+                  strokeWidth: '32px',
+                }}
               />
             </svg>
           </Link>
-            
         </div>
         <div className="EditAdressIcon">
           <Link to="/">

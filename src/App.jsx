@@ -9,12 +9,11 @@ import Signin from './components/Connexion/Signin';
 import PrivateRoute from './components/Connexion/private/PrivateRoute';
 import Profile from './components/Connexion/Profile';
 import Favorites from './components/Favorites/Favorites';
-
-
 import Programme from './components/Programme/Programme';
 import Navbar from './components/BurgerMenu/Navbar';
 import './App.css';
 import ContactForm from './components/Contact/ContactForm';
+import AboutUs from './components/AboutUs/AboutUs';
 
 class App extends Component {
   render() {
@@ -29,13 +28,14 @@ class App extends Component {
             <Route path="/map" component={ShowLocation} />
             <Route path="/contactus" component={ContactForm} />
             <Route path="/login" component={Signin} />
-            <Route path="/favorites" component={Favorites} />
+            <Route path="/favoris" component={Favorites} />
             <PrivateRoute
               pathReact="/profile/:id"
               pathBack="/profile"
               component={Profile}
             />
             <Route path="/programme" component={Programme} />
+            <Route path="/apropos" component={AboutUs} />
           </div>
         </Switch>
       </BrowserRouter>

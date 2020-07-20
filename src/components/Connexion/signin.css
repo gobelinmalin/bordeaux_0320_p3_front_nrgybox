@@ -1,8 +1,72 @@
+.ContainerSignIn{
+  display: flex;
+  justify-content: center;
+}
+
+.containerHR{
+  width: 300px;
+}
+
 .container {
-    margin-top: 15px;
+  margin-top: 15px;
+}
+
+.ContainerSignIn .formContainer{
+  margin-top: 80px;
+}
+
+.ContainerSignIn .passField{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.emailField label,
+.passField label{
+  color: #92CEEF;
+  text-align: left;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.emailField input,
+.passField input{
+  width: 300px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+::placeholder{
+  margin-left: 5px;
+  color: rgba(245, 245, 245, 0.411);
+  font-style: italic;
 }
 
 .button_send {
-    margin-top: 15px;
-    align-items: center;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.submitCTAContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary{
+  background-color: rgb(255, 247, 0, 0.77);; 
+  width: 150px;
+  height: 45px;
+  border:none;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+@media (min-width: 836px){
+  .ContainerSignIn input#email, .ContainerSignIn input#name,
+  .containerHR,
+  .passField input,
+  .ContainerSignIn label{
+    width: 100%;
+  }
 }

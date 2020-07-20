@@ -1,6 +1,6 @@
 .container_nav {
   background-color: #182c61;
-  margin-top: -13px;
+  padding-left: 35px;
 }
 
 .logo-start {
@@ -20,7 +20,6 @@
 .signup {
   text-decoration: none;
   margin-right: 45px;
-  margin-top: 37px;
   color: #e9e98a;
 }
 
@@ -32,8 +31,18 @@ Nav {
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
   padding: 15px 0;
+}
+
+.container_nav ul{
+  margin-bottom: 0!important;
+}
+
+.hfJTxb,
+.hwKgKf{
+  margin-top: 6px!important;
 }

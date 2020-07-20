@@ -93,6 +93,7 @@
   justify-content: center;
   font-size: 30px;
   font-family: 'aqua';
+  margin-top: 70px;
 }
 .text_start_intro {
   color: #538abc;
@@ -126,6 +127,16 @@
   z-index: 1;
   display: flex;
   justify-content: center;
+}
+
+.ContainerSearchHistory{
+  margin-top: 30px;
+}
+
+.titleLastResearch{
+  color: white;
+  text-align: center;
+  font-size: 1.3rem;
 }
 
 button.searchCTA1 {
@@ -216,4 +227,10 @@ button.searchCTA2 :hover {
   .leaflet-right .leaflet-control {
     margin-right: 0 !important;
   }
+}
+
+
+.leaflet-top.leaflet-left{
+  display:flex;
+  justify-content: center;
 }

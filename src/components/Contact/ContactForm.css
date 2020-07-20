@@ -4,77 +4,50 @@
   justify-content: center;
 }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width:360px;
-}
-
-.nameField, .emailField, .messageField {
-  display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-
-}
-
-
 .submit-form {
-  border-radius: 10px;
   border: none;
   background-color: #c5daed;
   outline: none;
-}
-
-.form-title {
-  text-align: center;
-  color: #e9e98a;
-  font-size: 35px;
-  margin-bottom:20px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 .containerHR {
   width:300px;
 }
 
-hr.inputFieldHR {
- background:#92CEEF;
- margin:0;
- height:1.5px;
- text-align:center;
-}
-
-label{
+.ContactForm label{
   color:#92CEEF;
   text-align:left;
   width: 300px;
+  margin-bottom: 20px;
 }
 
-input#name 
-  {
-    width:300px;
-    background:none;
-    border:none;
-    height:40px;
-    text-align:center;
+.ContactForm input#name,
+.ContactForm input#email{
+  width:300px;
+  background:none;
+  border:none;
+  height:40px;
+  color: white;
 }
 
-::placeholder {
+.ContactForm ::placeholder {
   color: rgba(245, 245, 245, 0.411);
   margin-left: 5px;
   font-style: italic;
-
 }
 
-textarea {
+.messageField textarea {
   width: 300px;
   height: 150px;
   border-color: skyblue;
   border-width: 2px;
   background: none;
+  color: white;
 }
 
 .btn-primary {
@@ -89,4 +62,13 @@ textarea {
 .submitCTAContainer {
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 836px){
+  .ContactForm input#email, .ContactForm input#name,
+  .containerHR,
+  .ContactForm label,
+  .messageField textarea{
+    width: 100%;
+  }
 }

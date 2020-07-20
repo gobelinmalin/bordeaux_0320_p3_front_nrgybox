@@ -48,7 +48,7 @@
     background: #fff;
 }
 
-.button {
+.Programme .button {
     color: #232142;
     background-color: #FFEB76;
     border-radius: 30px;
@@ -74,7 +74,12 @@
     box-shadow: none;
 }
 
-.select-btn {
+.Programme .select-btn {
+    margin-left: 20px;
+}
+
+.Programme .select-btn,
+.Programme .select-btn2{
     border-radius: 30px;
     border-color: #E9E98A;
     border-width: 5px;
@@ -82,22 +87,11 @@
     background-color: white;
     color: #B2B1B1;
     width: 100px;
-    margin-left: 20px;
     margin-top: -10px;
     line-height: normal;
     border-style: solid;
 }
 
-.select-btn2 {
-    border-radius: 30px;
-    border-color: #E9E98A;
-    border-width: 5px;
-    padding: 10px;
-    background-color: white;
-    color: #B2B1B1;
-    width: 100px;
-    margin-top: -10px;
+.Programme .select-btn2 {
     margin-left: 58px;
-    line-height: normal;
-    border-style: solid;
 }
