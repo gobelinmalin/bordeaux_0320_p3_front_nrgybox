@@ -17,11 +17,11 @@ class Admin extends Component {
       zipCode: '',
       email: '',
       password: '',
-      make1 : {
-        value: "Maire",
-        text: "Maire",
-        altered: false
-      }
+      make1: {
+        value: 'Maire',
+        text: 'Maire',
+        altered: false,
+      },
     };
     this.handleChange = this.handleChange.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -37,7 +37,8 @@ class Admin extends Component {
       if (response.data.status === 'success') {
         return response.data.status;
         this.resetForm();
-      } else if (response.data.status === 'fail') {
+      }
+      if (response.data.status === 'fail') {
         return response.data.status;
       }
     });
@@ -65,8 +66,6 @@ class Admin extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-
-
   render() {
     let selectedRole;
 
@@ -93,13 +92,12 @@ class Admin extends Component {
         <div className="TitleCreateUser2">
           <p className="titleCreateUserForm">d'utilisateur </p>
         </div>
-       
+
         <div className="CreateUserFormContainer">
           <form
             id="user-form"
             onSubmit={this.handleSubmit.bind(this)}
             method="POST"
-          
           >
             <div className="LastNameField">
               <input
@@ -111,8 +109,8 @@ class Admin extends Component {
                 value={this.state.lastname}
                 onChange={this.onChange.bind(this)}
               />
-              <div className="containerHR" >
-                <hr className="inputFieldHR"/>
+              <div className="containerHR">
+                <hr className="inputFieldHR" />
               </div>
               <label htmlFor="LastName">Nom </label>
               <br />
@@ -127,8 +125,8 @@ class Admin extends Component {
                 value={this.state.firstname}
                 onChange={this.onChange.bind(this)}
               />
-               <div className="containerHR" >
-                <hr className="inputFieldHR"/>
+              <div className="containerHR">
+                <hr className="inputFieldHR" />
               </div>
               <label htmlFor="FirstName">Prénom</label>
               <br />
@@ -143,8 +141,8 @@ class Admin extends Component {
                 value={this.state.zipCode}
                 onChange={this.onChange.bind(this)}
               />
-               <div className="containerHR" >
-                <hr className="inputFieldHR"/>
+              <div className="containerHR">
+                <hr className="inputFieldHR" />
               </div>
               <label htmlFor="ZipCode">Code Postal</label>
               <br />
@@ -159,8 +157,8 @@ class Admin extends Component {
                 value={this.state.city}
                 onChange={this.onChange.bind(this)}
               />
-               <div className="containerHR" >
-                <hr className="inputFieldHR"/>
+              <div className="containerHR">
+                <hr className="inputFieldHR" />
               </div>
               <label htmlFor="City">Ville</label>
               <br />
@@ -175,8 +173,8 @@ class Admin extends Component {
                 value={this.state.email}
                 onChange={this.onChange.bind(this)}
               />
-               <div className="containerHR" >
-                <hr className="inputFieldHR"/>
+              <div className="containerHR">
+                <hr className="inputFieldHR" />
               </div>
               <label htmlFor="Email">Email</label>
               <br />
@@ -191,8 +189,8 @@ class Admin extends Component {
                 value={this.state.password}
                 onChange={this.onChange.bind(this)}
               />
-               <div className="containerHR" >
-                <hr className="inputFieldHR"/>
+              <div className="containerHR">
+                <hr className="inputFieldHR" />
               </div>
               <label htmlFor="Password">Mot de passe</label>
               <br />
@@ -208,25 +206,31 @@ class Admin extends Component {
                 onChange={(event) => this.handleChange(event.target.value)}
               >
                 {' '}
-                <option className="selectPlaceholder" value="" disabled selected>Rôle: Sélectionner un rôle</option>
+                <option
+                  className="selectPlaceholder"
+                  value=""
+                  disabled
+                  selected
+                >
+                  Rôle: Sélectionner un rôle
+                </option>
                 <option value="Mayor">Rôle: Maire</option>
                 <option value="TechnicalTeam">Rôle: Service Technique</option>
                 <option value="Administrator">Rôle: Administrateur</option>
               </select>
-              <div className="containerHR" >
-              </div>
+              <div className="containerHR" />
               <br />
             </div>
             <div className="Dynamiquefields">{selectedRole}</div>
             <br />
-            <div className="submitCTAContainer" >
-            <button type="submit" className="btn-primary">
-              Enregistrer
-            </button>
+            <div className="submitCTAContainer">
+              <button type="submit" className="btn-primary">
+                Enregistrer
+              </button>
             </div>
           </form>
         </div>
-        <br/>
+        <br />
         <br />
       </div>
     );
