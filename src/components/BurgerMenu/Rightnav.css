@@ -1,7 +1,4 @@
-.burger-Nav {
-  cursor: pointer;
-  padding: 10px;
-}
+.burger-Nav,
 .li:hover {
   cursor: pointer;
 }
@@ -9,4 +6,16 @@
 .sc-AxjAm.jZJahn {
   position: absolute;
   z-index:2
+}
+
+.ewZLYw{
+  right: 12px!important;
+  left: 0!important;
+  text-align: center!important;
+}
+
+.gEGfTi{
+  right: 0!important;
+  left: 0!important;
+  text-align: center!important;
 }

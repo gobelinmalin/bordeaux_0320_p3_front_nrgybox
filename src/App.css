@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+.TitlePage{
+  text-align: center;
+  color: #e9e98a;
+  font-size: 35px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-family: 'aqua';
+}
+
+/* CSS FORMS */
+.formField{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.formContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+hr.inputFieldHR {
+  background:#92CEEF;
+  margin:0;
+  height:1.5px;
+  text-align:center;
+}
+
+@media (min-width: 836px){
+  .formContainer,
+  .formField{
+    width: 100vh;
+  }
+}

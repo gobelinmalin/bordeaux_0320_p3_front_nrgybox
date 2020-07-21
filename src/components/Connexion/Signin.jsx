@@ -1,16 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  Form,
-  Input,
-  Label,
-  Row,
-  Container,
-  Col,
-  Nav,
-  NavLink,
-  NavItem,
-} from 'reactstrap';
+import { Button, Label } from 'reactstrap';
 import './signin.css';
 
 const axios = require('axios');
@@ -40,46 +29,66 @@ const Signin = (props) => {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Form>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              type="email"
-              name="email"
-              placeholder="exemple@exemple.com"
-              onChange={(event) =>
-                setSignin({
-                  ...signin,
-                  [event.target.name]: event.target.value,
-                })
-              }
-            />
-            <Label htmlFor="password">Mot de passe</Label>
-            <Input
-              type="password"
-              name="password"
-              placeholder="Votre mot de passe"
-              onChange={(event) =>
-                setSignin({
-                  ...signin,
-                  [event.target.name]: event.target.value,
-                })
-              }
-            />
+    <div className="ContainerSignIn">
+      <form noValidate>
+        <h3 className="TitlePage">Connexion</h3>
+        <fieldset>
+          <div className="formContainer">
+            <div className="formField emailField">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="exemple@exemple.com"
+                onChange={(event) =>
+                  setSignin({
+                    ...signin,
+                    [event.target.name]: event.target.value,
+                  })
+                }
+                required
+                noValidate
+              />
+              <div className="containerHR">
+                <hr className="inputFieldHR" />
+              </div>
+              <Label htmlFor="email">Email</Label>
+            </div>
 
-            <Button
-              className="button_send"
-              color="secondary"
-              onClick={handleSubmit}
-            >
-              Envoyer
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+            <div className="formField passField">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Votre mot de passe"
+                onChange={(event) =>
+                  setSignin({
+                    ...signin,
+                    [event.target.name]: event.target.value,
+                  })
+                }
+                required
+                noValidate
+              />
+              <div className="containerHR">
+                <hr className="inputFieldHR" />
+              </div>
+              <Label htmlFor="password">Mot de passe</Label>
+            </div>
+
+            <div className="submitCTAContainer">
+              <Button
+                className="btn-primary"
+                color="secondary"
+                onClick={handleSubmit}
+              >
+                Envoyer
+              </Button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
   );
 };
 

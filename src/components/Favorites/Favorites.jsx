@@ -8,8 +8,8 @@ import './Favorites.css';
 
 const Favorites = () => {
   return (
-    <div>
-      <h1>Favoris</h1>
+    <div className="ContainerFavorites">
+      <h1 className="TitlePage">Favoris</h1>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 function App(props) {
@@ -11,19 +11,17 @@ function App(props) {
       method: 'post',
       url: `${process.env.REACT_APP_URL}/users${props.pathBack}`,
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     })
       .then((response) => response.data)
       .then((data) => setProfile(data.user[0]))
-      .catch(error => setError(true));
+      .catch((error) => setError(true));
   }, []);
 
-
-  if (localStorage.getItem('token') === null) {
-    return <Redirect to="/" />;
-  }
-
+  // if (localStorage.getItem('token') === null) {
+  //   return <Redirect to="/" />;
+  // }
 
   return (
     <Route
