@@ -117,8 +117,10 @@
 }
 
 .searchCTAContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   height: 50px;
-  justify-content: center;
   z-index: 2;
 }
 
@@ -148,10 +150,9 @@ button.searchCTA1 {
   background-color: rgb(255, 247, 0, 0.77);
   color: white;
   font-weight: bold;
-  /* position: absolute; */
   z-index: 3;
-  margin-top: -34px;
-  margin-left: -135px;
+  /* margin-top: -34px; */
+  /* margin-left: 19%; */
   
 }
 button.searchCTA2 {
@@ -165,8 +166,8 @@ button.searchCTA2 {
   font-weight: bold;
   /* position: absolute; */
   z-index: 3;
-  margin-top: -34px;
-  margin-right: -130px;
+  /* margin-top: -34px;
+  margin-right: -130px; */
 }
 
 button.searchCTA1 :hover {
@@ -197,6 +198,12 @@ button.searchCTA2 :hover {
   z-index: 3;
 }
 
+.TextWaitGeoloc{
+  color: white;
+  margin: 0;
+  width: 34%;
+  line-height: 15px;
+}
 
 .logoHome {
   display: flex;

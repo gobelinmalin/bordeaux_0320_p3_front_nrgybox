@@ -105,7 +105,21 @@ const ForecastContainer = ({ arrayAllDay }) => {
     let position = {};
 
     let city;
-    if (localStorage.getItem('datageoloc')) {
+    if (localStorage.getItem('position') && localStorage.getItem('datageoloc')) {
+      const jsonParseGeoloc = JSON.parse(localStorage.getItem('position'));
+
+      position = {
+        lat: jsonParseGeoloc.latitude,
+        lng: jsonParseGeoloc.longitude,
+      };
+
+      // reverse latitude and longitude to get the city name
+      Axios.get(
+        `${process.env.REACT_APP_GOUV}/reverse/?lat=${position.lat}&long=${position.lng}`
+      )
+        .then((res) => res.data)
+        .then((data) => setReverseLatLng(data.features[0].properties.label));
+    } else if (localStorage.getItem('datageoloc')) {
       setCityName(JSON.parse(localStorage.getItem('datageoloc'))[0].text);
       city = JSON.parse(localStorage.getItem('datageoloc'))[0].text;
       const jsonParseCity = JSON.parse(localStorage.getItem('datageoloc'))[0]
@@ -115,7 +129,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
         lat: jsonParseCity.lat,
         lng: jsonParseCity.lng,
       };
-    } else {
+    } else if (localStorage.getItem('position')) {
       const jsonParseGeoloc = JSON.parse(localStorage.getItem('position'));
 
       position = {

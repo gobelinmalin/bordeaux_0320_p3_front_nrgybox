@@ -59,7 +59,7 @@
   height:40px;
 }
 
-select{
+.AdminPageContainer select{
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearance: none;
@@ -67,7 +67,7 @@ select{
   box-shadow: none;
 }
 
-select#Role {
+.AdminPageContainer select#Role {
   width: 310px;
   height: 40px;
   padding: 7px;
@@ -98,7 +98,7 @@ select#Role {
   width: 310px;
 }
 
-.select-btn {
+.AdminPageContainer .select-btn {
   padding-left: 1px;
   color: skyblue
 }
