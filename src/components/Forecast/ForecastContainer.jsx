@@ -9,17 +9,16 @@ import PropTypes from 'prop-types';
 import { ReactComponent as EditPen } from '../../icons/editPen.svg';
 import ForecastSlider from './ForecastSlider/ForecastSlider';
 import ForecastMap from './ForecastSlider/ForecastMap/ForecastMap';
-import { allDay } from '../../actions/ForecastAction';
-import HeartOutline from '../../icons/heartOutline.svg';
+import { allDay, addFav, deleteFav, resetFav } from '../../actions/ForecastAction';
 
 // CSS
 import './ForecastContainer.css';
 
-const ForecastContainer = ({ arrayAllDay }) => {
+const ForecastContainer = ({ arrayAllDay, fav }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [reverseLatLng, setReverseLatLng] = useState('');
   const [cityName, setCityName] = useState('');
-  // const [favorites, setFavorites] = useState([{}]);
+  const [styleFavorites, setStyleFavorites] = useState("");
 
   const dispatch = useDispatch();
 
@@ -220,35 +219,58 @@ const ForecastContainer = ({ arrayAllDay }) => {
   }, []);
 
   const geoloc = cityName ? cityName : reverseLatLng;
-  const useLocalStorage = (localItem) => {
-    const [loc, setState] = useState(localStorage.getItem(localItem));
 
-    const setLoc = (geoloc) => {
-      const arrFav = loc ? JSON.parse(loc) : [];
-      if (loc == null) {
-        arrFav.push(geoloc);
-        const favJson = JSON.stringify(arrFav);
-        localStorage.setItem(localItem, favJson);
-        setState(favJson);
-      } else if (arrFav.indexOf(geoloc) === -1) {
-        arrFav.push(geoloc);
-        const favJson = JSON.stringify(arrFav);
-        localStorage.setItem(localItem, favJson);
-        setState(favJson);
-      } else {
-        const favJson = JSON.stringify(arrFav);
-        const elemGeoloc = arrFav.indexOf(geoloc);
-        arrFav.splice(elemGeoloc, 1);
-        localStorage.setItem(localItem, favJson);
-        setState(null);
-      }
-    };
+  const handleClickFav = () => {
+    const local = localStorage.getItem('favorites');
+    const arrFav = local ? JSON.parse(local) : [];
 
-    return [loc, setLoc];
+    // le favoris n'existe pas, on souhaite le rajouter
+    if (local === null || arrFav.indexOf(geoloc) === -1){
+      arrFav.push(geoloc);
+      const favJson = JSON.stringify(arrFav);
+      localStorage.setItem('favorites', favJson);
+      
+      dispatch(addFav());
+
+    } else { // le favoris existe, on souhaite le supprimer
+      // dire si ça existe ou non ? => si oui, retourne son index
+      const elemGeoloc = arrFav.indexOf(geoloc);
+      // (index de l'élément, un seul élément à supprimer)
+      arrFav.splice(elemGeoloc, 1);
+      // string => ["Bordeaux, Aquitaine..."]
+      const favJson = JSON.stringify(arrFav);
+      localStorage.setItem('favorites', favJson);
+      
+      dispatch(deleteFav());
+    }
   };
 
-  const [favorites, setFavorites] = useLocalStorage('favorites');
-  const styleFav = favorites === geoloc ? 'FullHeart' : 'EmptyHeart';
+  // const local = localStorage.getItem('favorites');
+  // const arrFav = local ? JSON.parse(local) : [];
+
+  // dispatch(resetFav());
+
+  // if (local === null || arrFav.indexOf(geoloc) === -1){
+  //   dispatch(deleteFav());
+  // } else {
+  //   dispatch(addFav());
+  // }
+
+  useEffect(() => {
+    const geoloc = cityName ? cityName : reverseLatLng;
+    console.log("city", cityName, "", reverseLatLng)
+    const local = localStorage.getItem('favorites');
+    const arrFav = local ? JSON.parse(local) : [];
+
+    dispatch(resetFav());
+    console.log("arrayfav", arrFav, "geoloc", geoloc, "index", arrFav.indexOf(geoloc))
+    if (arrFav.indexOf(geoloc) > 0){
+      dispatch(addFav());
+      console.log("aze")
+    } else {
+      dispatch(deleteFav());
+    }
+  }, []);
 
   return (
     <div className="ForecastContainer">
@@ -257,7 +279,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
         <h3>{cityName !== '' ? cityName : reverseLatLng}</h3>
         <div className="ContainerIconFavorites">
           <Link>
-            <svg onClick={() => setFavorites(geoloc)}
+            <svg onClick={handleClickFav}
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -265,7 +287,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
             >
               <title>ionicons-v5-f</title>
               <path
-                className={styleFav}
+                className={fav}
                 d="M352.92,80C288,80,256,144,256,144s-32-64-96.92-64C106.32,80,64.54,124.14,64,176.81c-1.1,109.33,86.73,187.08,183,252.42a16,16,0,0,0,18,0c96.26-65.34,184.09-143.09,183-252.42C447.46,124.14,405.68,80,352.92,80Z"
                 style={{strokeLinecap: 'round',
                   strokeLinejoin: 'round',
@@ -294,6 +316,7 @@ const ForecastContainer = ({ arrayAllDay }) => {
 const mapStateToProps = (state) => {
   return {
     arrayAllDay: state.ForecastDaysReducer.data,
+    fav: state.ForecastFavGeolocReducer
   };
 };
 
