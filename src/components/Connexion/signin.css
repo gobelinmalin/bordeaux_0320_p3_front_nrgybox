@@ -3,6 +3,10 @@
   justify-content: center;
 }
 
+.ContainerSignIn input{
+  outline: none;
+}
+
 .containerHR{
   width: 300px;
 }
