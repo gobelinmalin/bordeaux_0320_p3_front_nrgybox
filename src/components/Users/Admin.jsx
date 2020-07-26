@@ -176,9 +176,9 @@ class Admin extends Component {
                 </div>
                 <div className="formField PasswordField">
                   <input
-                    type="text"
+                    type="password"
                     required
-                    name="Password"
+                    name="password"
                     id="Password"
                     placeholder="Minimum 5 charactères"
                     value={this.state.password}

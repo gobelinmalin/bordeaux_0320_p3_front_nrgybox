@@ -1,3 +1,52 @@
-/* .ContainerFavorites h1{
-  color: 
-} */
+.ContainerFavorites img{
+  height: 25px;
+}
+
+.ContainerNumberFav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.ContainerNumberFav p{
+  color: white;
+  margin: 0;
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.ContainerAllCardsFav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.ContainerCardFav{
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 20vh;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #c5daed;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.ContainerCardFav p{
+  width: 75%;
+  margin: 0;
+}
+
+.ContainerCardFav img{
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link, Redirect } from 'react-router-dom';
 import { Map, TileLayer } from 'react-leaflet';
 import SearchBar from '../SearchBar/SearchBar';
@@ -42,26 +42,22 @@ const Home = () => {
     }
   }
 
-  // handleSearchClick(e) {
-  //   e.preventDefault();
-  //   this.setState({
-  //     searchHistory: [
-  //       JSON.parse(localStorage.getItem('datageoloc'))[0].text
-  //       // 'aze',
-  //       // 'test',
-  //       // 'truc'
-  //     ]
-  //   });
-  // }
+  useEffect(() => {
+    this.setSearchHistory({
+      searchHistory: [
+        JSON.parse(localStorage.getItem('datageoloc'))[0].text
+      ]
+    });
+  }, []);
 
-  const handleKeyPress = (e) => {
-    console.log(e.charCode === 13);
-    if (e.charCode === 13) {
-      setSearchHistory({
-        searchHistory: [JSON.parse(localStorage.getItem('datageoloc'))[0].text],
-      });
-    }
-  }
+  // const handleKeyPress = (e) => {
+  //   console.log(e.charCode === 13);
+  //   if (e.charCode === 13) {
+  //     setSearchHistory({
+  //       searchHistory: [JSON.parse(localStorage.getItem('datageoloc'))[0].text],
+  //     });
+  //   }
+  // }
 
   return (
     <div className="container_01">
@@ -83,7 +79,7 @@ const Home = () => {
           />
           <SearchBar
             className="SearchBar"
-            onKeyDown={(e) => handleKeyPress(e)}
+            // onKeyDown={(e) => handleKeyPress(e)}
           />
         </Map>
       </div>
@@ -111,7 +107,7 @@ const Home = () => {
           </div>
           <div className="ContainerSearchHistory">
             <h3 className="titleLastResearch">Vos dernières recherches :</h3>
-            {searchHistory.map((search) => {
+            {searchHistory && searchHistory.map((search) => {
               return <Link to='/weather'>{search}</Link>;
             })}
           </div>
