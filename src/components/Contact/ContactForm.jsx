@@ -54,10 +54,10 @@ const ContactForm = () => {
       </Modal>
       <div className="ContactForm">
         <form onSubmit={submitForm} noValidate>
-          <h3 className="form-title">Contactez-nous!</h3>
+          <h3 className="TitlePage">Contactez-nous !</h3>
           <fieldset>
-            <div className="form-container">
-              <div className="nameField">
+            <div className="formContainer">
+              <div className="formField nameField">
                 <input
                   type="text"
                   name="name"
@@ -74,12 +74,12 @@ const ContactForm = () => {
                 <label htmlFor="FirstName">Nom et Prénom</label>
               </div>
               <br />
-              <div className="emailField">
+              <div className="formField emailField">
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Ex: jeanmichel@exemple.com"
+                  placeholder="Ex: exemple@exemple.com"
                   onChange={handleChange}
                   value={formData.email}
                   required
@@ -92,7 +92,7 @@ const ContactForm = () => {
                 <br />
               </div>
 
-              <div className="messageField">
+              <div className="formField messageField">
                 <textarea
                   type="text"
                   id="comment"

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { matchPath } from 'react-router';
 import Axios from 'axios';
 import './Profile.css';
 import avatar_placeholder from './placeholder-avatar.png';
