@@ -44,32 +44,17 @@ const RightNav = ({ open }) => {
   return (
     <Ul open={open}>
       <li>
-        <NavLink
-          exact
-          activeClassName="burger-Nav"
-          id="title"
-          to="/weather"
-        >
+        <NavLink exact activeClassName="burger-Nav" id="title" to="/weather">
           Les prévisions lumineuses
         </NavLink>
       </li>
       <li>
-        <NavLink
-          exact
-          activeClassName="burger-Nav"
-          id="favoris"
-          to="/favoris"
-        >
+        <NavLink exact activeClassName="burger-Nav" id="favoris" to="/favoris">
           Mes favoris
         </NavLink>
       </li>
       <li>
-        <NavLink
-          exact
-          activeClassName="burger-Nav"
-          id="About"
-          to="/Apropos"
-        >
+        <NavLink exact activeClassName="burger-Nav" id="About" to="/Apropos">
           NRGYBox
         </NavLink>
       </li>

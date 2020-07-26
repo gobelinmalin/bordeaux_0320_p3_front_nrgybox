@@ -8,10 +8,10 @@ const Navbar = ({ userConnected, checkConnected }) => {
   let history = useHistory();
 
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
     history.push('/');
     checkConnected();
-  }
+  };
 
   return (
     <nav className="container_nav">
@@ -23,14 +23,15 @@ const Navbar = ({ userConnected, checkConnected }) => {
           </h1>
         </NavLink>
       </div>
-      {userConnected
-        ?<NavLink onClick={logout} className="signup" to="/">
+      {userConnected ? (
+        <NavLink onClick={logout} className="signup" to="/">
           Se déconnecter
         </NavLink>
-        :<NavLink className="signup" to="/login">
+      ) : (
+        <NavLink className="signup" to="/login">
           Se connecter
         </NavLink>
-      }
+      )}
       <Burger />
     </nav>
   );
