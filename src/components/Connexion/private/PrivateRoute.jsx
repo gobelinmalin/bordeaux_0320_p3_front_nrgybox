@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 
-const PrivateRoute = (props) => {
+const App = (props) => {
   const [error, setError] = useState(false);
   const [profile, setProfile] = useState({});
 
@@ -32,4 +32,4 @@ const PrivateRoute = (props) => {
   );
 }
 
-export default PrivateRoute;
+export default App;
