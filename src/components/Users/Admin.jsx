@@ -36,7 +36,8 @@ class Admin extends Component {
       if (response.data.status === 'success') {
         return response.data.status;
         this.resetForm();
-      } else if (response.data.status === 'fail') {
+      }
+      if (response.data.status === 'fail') {
         return response.data.status;
       }
     });
@@ -213,9 +214,7 @@ class Admin extends Component {
                     <option value="TechnicalTeam">
                       Rôle: Service Technique
                     </option>
-                    <option value="Administrator">
-                      Rôle: Administrateur
-                    </option>
+                    <option value="Administrator">Rôle: Administrateur</option>
                   </select>
                   <div className="containerHR" />
                   <br />
@@ -231,7 +230,7 @@ class Admin extends Component {
             </fieldset>
           </form>
         </div>
-        <br/>
+        <br />
         <br />
       </div>
     );

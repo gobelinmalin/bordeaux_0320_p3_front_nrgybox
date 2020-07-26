@@ -31,7 +31,7 @@
   height: 45px !important;
   margin: 0 auto !important;
   right: initial !important;
-  position: relative!important;
+  position: relative !important;
 }
 
 .leaflet-control-attribution {
@@ -119,7 +119,7 @@
 .searchCTAContainer {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 50px;
   z-index: 2;
 }
@@ -131,11 +131,11 @@
   justify-content: center;
 }
 
-.ContainerSearchHistory{
+.ContainerSearchHistory {
   margin-top: 30px;
 }
 
-.titleLastResearch{
+.titleLastResearch {
   color: white;
   text-align: center;
   font-size: 1.3rem;
@@ -151,9 +151,9 @@ button.searchCTA1 {
   color: white;
   font-weight: bold;
   z-index: 3;
+  margin: 10px;
   /* margin-top: -34px; */
   /* margin-left: 19%; */
-  
 }
 button.searchCTA2 {
   width: 117px;
@@ -166,6 +166,7 @@ button.searchCTA2 {
   font-weight: bold;
   /* position: absolute; */
   z-index: 3;
+  margin: 10px;
   /* margin-top: -34px;
   margin-right: -130px; */
 }
@@ -198,7 +199,7 @@ button.searchCTA2 :hover {
   z-index: 3;
 }
 
-.TextWaitGeoloc{
+.TextWaitGeoloc {
   color: white;
   margin: 0;
   width: 34%;
@@ -236,8 +237,7 @@ button.searchCTA2 :hover {
   }
 }
 
-
-.leaflet-top.leaflet-left{
-  display:flex;
+.leaflet-top.leaflet-left {
+  display: flex;
   justify-content: center;
 }
