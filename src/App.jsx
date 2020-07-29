@@ -22,26 +22,26 @@ import './App.css';
 const App = () => {
   const [userConnected, setUserConnected] = useState(false);
 
-  useEffect(() => {
-    checkConnected();
-  }, [])
-
   const checkConnected = () => {
-    if(localStorage.getItem('token') !== null){
-      console.log("connecté")
+    if (localStorage.getItem('token') !== null) {
       setUserConnected(true);
-    }
-    else{
-      console.log("non connecté")
+    } else {
       setUserConnected(false);
     }
-  }
+  };
+
+  useEffect(() => {
+    checkConnected();
+  }, []);
 
   return (
     <BrowserRouter>
       <Switch>
         <div>
-          <Navbar userConnected={userConnected} checkConnected={checkConnected} />
+          <Navbar
+            userConnected={userConnected}
+            checkConnected={checkConnected}
+          />
           <Route path="/" component={Home} exact />
           <Route path="/weather" component={ForecastContainer} />
           <Route path="/admin" component={Admin} />
@@ -61,6 +61,6 @@ const App = () => {
       </Switch>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
