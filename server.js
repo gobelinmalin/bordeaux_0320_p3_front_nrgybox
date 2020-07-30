@@ -4,6 +4,7 @@ const favicon = require('express-favicon');
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
+
 const cors = require("cors");
 
 const port = process.env.PORT;
