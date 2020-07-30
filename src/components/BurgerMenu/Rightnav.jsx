@@ -13,7 +13,7 @@ const Ul = styled.ul`
   li {
     padding: 18px 10px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 834px) {
     flex-flow: column nowrap;
     background-color: #c5daed;
     position: fixed;
@@ -21,19 +21,22 @@ const Ul = styled.ul`
     top: 0;
     right: 0;
     border-radius: 6px;
-    height: 100vh;
+    height: 180vh;
     width: 100vw;
-    padding-top: 3rem;
+    padding-top: 1rem;
     transition: transform 0.7s ease-in-out;
     li {
       color: #235a8c;
       padding: 40px;
       font-size: 15px;
-      border-bottom: solid #235a8c 2px;
+      border-bottom: solid #235a8c 1px;
     }
     li: hover {
       color: #e9e98a;
     }
+  }
+  @media (max-width: 375px) {
+    height: 100vh;
   }
 `;
 
@@ -41,8 +44,8 @@ const RightNav = ({ open }) => {
   return (
     <Ul open={open}>
       <li>
-        <NavLink exact activeClassName="burger-Nav" id="title" to="/">
-          Programmes
+        <NavLink exact activeClassName="burger-Nav" id="title" to="/weather">
+          Les prévisions lumineuses
         </NavLink>
       </li>
       <li>
@@ -56,7 +59,12 @@ const RightNav = ({ open }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink exact activeClassName="burger-Nav" id="contact" to="/contactus">
+        <NavLink
+          exact
+          activeClassName="burger-Nav"
+          id="contact"
+          to="/contactus"
+        >
           Nous contacter
         </NavLink>
       </li>

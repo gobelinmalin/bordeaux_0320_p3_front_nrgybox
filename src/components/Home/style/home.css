@@ -31,7 +31,7 @@
   height: 45px !important;
   margin: 0 auto !important;
   right: initial !important;
-  position: relative!important;
+  position: relative !important;
 }
 
 .leaflet-control-attribution {
@@ -93,6 +93,7 @@
   justify-content: center;
   font-size: 30px;
   font-family: 'aqua';
+  margin-top: 70px;
 }
 .text_start_intro {
   color: #538abc;
@@ -116,8 +117,10 @@
 }
 
 .searchCTAContainer {
-  height: 50px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  height: 50px;
   z-index: 2;
 }
 
@@ -126,6 +129,16 @@
   z-index: 1;
   display: flex;
   justify-content: center;
+}
+
+.ContainerSearchHistory {
+  margin-top: 30px;
+}
+
+.titleLastResearch {
+  color: white;
+  text-align: center;
+  font-size: 1.3rem;
 }
 
 button.searchCTA1 {
@@ -137,11 +150,10 @@ button.searchCTA1 {
   background-color: rgb(255, 247, 0, 0.77);
   color: white;
   font-weight: bold;
-  /* position: absolute; */
   z-index: 3;
-  margin-top: -34px;
-  margin-left: -135px;
-  
+  margin: 10px;
+  /* margin-top: -34px; */
+  /* margin-left: 19%; */
 }
 button.searchCTA2 {
   width: 117px;
@@ -154,8 +166,9 @@ button.searchCTA2 {
   font-weight: bold;
   /* position: absolute; */
   z-index: 3;
-  margin-top: -34px;
-  margin-right: -130px;
+  margin: 10px;
+  /* margin-top: -34px;
+  margin-right: -130px; */
 }
 
 button.searchCTA1 :hover {
@@ -186,6 +199,12 @@ button.searchCTA2 :hover {
   z-index: 3;
 }
 
+.TextWaitGeoloc {
+  color: white;
+  margin: 0;
+  width: 34%;
+  line-height: 15px;
+}
 
 .logoHome {
   display: flex;
@@ -216,4 +235,9 @@ button.searchCTA2 :hover {
   .leaflet-right .leaflet-control {
     margin-right: 0 !important;
   }
+}
+
+.leaflet-top.leaflet-left {
+  display: flex;
+  justify-content: center;
 }

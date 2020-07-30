@@ -1,219 +1,228 @@
-@media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
-    .AdminPageContainer {
-        display: block;
-        justify-content: center;
-        height: 100vh;
-        color: #538abc;
-    }
-    .AdminPageContainer h1 {
-        display: flex;
-        justify-content: center;
-        font-family: 'aqua';
-        font-size: 40px;
-        margin-top: 13px;
-    }
-    .TitleCreateUser {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #e9e98a;
-        font-size: 35px;
-        margin-top: -55px;
-    }
+.AdminPageContainer {
+  width: 100%;
+  height: 100vh;
+  margin-top: 30px;
+  background-color: #182c61;
+  color: white;
+}
 
-    .TitleCreateUser2 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #e9e98a;
-        font-size: 35px;
-        margin-top: -20px;
-        margin-bottom:10px;
+.AdminPageContainer input {
+  color: white;
+  outline: none;
+}
 
-    } 
+.TitleCreateUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .CreateUserFormContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row-reverse;
-        color: #538abc;
-        margin: auto;
-        width: 50%;
-    }
-    .lastname {
-        width: 126%
-    }
+.TitleCreateUser2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -20px;
+  margin-bottom: 10px;
+}
 
-  
-      ::placeholder {
-        color: rgba(245, 245, 245, 0.411);
-        margin-left: 5px;
-        font-style: italic;
-        text-align: left;
-      }
+.CreateUserFormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  color: #538abc;
+  margin: auto;
+  width: 50%;
+}
 
-    .BurgerMenu {
-        margin-bottom: 60px;
-        width: 56%;
-    }
-    .LogoStartAdmin {
-        color: #538abc;
-        font-family: 'aqua';
-    }
-    .LogoEndAdmin {
-        color: #e9e98a;
-        font-family: 'aqua';
-    }
+::placeholder {
+  color: rgba(245, 245, 245, 0.411);
+  margin-left: 5px;
+  font-style: italic;
+  text-align: left;
+}
 
-    .containerHR {
-        width:300px;
-    }
+.containerHR {
+  width: 300px;
+}
 
-    hr.inputFieldHR {
-       background:#92CEEF;
-       margin:0;
-       height:1.5px;
-    }
+.AdminPageContainer label {
+  color: #92ceef;
+  text-align: left;
+  width: 300px;
+  margin-bottom: 20px;
+}
 
-    label{
-        color:#92CEEF;
-    }
+.AdminPageContainer input {
+  width: 300px;
+  background: none;
+  border: none;
+  height: 40px;
+}
 
-    input#LastName, input#FirstName, input#ZipCode, input#City, input#email, input#Password, input#Compagny, input#CityReference {
-        width:300px;
-        background:none;
-        border:none;
-        height:40px;
-    }
+.AdminPageContainer select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  box-shadow: none;
+}
 
-    select#Role {
-        width: 310px;
-        height: 40px;;
-        background:none;
-        border-color: #92CEEF;
-        border-radius: 20px;
-        color:#92CEEF;
-        background-image:
-    linear-gradient(45deg, transparent 50%, #182c61 50%),
+.AdminPageContainer select#Role {
+  width: 310px;
+  height: 40px;
+  padding: 7px;
+  background: #182c61;
+  border-color: #92ceef;
+  border-radius: 20px;
+  color: #92ceef;
+  background-image: linear-gradient(45deg, transparent 50%, #182c61 50%),
     linear-gradient(135deg, #182c61 50%, transparent 50%),
     linear-gradient(to right, skyblue, skyblue);
-  background-position:
-    calc(100% - 20px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px),
-    100% 0;
-  background-size:
-    5px 5px,
-    5px 5px,
-    2.5em 2.5em;
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
   background-repeat: no-repeat;
-       
-    }
+}
 
-    .selectPlaceholder{
-        color:grey;
-    }
+.selectPlaceholder {
+  color: grey;
+}
 
-    .TimePicker {
-        width: 310px;
-    }
+.TimePicker {
+  width: 310px;
+}
 
-    .select-btn {
-        padding-left: 1px;
-        color: skyblue
-    }
+.AdminPageContainer .select-btn {
+  padding-left: 1px;
+  color: skyblue;
+}
 
-    .spaceDiv {
-        height: 10px;
-    }
+.AdminPageContainer .select-btn,
+.AdminPageContainer .select-btn2 {
+  display: block;
+  width: 120px;
+  padding: 6px;
+  margin-top: -10px;
+  text-align: center;
+  border-radius: 30px;
+  border: 3px solid #e9e98a;
+  background-color: white;
+  color: black;
+  line-height: normal;
+}
 
-    .datepicker {
-        position: absolute;
-        left: 0;
-        bottom: -190px;
-        width: 100%;
-        z-index: 1;
-        font-size: 16px;
-        text-align: center;
-        font-family: arial,verdana,sans-serif;
-        -webkit-box-sizing: content-box;
-        box-sizing: content-box;
-        -webkit-font-smoothing: antialiased;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
+.AdminPageContainer .select-btn2 {
+  margin-left: 58px;
+}
 
-    .datepicker.android, .datepicker.android-dark {
-        background-color:#a7dbf7;
-        color:#182c61 ;
-    }
+.spaceDiv {
+  height: 10px;
+}
 
-  
-    .datepicker.android .datepicker-viewport::after, .datepicker.android-dark .datepicker-viewport::after {
-        background-image:  none;
-        background-image: none;
-    }
+.datepicker {
+  position: absolute;
+  left: 0;
+  bottom: -190px;
+  width: 100%;
+  z-index: 1;
+  font-size: 16px;
+  text-align: center;
+  font-family: arial, verdana, sans-serif;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-    .datepicker.android .datepicker-header, .datepicker.android-dark .datepicker-header {
-        color: #182c61 ;
-        border-bottom: 2px solid #182c61 ;
-    }
+.datepicker.android,
+.datepicker.android-dark {
+  background-color: #a7dbf7;
+  color: #182c61;
+}
 
-    .datepicker.android .datepicker-wheel, .datepicker.android-dark .datepicker-wheel {
-        border-top: 2px solid #182c61;
-        border-bottom: 2px solid #182c61;
-    }
+.datepicker.android .datepicker-viewport::after,
+.datepicker.android-dark .datepicker-viewport::after {
+  background-image: none;
+}
 
-    .datepicker.android .datepicker-navbar-btn, .datepicker.android-dark .datepicker-navbar-btn {
-        padding: 0;
-        color: #182c61;
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-    }
-   
-    .datepicker.android .datepicker-navbar-btn:nth-child(2), .datepicker.android-dark .datepicker-navbar-btn:nth-child(2) {
-        border-left: 1px solid #182c61;
-    }
+.datepicker.android .datepicker-header,
+.datepicker.android-dark .datepicker-header {
+  color: #182c61;
+  border-bottom: 2px solid #182c61;
+}
 
-    .datepicker.android .datepicker-navbar, .datepicker.android-dark .datepicker-navbar {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        border-top: 1px solid #182c61;
-        padding: 0;
-    }
+.datepicker.android .datepicker-wheel,
+.datepicker.android-dark .datepicker-wheel {
+  border-top: 2px solid #182c61;
+  border-bottom: 2px solid #182c61;
+}
 
-    .datepicker-navbar-btn {
-        font-weight: bold;
-    }
+.datepicker.android .datepicker-navbar-btn,
+.datepicker.android-dark .datepicker-navbar-btn {
+  padding: 0;
+  color: #182c61;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
 
-    .datepicker-header {
-        font-weight: bold;
-    }
-      
-    .datepicker.android .datepicker-navbar, .datepicker.android-dark .datepicker-navbar {
-        display: flex;
-        border-top: 1px solid #182c61;
-        padding: 0;
-        height: 58px;
-    }
+.datepicker.android .datepicker-navbar-btn:nth-child(2),
+.datepicker.android-dark .datepicker-navbar-btn:nth-child(2) {
+  border-left: 1px solid #182c61;
+}
 
-    .btn-primary {
-        background-color: rgb(255, 247, 0, 0.77);; 
-        width: 150px;
-        height: 45px;
-        border:none;
-        border-radius: 20px;
-        font-weight: bold;
-    }
+.datepicker.android .datepicker-navbar,
+.datepicker.android-dark .datepicker-navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-top: 1px solid #182c61;
+  padding: 0;
+}
 
-    .submitCTAContainer {
-        display: flex;
-        justify-content: center;
-    }
+.datepicker-navbar-btn {
+  font-weight: bold;
+}
 
+.datepicker-header {
+  font-weight: bold;
+}
+
+.datepicker.android .datepicker-navbar,
+.datepicker.android-dark .datepicker-navbar {
+  display: flex;
+  border-top: 1px solid #182c61;
+  padding: 0;
+  height: 58px;
+}
+
+.RoleField {
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background-color: rgb(255, 247, 0, 0.77);
+  width: 150px;
+  height: 45px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.submitCTAContainer {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 836px) {
+  .AdminPageContainer input,
+  .containerHR,
+  .AdminPageContainer label {
+    width: 100%;
   }
-
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { matchPath } from 'react-router';
+import { Link } from 'react-router-dom';
+
 import Axios from 'axios';
 import './Profile.css';
 import avatar_placeholder from './placeholder-avatar.png';
@@ -33,14 +34,16 @@ const Profile = (props) => {
         <h3 className="profile-title">Coordonnées</h3>
         <p className="p-profile">{profile.email}</p>
       </div>
-      <button
-        className="signout-button"
-        type="submit"
-        href="/login"
-        onClick={() => localStorage.setItem('token', null)}
-      >
-        Se déconnecter
-      </button>
+      <Link to="/">
+        <button
+          className="signout-button"
+          type="submit"
+          href="/login"
+          onClick={() => localStorage.setItem('token', null)}
+        >
+          Se déconnecter
+        </button>
+      </Link>
     </div>
   );
 };

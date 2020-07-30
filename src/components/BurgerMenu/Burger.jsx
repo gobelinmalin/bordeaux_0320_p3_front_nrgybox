@@ -1,4 +1,4 @@
-import React, { useState, NavLink } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import RightNav from './Rightnav';
 
@@ -10,7 +10,7 @@ const StyledBurger = styled.div`
   right: 20px;
   z-index: 20;
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 834px) {
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;
@@ -18,7 +18,7 @@ const StyledBurger = styled.div`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => (open ? '#235a8c' : '#e9e98a')};
+    background-color: ${({ open }) => (open ? '#e9e98a' : '#e9e98a')};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
